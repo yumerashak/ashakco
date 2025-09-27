@@ -1,0 +1,180 @@
+---
+import Header from "../components/company/CompanyHeader.astro";
+import Footer from "../components/company/CompanyFooter.astro";
+
+const roles = [
+  {
+    id: "swift-developer",
+    title: "SwiftUI Developer (Mobile)",
+    location: "Remote",
+    type: "Full-time",
+    summary:
+      "Performance-focused mobile game development in Swift, optimization, and live release support.",
+  },
+  {
+    id: "game-designer",
+    title: "Game Designer",
+    location: "Remote",
+    type: "Full-time",
+    summary:
+      "Level design, coin and subscription theme, plus iterative prototyping and playtesting.",
+  },
+  {
+    id: "ui-ux-designer",
+    title: "UI/UX Designer (Game)",
+    location: "Remote",
+    type: "Full-time",
+    summary:
+      "Build a consistent UI system, user flows, mockups/prototypes, and a cohesive visual language.",
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Careers • Ashak Studios</title>
+    <meta name="description" content="Join the Ashak Studios team — open roles and how to apply." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Pixelify Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root{
+        --bg:#050507; --bg-2:#0C0D12;
+        --panel:#0F1016; --panel-2:#131521;
+        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
+        --brand:#8D46E7; --brand-2:#2F4CB3;
+        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+      }
+      *{box-sizing:border-box}
+      html,body{
+        margin:0; padding:0;
+        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
+        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
+        scroll-behavior:smooth;
+      }
+      a{color:inherit;text-decoration:none}
+      .container{max-width:1100px;margin:0 auto;padding:0 16px}
+      .section{padding:56px 0}
+      .hero{padding:72px 0 28px;text-align:center}
+      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
+      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
+
+      .grid{display:grid;gap:16px}
+      @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+      .card{
+        background:linear-gradient(180deg,var(--panel),var(--panel-2));
+        border:1px solid var(--line); border-radius:var(--radius);
+        box-shadow:var(--shadow); padding:18px;
+      }
+      .role{
+        display:grid; gap:10px; align-content:start;
+      }
+      .role h3{margin:0;font-size:clamp(18px,2.1vw,22px);font-weight:700}
+      .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:#C9CAE2}
+      .meta .chip{
+        border:1px solid #2D3050;background:#12142A;border-radius:999px;padding:4px 8px;font-weight:600;color:#E7E7F4
+      }
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;gap:8px;
+        height:40px;padding:0 14px;border-radius:999px;border:1px solid #2B2E44;
+        background:linear-gradient(180deg,#1A1C2A,#121422);color:#fff;cursor:pointer;
+        font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25); transition:filter .15s ease;
+      }
+      .btn:hover{ filter:brightness(1.06) }
+      .btn-primary{
+        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
+        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      }
+
+      .cols{display:grid;gap:16px}
+      @media(min-width:1000px){.cols{grid-template-columns:1.2fr .8fr}}
+
+      .list{margin:8px 0 0 18px}
+      .list li{margin:6px 0}
+      .h2{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0 0 8px}
+      .sep{height:1px;background:linear-gradient(90deg,transparent,#262944,transparent);margin:24px 0}
+      .note{font-size:13px;color:#C9CAE2}
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="heading-1">Careers</h1>
+        <p class="kicker">We build timeless, accessible games. Join us.</p>
+      </div>
+    </section>
+
+    <!-- OPEN ROLES -->
+    <section class="section">
+      <div class="container cols">
+        <!-- Left: roles -->
+        <div class="grid">
+          {roles.map((r) => (
+            <article class="card role" id={r.id}>
+              <h3>{r.title}</h3>
+              <div class="meta">
+                <span class="chip">{r.location}</span>
+                <span class="chip">{r.type}</span>
+              </div>
+              <p style="margin:0">{r.summary}</p>
+              <div>
+                <a
+                  class="btn btn-primary"
+                  href={`mailto:contact@ashak.co?subject=Application — ${encodeURIComponent(r.title)}&body=Hi%Ashak%Studios%20Team,%0D%0A%0D%0AMy%20name%20is%20...%20I'm%20applying%20for%20${encodeURIComponent(r.title)}.%0D%0A%0D%0A•%20Portfolio%3A%20%0D%0A•%20LinkedIn%3A%20%0D%0A•%20Location%3A%20%0D%0A%0D%0ABriefly%20about%20me%3A%0D%0A...%0D%0A%0D%0ABest,%0D%0A`}
+                >Apply</a>
+                <a
+                  class="btn"
+                  style="margin-left:8px"
+                  href={`mailto:contact@ashak.co?subject=Question about ${encodeURIComponent(r.title)}`}
+                >Ask a question</a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Right: about hiring -->
+        <aside class="card">
+          <h2 class="h2" style="margin-top:0">Why Join Us</h2>
+          <ul class="list">
+            <li>Small, senior team — high ownership.</li>
+            <li>Quality-first craft: design, performance, polish.</li>
+            <li>Remote-friendly workflow and async communication.</li>
+            <li>Impactful shipped products used by real players.</li>
+          </ul>
+
+          <div class="sep"></div>
+
+          <h2 class="h2">Hiring Process</h2>
+          <ul class="list">
+            <li>Quick intro call (15–20 min).</li>
+            <li>Portfolio/code review & deep-dive (45–60 min).</li>
+            <li>Paid take-home or live task (role-dependent).</li>
+            <li>Offer.</li>
+          </ul>
+
+          <div class="sep"></div>
+
+          <h2 class="h2">No Perfect Match?</h2>
+          <p style="margin:0 0 8px">Send a general application with your portfolio.</p>
+          <a class="btn" href="mailto:contact@ashak.co?subject=General Application — Ashak Studios">General application</a>
+          <p class="note" style="margin-top:8px">Tip: Links to a portfolio, shipped games, GitHub, or design case studies help a lot.</p>
+        </aside>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
+</html>

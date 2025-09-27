@@ -1,0 +1,238 @@
+---
+import Header from "../components/company/CompanyHeader.astro";
+import Footer from "../components/company/CompanyFooter.astro";
+
+const SUPPORT_EMAIL = "contact@ashak.co";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact • Ashak Studios</title>
+    <meta name="description" content="Get in touch with the Ashak Studios team." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Fonts: Pixelify (site ile tutarlı) + Inter (form okunabilirliği için) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root{
+        --bg:#050507; --bg-2:#0C0D12;
+        --panel:#0F1016; --panel-2:#131521;
+        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
+        --brand:#8D46E7; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+      }
+      *{box-sizing:border-box}
+      html,body{
+        margin:0; padding:0;
+        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
+        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
+        scroll-behavior:smooth;
+      }
+      a{color:inherit;text-decoration:none}
+      .container{max-width:1000px;margin:0 auto;padding:0 16px}
+      .section{padding:56px 0}
+
+      .hero{padding:72px 0 28px;text-align:center}
+      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
+      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
+
+      .grid{display:grid;gap:16px}
+      @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr}}
+
+      .card{
+        background:linear-gradient(180deg,var(--panel),var(--panel-2));
+        border:1px solid var(--line); border-radius:var(--radius);
+        box-shadow:var(--shadow); padding:18px;
+      }
+
+      /* Form (Inter ile daha ciddi ve okunaklı) */
+      .form-prose, .form-prose *{
+        font-family:'Inter', ui-sans-serif, system-ui !important;
+      }
+      label{display:block;font-weight:600;margin:10px 0 6px}
+      input, textarea, select{
+        width:100%; border:1px solid #2B2E44; border-radius:12px;
+        background:#0B0C12; color:#fff;
+        padding:12px 14px; font:500 14px 'Inter', ui-sans-serif;
+      }
+      textarea{min-height:140px; resize:vertical}
+      .row{display:grid; gap:12px}
+      @media(min-width:720px){ .row--2{grid-template-columns:1fr 1fr} }
+
+      .btn{
+        display:inline-flex; align-items:center; justify-content:center; gap:8px;
+        height:44px; padding:0 16px; border-radius:999px;
+        border:1px solid #2B2E44; background:linear-gradient(180deg,#1A1C2A,#121422);
+        color:#fff; cursor:pointer; font-weight:700; box-shadow:0 8px 24px rgba(0,0,0,.25);
+        transition:filter .15s ease;
+      }
+      .btn:hover{ filter:brightness(1.06) }
+      .btn-primary{
+        border-color:#4331B8; background:linear-gradient(180deg,#795CFF,#5A41E3);
+        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      }
+      .btn-ghost{ background:transparent }
+
+      .note{font-size:13px;color:#C9CAE2;margin-top:8px}
+      .list{margin:8px 0 0 18px} .list li{margin:4px 0}
+
+      /* Toast */
+      .toast{
+        position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+        background:#111324; border:1px solid #2D3050; color:#EDEDF7; border-radius:12px;
+        padding:10px 14px; box-shadow:0 10px 30px rgba(0,0,0,.45);
+        opacity:0; pointer-events:none; transition:.25s ease;
+      }
+      .toast.show{ opacity:1; transform:translateX(-50%) translateY(0) }
+
+      /* Icons for the right column (simple) */
+      .icon{width:16px;height:16px;display:inline-block;vertical-align:-3px;color:#EDEDF7}
+      .icon--stroke{stroke:currentColor;fill:none}
+      .icon--fill{fill:currentColor}
+      .social{display:flex;gap:10px;margin-top:8px}
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="heading-1">Contact</h1>
+        <p class="kicker">We’d love to hear from you. Send us a message or email us directly.</p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="section">
+      <div class="container grid">
+        <!-- Left: Form -->
+        <div class="card form-prose">
+          <h2 style="margin:0 0 8px">Send a message</h2>
+          <p class="note">No account needed. Your default mail app will open when you submit.</p>
+
+          <form id="contact-form" onsubmit="return handleSubmit(event)">
+            <div class="row row--2">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Adam Lewis" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="I have a question about…" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Write your message…" required></textarea>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:6px">
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <button class="btn btn-primary" type="submit">Send</button>
+                <a class="btn btn-ghost" href={`mailto:${SUPPORT_EMAIL}`} title="Open your email app">Email us instead</a>
+                <button class="btn btn-ghost" type="button" onclick="copyEmail()">Copy email</button>
+              </div>
+              <p class="note">We usually respond within 2–3 business days.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Right: Other ways / Info -->
+        <aside class="card">
+          <h3 style="margin:0 0 6px">Other ways to reach us</h3>
+          <ul class="list">
+            <li><strong>Email:</strong> <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a></li>
+            <li><strong>Social:</strong>
+              <span class="social" aria-label="Social links">
+                <a href="https://www.instagram.com/ashak.co/" aria-label="Instagram" title="Instagram">
+                  <svg class="icon icon--stroke" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <circle cx="17.5" cy="6.5" r="1.25"></circle>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@ashakstudios" aria-label="YouTube" title="YouTube">
+                  <svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/>
+                  </svg>
+                </a>
+              </span>
+            </li>
+          </ul>
+
+          <h3 style="margin:16px 0 6px">Tips</h3>
+          <ul class="list">
+            <li>Purchase issues? On iOS, try <em>Settings &gt; Apple ID &gt; Subscriptions</em> or tap <strong>Restore Purchases</strong> in-app.</li>
+            <li>General questions? Include device model and OS version for faster help.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <Footer />
+
+    <div id="toast" class="toast" role="status" aria-live="polite">Opening your email app…</div>
+    <div id="toast-copy" class="toast" role="status" aria-live="polite">Email copied</div>
+
+    <script type="module">
+      const SUPPORT_EMAIL = `${SUPPORT_EMAIL}`;
+
+      function handleSubmit(e){
+        e.preventDefault();
+        const f = e.target;
+        const name = f.name.value.trim();
+        const email = f.email.value.trim();
+        const subject = f.subject.value.trim() || 'Contact';
+        const message = f.message.value.trim();
+
+        const body = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          '',
+          message,
+          '',
+          '--',
+          'Sent from ashak.co/contact'
+        ].join('\\n');
+
+        const mailto = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('[Contact] ' + subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+
+        showToast('toast');
+        return false;
+      }
+
+      function copyEmail(){
+        navigator.clipboard?.writeText(SUPPORT_EMAIL);
+        showToast('toast-copy');
+      }
+
+      function showToast(id){
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.classList.add('show');
+        setTimeout(()=>el.classList.remove('show'), 2600);
+      }
+
+      // Expose for form onsubmit
+      window.handleSubmit = handleSubmit;
+      window.copyEmail = copyEmail;
+    </script>
+  </body>
+</html>

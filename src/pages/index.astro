@@ -1,0 +1,257 @@
+---
+import Header from "../components/company/CompanyHeader.astro";
+import Footer from "../components/company/CompanyFooter.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Ashak Studios</title>
+    <meta name="description" content="Ashak Studios — fun and accessible games on mobile." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Pixelify Sans (global typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Social -->
+    <meta property="og:title" content="Ashak Studios" />
+    <meta property="og:description" content="Fun and accessible games on mobile." />
+    <meta property="og:image" content="/assets/presskit-cover.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+      :root{
+        --bg:#050507; --bg-2:#0C0D12;
+        --panel:#0F1016; --panel-2:#131521;
+        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
+        --brand:#8D46E7; --brand-2:#2F4CB3;
+        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+      }
+      *{box-sizing:border-box}
+      html,body{
+        margin:0; padding:0;
+        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
+        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
+        scroll-behavior:smooth;
+      }
+      a{color:inherit;text-decoration:none}
+      .container{max-width:1100px;margin:0 auto;padding:0 16px}
+      .section{padding:56px 0}
+
+      /* HERO yükseklik/padding AYNI, sadece içerik ortalandı */
+      .hero{padding:72px 0 28px}
+      .hero .container{ text-align:center; }
+
+      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
+      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
+      .cta{display:flex;gap:10px;margin-top:18px; justify-content:center;}
+
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;gap:8px;
+        height:44px;padding:0 16px;border-radius:999px;border:1px solid #2B2E44;
+        background:linear-gradient(180deg,#1A1C2A,#121422);color:#fff;cursor:pointer;
+        font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
+        transition:filter .15s ease;
+      }
+      .btn:hover{ filter:brightness(1.06) }
+      .btn-primary{
+        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
+        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      }
+      /* remove previous outline */
+      .btn[aria-selected="true"]{ outline:none }
+
+      .grid{display:grid;gap:16px}
+      @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+      .card{
+        background:linear-gradient(180deg,var(--panel),var(--panel-2));
+        border:1px solid var(--line); border-radius:var(--radius);
+        box-shadow:var(--shadow); padding:16px;
+      }
+      .badge{display:inline-block;font-size:12px;border:1px solid #2D3050;border-radius:999px;padding:4px 8px;background:#12142A}
+
+      /* ===== Apps: icon on top, fully centered content + 2 columns ===== */
+      .apps-list{
+        display:grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap:16px;
+        align-items:stretch;
+      }
+      .apps-list .app-card{
+        text-align:center;
+        display:grid;
+        justify-items:center;
+        gap:10px;
+        padding-top:18px;
+      }
+      .app-icon{
+        width:88px; height:88px;
+        border-radius:18px;
+        border:1px solid var(--line);
+        background:#0B0C12;
+        object-fit:cover;
+        box-shadow:0 10px 30px rgba(0,0,0,.35);
+      }
+      .app-badge{
+        display:inline-block;
+        font-size:12px;
+        border:1px solid #2D3050;
+        border-radius:999px;
+        padding:4px 8px;
+        background:#12142A;
+        margin-top:4px;
+      }
+      .app-title{ margin:8px 0 4px; }
+      .app-desc{ margin:0 0 10px; max-width:46ch; opacity:.95 }
+      .app-actions{
+        display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+      }
+
+      /* ===== Tab visibility ===== */
+      .hidden{ display:none !important; }
+
+      /* ===== About: Use Pixelify Sans (not Inter) ===== */
+      .about-prose,
+      .about-prose *{
+        font-family:'Pixelify Sans', ui-sans-serif, system-ui !important;
+        font-weight:400;
+      }
+      .about-prose h3{
+        font-weight:700 !important;
+      }
+      .about-prose p{
+        margin:0 0 10px;
+        color:#E9EAF3;
+        line-height:1.75;
+        letter-spacing:.2px;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="heading-1">Ashak Studios</h1>
+        <p class="kicker">We build fun and accessible games for mobile.</p>
+        <div class="cta" role="tablist" aria-label="Content tabs">
+          <a id="tab-apps" class="btn btn-primary" href="#apps" role="tab" aria-controls="apps" aria-selected="true">Apps</a>
+          <a id="tab-about" class="btn" href="#about" role="tab" aria-controls="about" aria-selected="false">About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPS (no heading) -->
+    <section id="apps" class="section" role="tabpanel" aria-labelledby="tab-apps">
+      <div class="container">
+        <div class="apps-list">
+          <!-- App #1 -->
+          <article class="card app-card">
+            <img class="app-icon" src="/assets/maxontheislandlogo.png" alt="Max On The Island Logo" loading="lazy" />
+            <div class="app-badge">Released</div>
+            <h3 class="app-title">Max On The Island</h3>
+            <p class="app-desc">Solve puzzles, progress, and escape the Island! On iOS and Android.</p>
+            <div class="app-actions">
+              <a class="btn btn-primary" href="/maxontheisland">Details</a>
+              <a class="btn" href="/maxontheisland#stores">Stores</a>
+            </div>
+          </article>
+
+          <!-- App #2 -->
+          <article class="card app-card">
+            <img class="app-icon" src="/assets/max-on-the-space-icon.png" alt="Max On The Space icon" loading="lazy" />
+            <div class="app-badge">Coming Soon</div>
+            <h3 class="app-title">Max On The Space</h3>
+            <p class="app-desc">A space-themed new adventure. Coming soon.</p>
+            <div class="app-actions">
+              <a class="btn btn-primary" href="/maxonthespace">Details</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT (now also Pixelify Sans) -->
+    <section id="about" class="section hidden" role="tabpanel" aria-labelledby="tab-about">
+      <div class="container grid about-prose">
+        <div class="card">
+          <h3 style="margin-top:0">Who Are We?</h3>
+          <p>
+            Ashak Studios is an independent game company trusted worldwide, aiming to create lasting value.
+            We pursue consistency, simplicity, and impeccable craftsmanship in every interaction; our brand is defined by
+            a long-term perspective and a work ethic others look up to. We respect our players’ time and commit to
+            delivering experiences that exceed expectations, inspire confidence, and spark inspiration.
+          </p>
+          <p>
+            Our corporate approach is built on clear principles, disciplined processes, and a measured sense of excellence.
+            Every product is designed to fully reflect the quality our brand promises; from aesthetics to performance,
+            each component is handled with the same care.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0">What Do We Do?</h3>
+          <p>
+            We develop timeless games that anyone around the world can access. We present our products with a clear design
+            language, consistent user experience, and exemplary trust standards. Beyond short-term gains, we aim to build
+            a lasting brand reputation and a portfolio remembered for generations.
+          </p>
+          <p>
+            Our commitment is clear: an inspiring vision, zero compromise on quality, and professionalism felt at every stage.
+            We work so that the name Ashak Studios is synonymous with an experience you can trust.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+  <script type="module">
+    const apps = document.getElementById('apps');
+    const about = document.getElementById('about');
+    const tabApps = document.getElementById('tab-apps');
+    const tabAbout = document.getElementById('tab-about');
+
+    function toggleSelected(isApps){
+      if(isApps){
+        tabApps.classList.add('btn-primary');
+        tabAbout.classList.remove('btn-primary');
+        tabApps.setAttribute('aria-selected','true');
+        tabAbout.setAttribute('aria-selected','false');
+      }else{
+        tabAbout.classList.add('btn-primary');
+        tabApps.classList.remove('btn-primary');
+        tabAbout.setAttribute('aria-selected','true');
+        tabApps.setAttribute('aria-selected','false');
+      }
+    }
+
+    function show(hash) {
+      const wantApps = (hash === '#apps');
+      const wantAbout = (hash === '#about');
+      // default: apps visible when no/unknown hash (but don't touch URL)
+      const showApps = wantApps || (!wantAbout && !wantApps);
+      apps.classList.toggle('hidden', !showApps);
+      about.classList.toggle('hidden', showApps);
+      toggleSelected(showApps);
+    }
+
+    // U R L ' i  D E Ğ İ Ş T İ R M E D E N  uygula
+    const allowed = new Set(['#apps', '#about']);
+    if (allowed.has(location.hash)) {
+      show(location.hash);
+    } else {
+      show('#apps'); // hash eklemeden varsayılan görünüm
+    }
+
+    window.addEventListener('hashchange', () => show(location.hash));
+  </script>
+
+  </body>
+</html>
