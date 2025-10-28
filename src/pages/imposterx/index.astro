@@ -1,0 +1,158 @@
+---
+import ProductHeader from "../../components/imposterxproduct/ProductHeader.astro";
+import ProductFooter from "../../components/imposterxproduct/ProductFooter.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ImposterX • Product Page</title>
+    <meta name="description" content="ImposterX — Find the impostor. Outsmart the crew. Play on iOS and Android." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Luckiest Guy (GLOBAL FONT) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+
+    <!-- Social -->
+    <meta property="og:title" content="ImposterX" />
+    <meta property="og:description" content="Find the impostor. Outsmart the crew." />
+    <meta property="og:image" content="/assets/imposterx-icon.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+      :root{
+        --bg:#050507; --bg-2:#0C0D12;
+        --panel:#0F1016; --panel-2:#131521;
+        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
+        --brand:#8D46E7; --brand-2:#2F4CB3;
+        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+        --imposter:#E94D4D; --crew:#2F9E44;
+      }
+      *{box-sizing:border-box}
+      html,body{
+        margin:0; padding:0;
+        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
+        color:var(--text);
+        font:16px/1.6 'Luckiest Guy', ui-sans-serif, system-ui;
+        scroll-behavior:smooth;
+      }
+      a{color:inherit;text-decoration:none}
+      img{display:block;max-width:100%;height:auto}
+      .container{max-width:1280px;margin:0 auto;padding:0 16px}
+      .section{padding:48px 0}
+
+      /* Panels & buttons */
+      .panel{
+        background:linear-gradient(180deg,var(--panel),var(--panel-2));
+        border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+      }
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;gap:8px;
+        height:44px;padding:0 16px;border-radius:999px;
+        border:1px solid #2B2E44;background:linear-gradient(180deg,#1A1C2A,#121422);
+        color:#fff;cursor:pointer;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
+      }
+      .btn-primary{
+        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
+        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      }
+
+      /* HERO */
+      .hero{padding:68px 0 28px}
+      .logo-row{display:flex;justify-content:center;margin-bottom:12px}
+      .logo{height:90px;width:auto;border-radius:14px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
+      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0;text-align:center}
+      .kicker{color:var(--muted);font-weight:500;font-size:16px;text-align:center;margin-top:6px}
+
+      /* Stores */
+      .stores{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+      .stores a{display:flex;align-items:center;justify-content:center;width:220px;height:64px;border-radius:12px}
+      .stores a img{max-width:100%;max-height:100%;object-fit:contain}
+
+      /* Screenshots — bigger, tighter, and show FULL image */
+      .shots{display:grid;gap:2px;margin-top:16px}
+      .shot{
+        position:relative;border-radius:12px;overflow:hidden;
+        border:1px solid #1f2135;background:#0A0B12;box-shadow:0 14px 40px rgba(0,0,0,.35);
+      }
+      /* show full image with no cropping or distortion */
+      .shot img{
+        width:100%;
+        height:auto;         /* keep aspect ratio */
+        display:block;       /* remove inline-gap */
+        /* object-fit/remove aspect-ratio — full image is visible */
+      }
+      @media (min-width: 700px){ .shots{ grid-template-columns: repeat(2, 1fr);} }
+      @media (min-width: 1024px){ .shots{ grid-template-columns: repeat(4, 1fr);} }
+
+      /* How to Play */
+      .section-title{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0 0 12px;text-align:center}
+      .rules.panel{padding:16px}
+      ol.rules-list{margin:0; padding-left:22px}
+      ol.rules-list li{margin:6px 0}
+
+      /* Role badges */
+      .role{
+        display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid;
+        background:#111321; letter-spacing:.3px;
+      }
+      .role--imposter{ color:#fff; border-color:rgba(233,77,77,.45); box-shadow:inset 0 0 0 9999px rgba(233,77,77,.14) }
+      .role--crew{ color:#fff; border-color:rgba(47,158,68,.45); box-shadow:inset 0 0 0 9999px rgba(47,158,68,.14) }
+    </style>
+  </head>
+
+  <body>
+    <ProductHeader productName="ImposterX" />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="logo-row">
+          <img src="/assets/imposterx-icon.jpg" alt="ImposterX" class="logo" loading="eager" />
+        </div>
+        <h1 class="heading-1">ImposterX</h1>
+        <p class="kicker">Find the impostor • Outsmart the crew</p>
+
+        <!-- Store buttons -->
+        <div class="stores" id="stores">
+          <a href="#" aria-label="Get on the App Store"><img src="/assets/appstore.png" alt="App Store" /></a>
+          <a href="#" aria-label="Get on Google Play"><img src="/assets/googleplay.png" alt="Google Play" /></a>
+        </div>
+
+        <!-- Screenshots (4 vertical images, side-by-side) -->
+        <div class="shots">
+          <!-- Not: dosya adların "imposter-ss-1.jpg" ise path'i ona göre değiştir -->
+          <figure class="shot"><img src="/assets/imposterx-ss-1.jpg" alt="ImposterX Screenshot 1" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/imposterx-ss-2.jpg" alt="ImposterX Screenshot 2" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/imposterx-ss-3.jpg" alt="ImposterX Screenshot 3" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/imposterx-ss-4.jpg" alt="ImposterX Screenshot 4" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">How to Play</h2>
+        <div class="rules panel">
+          <ol class="rules-list">
+            <li>One player is randomly selected as the <span class="role role--imposter">IMPOSTER</span>; the others are the <span class="role role--crew">CREW</span>.</li>
+            <li>The app generates a secret word; only the <span class="role role--crew">CREW</span> sees it. The <span class="role role--imposter">IMPOSTER</span> does not see the word.</li>
+            <li>In turn, each player gives one short clue (1–3 words). Saying the word and overly obvious clues are forbidden.</li>
+            <li>The <span class="role role--imposter">IMPOSTER</span> tries to give a clue without raising suspicion, even though they do not know the word.</li>
+            <li>At the end of the round, if the <span class="role role--crew">CREW</span> agrees on who the <span class="role role--imposter">IMPOSTER</span> is, they vote to eliminate them.</li>
+            <li>The eliminated player reveals their role. If the <span class="role role--imposter">IMPOSTER</span> is eliminated, the <span class="role role--crew">CREW</span> wins.</li>
+            <li>If the <span class="role role--crew">CREW</span> eliminates the wrong person, the <span class="role role--imposter">IMPOSTER</span> wins.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <ProductFooter productName="ImposterX" />
+  </body>
+</html>

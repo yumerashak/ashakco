@@ -1,0 +1,83 @@
+---
+/**
+ * ImposterX Product Footer
+ * Props:
+ *  - productName?: string  (default: "ImposterX")
+ *  - logoSrc?: string      (default: "/assets/imposterx-icon.jpg")
+ */
+const { productName = "ImposterX", logoSrc = "/assets/imposterx-icon.jpg" } = Astro.props;
+const year = new Date().getFullYear();
+---
+<style>
+  /* Inherit Luckiest Guy from sayfa */
+  .foot{ border-top:1px solid #232536; background:#0B0C12; color:#EDEDF7; margin-top:40px }
+  .inner{ max-width:1200px; margin:0 auto; padding:24px 20px; display:grid; gap:20px }
+  @media(min-width:900px){ .inner{ grid-template-columns:1.3fr 1fr 1fr 1fr } }
+
+  h4{ margin:0 0 8px; font-weight:700; font-size:16px; }
+  a{ color:#EDEDF7; opacity:.9; text-decoration:none }
+  a:hover{ text-decoration:underline }
+
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; margin-bottom:8px }
+  .brand img{ width:28px; height:28px; border-radius:8px; object-fit:cover }
+
+  ul{ list-style:none; margin:0; padding:0; display:grid; gap:6px }
+  .copy{ border-top:1px solid #232536; margin-top:8px; padding-top:10px; font-size:13px; opacity:.7; grid-column:1 / -1 }
+
+  .social{ display:flex; gap:10px; margin-top:8px }
+  .icon{ width:16px; height:16px; display:block; color:#EDEDF7; opacity:.85 }
+  .icon--stroke{ stroke:currentColor; fill:none }
+  .icon--stroke *{ fill:none }
+  .icon--fill{ fill:currentColor }
+</style>
+
+<footer class="foot" id="contact">
+  <div class="inner">
+    <section>
+      <div class="brand">
+        <img src={logoSrc} alt={`${productName} Footer Logo`} />
+        <span>{productName}</span>
+      </div>
+      <p style="max-width:46ch;opacity:.85">
+        Find the Impostor • Outsmart the Crew — social deduction on mobile.
+      </p>
+
+      <div class="social" aria-label="Socials">
+        <!-- Instagram (stroke) -->
+        <a href="https://www.instagram.com/ashak.co/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--stroke" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="1.25"></circle>
+          </svg>
+        </a>
+        <!-- YouTube (fill) -->
+        <a href="https://www.youtube.com/@ashakstudios" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/careers">Careers</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@ashak.co">contact@ashak.co</a></li>
+        <li><a href="/imposterx/legal#privacy">Privacy</a></li>
+        <li><a href="/imposterx/legal#terms">Terms</a></li>
+      </ul>
+    </section>
+
+    <div class="copy">© {year} {productName}. All rights reserved.</div>
+  </div>
+</footer>
