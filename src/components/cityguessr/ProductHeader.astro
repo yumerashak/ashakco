@@ -1,0 +1,75 @@
+---
+/**
+ * CityGuessr Product Header
+ * Props:
+ *  - productName?: string  (default: "CityGuessr")
+ *  - logoSrc?: string      (default: "/assets/cityguessr-icon.png")  // (başlıkta kullanılmıyor; center title var)
+ *  - backHref?: string     (default: "/#apps")
+ */
+const {
+  productName = "CityGuessr",
+  logoSrc = "/assets/cityguessr-icon.png",
+  backHref = "/#apps",
+} = Astro.props;
+---
+<style>
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(5,5,7,.72); backdrop-filter:blur(10px);
+    border-bottom:1px solid #232536;
+  }
+  .inner{
+    max-width:1200px; margin:0 auto; padding:8px 20px;
+    display:grid; grid-template-columns: 1fr auto 1fr;
+    align-items:center; column-gap:12px; font-family:inherit;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; color:#EDEDF7; text-decoration:none }
+  .brand img{ height:40px; width:80px; object-fit:contain; display:block }
+
+  .title{ justify-self:center; color:#EDEDF7; opacity:.95; letter-spacing:.2px; display:none }
+  @media(min-width:960px){ .title{ display:block } }
+
+  .actions{ display:flex; gap:10px; justify-self:end; align-items:center }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    height:36px; padding:0 12px; border-radius:999px; border:1px solid #2B2E44;
+    background:linear-gradient(180deg,#1A1C2A,#121422); color:#fff; text-decoration:none;
+    font-weight:600; box-shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  .btn:hover{ filter:brightness(1.06) }
+
+  .social{ display:none; gap:10px }
+  .icon{ width:16px; height:16px; display:block; color:#EDEDF7 }
+  .icon--stroke{ stroke:currentColor; fill:none }
+  .icon--stroke *{ fill:none }
+  .icon--fill{ fill:currentColor }
+  @media(min-width:960px){ .social{ display:flex } }
+</style>
+
+<header class="topbar">
+  <div class="inner">
+    <a class="brand" href="/" aria-label="Home">
+      <img src="/assets/companylogo2.png" alt="Ashak Studios" />
+    </a>
+
+    <div class="title" aria-label="Product">{productName}</div>
+
+    <div class="actions">
+      <a class="btn" href={backHref} aria-label="Back to Apps">← Back</a>
+      <div class="social" aria-label="Social links">
+        <a href="https://www.instagram.com/ashak.co/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--stroke" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="1.25"></circle>
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/@ashakstudios" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

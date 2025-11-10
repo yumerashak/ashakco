@@ -1,0 +1,155 @@
+---
+import ProductHeader from "../../components/cityguessr/ProductHeader.astro";
+import ProductFooter from "../../components/cityguessr/ProductFooter.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CityGuessr • Product Page</title>
+    <meta name="description" content="CityGuessr — Guess the city from photos and landmarks. Play on iOS and Android." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Luckiest Guy (GLOBAL FONT) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+
+    <!-- Social -->
+    <meta property="og:title" content="CityGuessr" />
+    <meta property="og:description" content="Guess the city • Explore the world." />
+    <meta property="og:image" content="/assets/cityguessr-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+      :root{
+        --bg:#050507; --bg-2:#0C0D12;
+        --panel:#0F1016; --panel-2:#131521;
+        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
+        --brand:#8D46E7; --brand-2:#2F4CB3;
+        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+        --accent:#2FB3A2;
+      }
+      *{box-sizing:border-box}
+      html,body{
+        margin:0; padding:0;
+        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
+        color:var(--text);
+        font:16px/1.6 'Luckiest Guy', ui-sans-serif, system-ui;
+        scroll-behavior:smooth;
+      }
+      a{color:inherit;text-decoration:none}
+      img{display:block;max-width:100%;height:auto}
+      .container{max-width:1280px;margin:0 auto;padding:0 16px}
+      .section{padding:48px 0}
+
+      /* Panels & buttons */
+      .panel{
+        background:linear-gradient(180deg,var(--panel),var(--panel-2));
+        border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+      }
+      .btn{
+        display:inline-flex;align-items:center;justify-content:center;gap:8px;
+        height:44px;padding:0 16px;border-radius:999px;
+        border:1px solid #2B2E44;background:linear-gradient(180deg,#1A1C2A,#121422);
+        color:#fff;cursor:pointer;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
+      }
+      .btn-primary{
+        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
+        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      }
+
+      /* HERO */
+      .hero{padding:68px 0 28px}
+      .logo-row{display:flex;justify-content:center;margin-bottom:12px}
+      .logo{height:90px;width:auto;border-radius:14px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
+      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0;text-align:center}
+      .kicker{color:var(--muted);font-weight:500;font-size:16px;text-align:center;margin-top:6px}
+
+      /* Stores */
+      .stores{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+      .stores a{display:flex;align-items:center;justify-content:center;width:220px;height:64px;border-radius:12px}
+      .stores a img{max-width:100%;max-height:100%;object-fit:contain}
+
+      /* Screenshots — 9 görsel için 3x3 responsive grid, full image */
+      .shots{display:grid;gap:2px;margin-top:16px}
+      .shot{
+        position:relative;border-radius:12px;overflow:hidden;
+        border:1px solid #1f2135;background:#0A0B12;box-shadow:0 14px 40px rgba(0,0,0,.35);
+      }
+      .shot img{
+        width:100%;
+        height:auto;        /* tam görsel, kırpmasız */
+        display:block;
+      }
+      @media (min-width: 700px){ .shots{ grid-template-columns: repeat(2, 1fr);} }
+      @media (min-width: 1024px){ .shots{ grid-template-columns: repeat(3, 1fr);} }
+
+      /* How to Play */
+      .section-title{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0 0 12px;text-align:center}
+      .rules.panel{padding:16px}
+      ol.rules-list{margin:0; padding-left:22px}
+      ol.rules-list li{margin:6px 0}
+
+      /* Badges */
+      .badge{
+        display:inline-block; padding:2px 10px; border-radius:999px; border:1px solid rgba(47,179,162,.4);
+        background:#111321; letter-spacing:.3px; color:#EFFFFA;
+        box-shadow:inset 0 0 0 9999px rgba(47,179,162,.12)
+      }
+    </style>
+  </head>
+
+  <body>
+    <ProductHeader productName="CityGuessr" />
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="logo-row">
+          <img src="/assets/cityguessr-icon.png" alt="CityGuessr" class="logo" loading="eager" />
+        </div>
+        <h1 class="heading-1">CityGuessr</h1>
+        <p class="kicker">Guess the city • Explore the world</p>
+
+        <!-- Store buttons -->
+        <div class="stores" id="stores">
+          <a href="#" aria-label="Get on the App Store"><img src="/assets/appstore.png" alt="App Store" /></a>
+          <a href="#" aria-label="Get on Google Play"><img src="/assets/googleplay.png" alt="Google Play" /></a>
+        </div>
+
+        <!-- Screenshots (9 görsel) -->
+        <div class="shots">
+          <figure class="shot"><img src="/assets/cityguessr-ss-1.jpg" alt="CityGuessr Screenshot 1" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-2.jpg" alt="CityGuessr Screenshot 2" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-3.jpg" alt="CityGuessr Screenshot 3" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-4.jpg" alt="CityGuessr Screenshot 4" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-5.jpg" alt="CityGuessr Screenshot 5" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-6.jpg" alt="CityGuessr Screenshot 6" loading="lazy" /></figure>
+          <figure class="shot"><img src="/assets/cityguessr-ss-7.jpg" alt="CityGuessr Screenshot 7" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO PLAY -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">How to Play</h2>
+        <div class="rules panel">
+          <ol class="rules-list">
+            <li>Look at the photo and landmarks. Pan & zoom to inspect details.</li>
+            <li>Drop a pin on the map or type the city name you believe it is.</li>
+            <li>Use hints like <span class="badge">Region</span>, <span class="badge">Subregion</span>, and <span class="badge">Country Flag</span> if you get stuck.</li>
+            <li>Submit your guess. The closer you are, the more points you earn.</li>
+            <li>Build streaks, unlock achievements, and climb the leaderboards.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <ProductFooter productName="CityGuessr" logoSrc="/assets/cityguessr-icon.png" />
+  </body>
+</html>
