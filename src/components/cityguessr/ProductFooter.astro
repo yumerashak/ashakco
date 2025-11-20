@@ -1,172 +1,196 @@
 ---
 /**
- * CityGuessr Product Footer
+ * ProductFooter.astro (CityGuessr Edition)
  * Props:
- *  - productName?: string  (default: "CityGuessr")
- *  - logoSrc?: string      (default: "/assets/cityguessr-icon.png")
+ *  - productName: string (default: "CityGuessr")
+ *  - logoSrc: string (default: "/assets/cityguessr-icon.png")
  */
-const { productName = "CityGuessr", logoSrc = "/assets/cityguessr-icon.png" } = Astro.props;
+const {
+  productName = "CityGuessr",
+  logoSrc = "/assets/cityguessr-icon.png",
+} = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <style>
-  /* Inherit Luckiest Guy from page */
   .foot {
-    border-top: 1px solid #232536;
-    background: #0b0c12;
-    color: #ededf7;
-    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #030304; /* Deepest dark */
+    color: #EDEDF7;
+    margin-top: 80px;
+    padding: 60px 0 30px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    z-index: 10;
   }
+
   .inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 20px;
+    padding: 0 24px;
     display: grid;
-    gap: 20px;
+    gap: 40px;
   }
+
   @media (min-width: 900px) {
     .inner {
-      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr;
     }
   }
 
+  /* HEADINGS */
   h4 {
-    margin: 0 0 8px;
+    margin: 0 0 16px;
+    font-family: 'Pixelify Sans', sans-serif;
     font-weight: 700;
-    font-size: 16px;
-  }
-  a {
-    color: #ededf7;
-    opacity: 0.9;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.5px;
   }
 
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .brand img {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-
+  /* LINKS */
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
-  .copy {
-    border-top: 1px solid #232536;
-    margin-top: 8px;
-    padding-top: 10px;
-    font-size: 13px;
-    opacity: 0.7;
-    grid-column: 1 / -1;
+  
+  .footer-link {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  .footer-link:hover {
+    color: #fff;
+    transform: translateX(4px);
+    text-shadow: 0 0 8px rgba(141, 70, 231, 0.4);
   }
 
-  .social {
+  /* BRAND SECTION */
+  .brand-area {
     display: flex;
-    gap: 10px;
-    margin-top: 8px;
+    flex-direction: column;
+    gap: 16px;
   }
-  .icon {
-    width: 16px;
-    height: 16px;
-    display: block;
-    color: #ededf7;
-    opacity: 0.85;
+  .brand-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  .icon--stroke {
-    stroke: currentColor;
-    fill: none;
+  .brand-head img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
-  .icon--stroke * {
-    fill: none;
+  .brand-name {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
   }
-  .icon--fill {
-    fill: currentColor;
+  .tagline {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  /* SOCIAL ROW */
+  .social-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .social-icon {
+    width: 36px; height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    transition: all 0.2s;
+  }
+  .social-icon:hover {
+    background: #8D46E7;
+    border-color: #8D46E7;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(141, 70, 231, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* COPYRIGHT */
+  .copy {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #52525b;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
   }
 </style>
 
-<footer class="foot" id="contact">
+<footer class="foot">
   <div class="inner">
-    <section>
-      <div class="brand">
-        <!-- FIX: tırnakları kaldır, template string’i doğru kapat -->
-        <img src={logoSrc} alt={`${productName} Footer Logo`} />
-        <span>{productName}</span>
+    
+    <!-- Column 1: Product Brand & Desc -->
+    <section class="brand-area">
+      <div class="brand-head">
+        <img src={logoSrc} alt={`${productName} Logo`} loading="lazy" />
+        <span class="brand-name">{productName}</span>
       </div>
-      <p style="max-width: 46ch; opacity: 0.85">
-        Guess the city • Explore the world — geography quiz on mobile.
+      <p class="tagline">
+        Guess the city • Explore the world. 
+        A game of deduction and geography.
       </p>
-
-      <div class="social" aria-label="Socials">
-        <!-- Instagram (stroke) -->
-        <a
-          href="https://www.instagram.com/ashak.co/"
-          aria-label="Instagram"
-          title="Instagram"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg
-            class="icon icon--stroke"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <circle cx="17.5" cy="6.5" r="1.25"></circle>
-          </svg>
+      
+      <div class="social-row" aria-label="Socials">
+        <a href="https://www.instagram.com/ashak.co/" class="social-icon" aria-label="Instagram" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.25"></circle></svg>
         </a>
-        <!-- YouTube (fill) -->
-        <a
-          href="https://www.youtube.com/@ashakstudios"
-          aria-label="YouTube"
-          title="YouTube"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"
-            />
-          </svg>
+        <a href="https://www.youtube.com/@ashakstudios" class="social-icon" aria-label="YouTube" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/></svg>
         </a>
       </div>
     </section>
 
+    <!-- Column 2: Studio Links -->
     <section>
-      <h4>Company</h4>
+      <h4>Studio</h4>
       <ul>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/careers">Careers</a></li>
+        <li><a class="footer-link" href="/#about">About Us</a></li>
+        <li><a class="footer-link" href="/careers">Careers</a></li>
+        <li><a class="footer-link" href="/contact">Contact</a></li>
       </ul>
     </section>
 
+    <!-- Column 3: Legal & Support -->
     <section>
-      <h4>Contact</h4>
+      <h4>Legal & Support</h4>
       <ul>
-        <li><a href="mailto:contact@ashak.co">contact@ashak.co</a></li>
-        <li><a href="/cityguessr/legal#privacy">Privacy</a></li>
-        <li><a href="/cityguessr/legal#terms">Terms</a></li>
+        <li><a class="footer-link" href="/cityguessr/legal#privacy">Privacy Policy</a></li>
+        <li><a class="footer-link" href="/cityguessr/legal#terms">Terms of Use</a></li>
+        <li><a class="footer-link" href="mailto:contact@ashak.co">Support</a></li>
       </ul>
     </section>
 
-    <div class="copy">© {year} {productName}. All rights reserved.</div>
+  </div>
+
+  <div class="inner">
+    <div class="copy">
+      <span>© {year} {productName}. All rights reserved.</span>
+    </div>
   </div>
 </footer>

@@ -8,387 +8,231 @@ const EFFECTIVE_DATE = "November 10, 2025";
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Privacy Policy & Terms • CountryGuessr</title>
-    <meta
-      name="description"
-      content="Privacy Policy and Terms of Service for CountryGuessr by Ashak Studios."
-    />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Protocols • CountryGuessr</title>
+    <meta name="description" content="Privacy Policy and Terms of Service for CountryGuessr." />
+    <meta name="theme-color" content="#2FB3A2" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Inter (serious, clean) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Ensure Header/Footer also use Inter -->
-    <style is:global>
-      :root {
-        --ff: 'Inter', ui-sans-serif, system-ui;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <style>
+      /* --- CORE VARIABLES --- */
       :root {
-        --bg: #050507;
-        --bg-2: #0c0d12;
-        --panel: #0f1016;
-        --panel-2: #131521;
-        --text: #f2f2f7;
-        --muted: #b8b9c8;
-        --line: #232536;
-        --brand: #8d46e7;
-        --radius: 16px;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        background: radial-gradient(
-            1200px 400px at 50% -10%,
-            #121327 0%,
-            transparent 60%
-          ),
-          var(--bg);
-        color: var(--text);
-        font: 16px/1.7 'Inter', ui-sans-serif, system-ui;
-        scroll-behavior: smooth;
-      }
-      a {
-        color: inherit;
-      }
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 16px;
-      }
-      .section {
-        padding: 56px 0;
-      }
-      .hero {
-        padding: 72px 0 28px;
-        text-align: center;
-      }
-      .heading-1 {
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        font-size: clamp(24px, 3.2vw, 40px);
-        line-height: 1.15;
-        margin: 0;
-      }
-      .kicker {
-        color: var(--muted);
-        font-weight: 500;
-        font-size: 14px;
-        margin: 10px 0 0;
+        --bg-dark: #030304;
+        --geo-teal: #2FB3A2;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af;
+        --card-bg: rgba(20, 20, 28, 0.75);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
       }
 
-      .card {
-        background: linear-gradient(180deg, var(--panel), var(--panel-2));
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 20px;
+      * { box-sizing: border-box; }
+      
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
       }
-      .h2 {
-        font-size: clamp(20px, 2.2vw, 28px);
-        font-weight: 700;
-        margin: 0 0 8px;
+
+      h1, h2, h3, h4 { font-family: 'Pixelify Sans', sans-serif; }
+
+      /* --- BACKGROUND FX --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #0d1816 0%, #050507 70%);
       }
-      .h3 {
-        font-size: 18px;
-        font-weight: 700;
-        margin: 16px 0 6px;
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.25;
+        animation: floatOrb 12s infinite alternate ease-in-out;
       }
-      .meta {
-        font-size: 13px;
-        color: #c9cae2;
+      .orb-1 { width: 500px; height: 500px; background: var(--geo-teal); top: -15%; left: -10%; }
+      .orb-2 { width: 400px; height: 400px; background: #8D46E7; bottom: 10%; right: -10%; animation-delay: -4s; }
+
+      @keyframes floatOrb { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
+
+      /* --- LAYOUT --- */
+      .container { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+      .hero { padding: 140px 0 60px; text-align: center; }
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 72px);
+        margin: 0 0 16px;
+        background: linear-gradient(180deg, #fff 0%, #99e6d9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
-      .list {
-        margin: 8px 0 0 18px;
+
+      .date-badge {
+        display: inline-block; padding: 6px 16px;
+        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 100px; color: var(--text-muted); font-size: 13px; margin-bottom: 32px;
       }
-      .list li {
-        margin: 4px 0;
+
+      /* TOC */
+      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+      .toc-btn {
+        display: flex; align-items: center; gap: 8px; padding: 12px 24px;
+        border-radius: 100px; background: rgba(47, 179, 162, 0.1);
+        border: 1px solid rgba(47, 179, 162, 0.3); color: #b3fff6;
+        text-decoration: none; font-weight: 600; font-size: 14px;
+        transition: 0.3s; backdrop-filter: blur(10px);
       }
-      .sep {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #262944, transparent);
-        margin: 24px 0;
+      .toc-btn:hover { background: var(--geo-teal); color: #fff; }
+
+      /* CARD */
+      .legal-card {
+        background: var(--card-bg); border: 1px solid var(--card-border);
+        border-radius: var(--radius); padding: 48px; margin-bottom: 60px;
+        backdrop-filter: blur(20px);
       }
-      .toc {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 14px;
+
+      .section-title {
+        font-size: 32px; color: #fff; margin: 0 0 8px 0;
+        padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);
       }
-      .chip {
-        font-size: 13px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        border: 1px solid #2d3050;
-        background: #12142a;
-        color: #e7e7f4;
-        font-weight: 600;
+      .meta-info { font-size: 13px; color: var(--text-muted); font-style: italic; display: block; margin-bottom: 32px; }
+
+      h3 { font-size: 20px; color: #e5e7eb; margin: 32px 0 12px; }
+      p, li { font-size: 16px; line-height: 1.7; color: #d1d5db; margin-bottom: 16px; }
+      ul { margin: 0 0 24px 0; padding-left: 20px; }
+      li { margin-bottom: 8px; }
+      li::marker { color: var(--geo-teal); }
+
+      a { color: var(--geo-teal); text-decoration: none; border-bottom: 1px dotted; }
+      a:hover { border-bottom-style: solid; }
+
+      /* Highlighting */
+      .highlight-box {
+        background: rgba(47, 179, 162, 0.05);
+        border: 1px solid rgba(47, 179, 162, 0.3);
+        border-radius: 16px;
+        padding: 24px;
+        margin-top: 40px;
       }
+      .highlight-box h3 { margin-top: 0; color: #fff; }
+
+      /* Animation */
+      .reveal {
+        opacity: 0; transform: translateY(20px);
+        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
   </head>
   <body>
+
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
     <Header />
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="heading-1">
-          Privacy Policy & Terms of Service — CountryGuessr
-        </h1>
-        <p class="kicker">Effective Date: {EFFECTIVE_DATE}</p>
-        <div class="toc">
-          <a class="chip" href="#/privacy">Go to Privacy Policy</a>
-          <a class="chip" href="#/terms">Go to Terms of Service</a>
+    <main>
+      
+      <!-- HERO -->
+      <section class="hero container">
+        <div class="date-badge reveal">Effective: {EFFECTIVE_DATE}</div>
+        <h1 class="reveal" style="animation-delay:0.1s">LEGAL PROTOCOLS</h1>
+        
+        <div class="toc reveal" style="animation-delay:0.2s">
+          <a class="toc-btn" href="#privacy">Privacy Policy</a>
+          <a class="toc-btn" href="#terms">Terms of Service</a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PRIVACY POLICY -->
-    <section id="/privacy" class="section">
-      <div class="container">
-        <div class="card">
-          <h2 class="h2">Privacy Policy</h2>
-          <div class="meta">
-            Applies to: “CountryGuessr” for iOS and Android, published by Ashak
-            Studios.
+      <!-- PRIVACY -->
+      <section class="container">
+        <article id="privacy" class="legal-card reveal" style="animation-delay:0.3s">
+          <h2 class="section-title">Privacy Policy</h2>
+          <span class="meta-info">Applies to: “CountryGuessr” for iOS and Android.</span>
+
+          <h3>1) Summary</h3>
+          <p>CountryGuessr is built to respect your privacy. We do not run player accounts and we do not collect or store personal data on Ashak Studios servers. App preferences and progress are stored locally.</p>
+
+          <div class="highlight-box">
+            <h3>Important: Ad Threshold</h3>
+            <p>Ads are provided by <strong>Google AdMob</strong> and only appear after you have correctly identified <strong>32 cities</strong>. Before this milestone, the game is ad-free.</p>
           </div>
 
-          <h3 class="h3">1) Summary</h3>
-          <p>
-            CountryGuessr is built to respect your privacy. We do not run player
-            accounts and we do not collect or store personal data on Ashak
-            Studios servers. App preferences and progress are stored locally on
-            your device.
-          </p>
-          <p>
-            The game displays in-game advertisements provided by Google AdMob
-            after you have correctly identified a certain number of cities
-            (currently 32). Before that milestone, no ads are shown. You may
-            optionally unlock an ad-free experience through an in-app purchase
-            or subscription, but you can continue playing with ads enabled if
-            you prefer. Ad delivery and measurement are handled by Google; we do
-            not operate our own ad servers.
-          </p>
-
-          <h3 class="h3">2) Data We Do <em>Not</em> Collect or Store</h3>
-          <ul class="list">
-            <li>
-              No player accounts, usernames, or passwords are managed by Ashak
-              Studios.
-            </li>
-            <li>
-              No direct collection of your name, email address, or phone number
-              by Ashak Studios.
-            </li>
-            <li>No precise GPS location is stored by Ashak Studios.</li>
-            <li>
-              No separate analytics or telemetry SDKs are run by Ashak Studios
-              beyond reporting provided by the app stores and by Google AdMob
-              for advertising.
-            </li>
-            <li>
-              No retention of device identifiers or IP addresses by Ashak
-              Studios outside of what is made available in aggregate form by
-              platform providers and AdMob.
-            </li>
-          </ul>
-          <p>
-            However, when ads are shown, Google AdMob (a third-party service
-            operated by Google) may collect and process certain information such
-            as device identifiers, IP address, app usage, and approximate
-            location in order to provide and measure advertising. This
-            information is processed under Google’s own privacy policies; Ashak
-            Studios does not control how Google uses that data. For details,
-            please review Google’s Privacy Policy and any in-app consent or ad
-            settings offered by your device or platform.
-          </p>
-
-          <h3 class="h3">3) Local-Only App Data</h3>
-          <p>
-            The game keeps limited settings on-device (for example: language,
-            sound, UI preferences, high scores, and country progress). Removing
-            the app from your device removes these records.
-          </p>
-
-          <h3 class="h3">4) Payments (Ad-Free / Pro Access)</h3>
-          <p>
-            CountryGuessr is offered as a free download. After you have
-            correctly identified a certain number of cities (currently 32), you
-            may be offered an optional product (for example, a “Pro” or
-            ad-free upgrade) that disables in-game advertising. Payments are
-            processed by Apple’s App Store (iOS) or Google Play (Android). We do
-            not receive your full payment details and we do not run our own
-            payment servers.
-          </p>
-          <p>
-            Purchasing the ad-free product is entirely optional — you can
-            continue to play CountryGuessr with ads enabled instead of buying
-            anything. Depending on your region and platform, this product may be
-            offered as a one-time purchase or as a subscription; please refer to
-            your store listing for pricing, duration, and renewal information.
-          </p>
-
-          <h3 class="h3">5) Children’s Privacy</h3>
-          <p>
-            If you are under the age required by local law to make purchases or
-            provide consent, please use the game with a parent or guardian.
-          </p>
-
-          <h3 class="h3">6) Connectivity</h3>
-          <p>
-            The game can open offline. Ad delivery and purchase validation may
-            require an internet connection; when offline, ad availability and
-            purchase status may not refresh until connectivity is restored.
-          </p>
-
-          <h3 class="h3">7) Changes to This Policy</h3>
-          <p>
-            We may update this Privacy Policy as products or requirements
-            change. If updated, the new version will replace this one and the
-            “Effective Date” above will be revised.
-          </p>
-
-          <h3 class="h3">8) Contact</h3>
-          <p>
-            Questions about privacy may be sent to
-            <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TERMS OF SERVICE -->
-    <section id="/terms" class="section">
-      <div class="container">
-        <div class="card">
-          <h2 class="h2">Terms of Service</h2>
-          <div class="meta">Effective Date: {EFFECTIVE_DATE}</div>
-
-          <h3 class="h3">1) About These Terms</h3>
-          <p>
-            These Terms govern your use of CountryGuessr for iOS and Android,
-            published by Ashak Studios (“we,” “us”). By installing or using the
-            game, you agree to these Terms.
-          </p>
-
-          <h3 class="h3">2) License</h3>
-          <p>
-            We grant you a personal, limited, non-exclusive, non-transferable,
-            revocable license to use the game on compatible devices for
-            entertainment. You may not reverse engineer, redistribute, or
-            commercially exploit the game.
-          </p>
-
-          <h3 class="h3">3) Advertising</h3>
-          <p>
-            CountryGuessr displays third-party advertisements provided by Google
-            AdMob once you have reached a certain gameplay milestone (currently
-            after you have correctly identified 32 cities). Before that
-            milestone, no ads are shown. Ads help keep the game free to play.
-          </p>
-          <p>
-            You may choose to continue playing with ads enabled or, if
-            available, purchase an ad-free product (for example, “Pro” or an
-            ad-free upgrade). If you do not purchase this product, ads will
-            continue to appear as part of normal gameplay after the free
-            threshold is reached.
-          </p>
-
-          <h3 class="h3">4) Purchases</h3>
-          <ul class="list">
-            <li>
-              <strong>Ad-free / Pro product:</strong> After you have correctly
-              identified a certain number of cities (currently 32), you may be
-              offered an optional product that disables in-game ads. Buying this
-              product is not required to access the core gameplay; you can
-              always continue using the app with ads enabled.
-            </li>
-            <li>
-              <strong>Type of product:</strong> Depending on platform and
-              region, the ad-free option may be implemented as a one-time
-              purchase or as a subscription that may auto-renew until you
-              cancel. The exact pricing, duration, and renewal terms are shown
-              in the store listing. There are no hidden subscriptions; any
-              subscription product will be clearly labeled as such.
-            </li>
-            <li>
-              <strong>Platform processing:</strong> Payments are processed by
-              Apple’s App Store or Google Play. Manage receipts, family
-              sharing, refunds, and subscription management (if applicable)
-              through your platform account and its policies.
-            </li>
+          <h3>2) Data We Do <em>Not</em> Collect</h3>
+          <ul>
+            <li>No accounts, usernames, or passwords.</li>
+            <li>No direct collection of name, email, or phone.</li>
+            <li>No precise GPS location stored by us.</li>
           </ul>
 
-          <h3 class="h3">5) Third-Party Services</h3>
-          <p>
-            In addition to platform billing (Apple App Store / Google Play),
-            CountryGuessr uses Google AdMob to serve in-game advertisements
-            after you reach the free-play threshold. Google AdMob is a
-            third-party service operated by Google. Its collection and use of
-            data are governed by Google’s own terms and privacy policy; we do
-            not control how Google processes that data.
-          </p>
-          <p>
-            We do not operate our own ad or analytics servers. Any basic
-            analytics or reporting we see comes from the app stores and from
-            AdMob in aggregated form.
-          </p>
+          <h3>3) Third-Party Ads (AdMob)</h3>
+          <p>When ads are shown (after 32 cities), Google AdMob may process device info, IP address, and approximate location to serve ads. This is governed by Google’s privacy policy.</p>
 
-          <h3 class="h3">6) Connectivity</h3>
-          <p>
-            Some features, including validating purchases and loading ads, may
-            require internet access. If you are offline, purchase status or
-            ad delivery may be unavailable or temporarily out of date until
-            connectivity is restored.
-          </p>
+          <h3>4) Purchases</h3>
+          <p>We offer an optional "Pro" upgrade to remove ads. Payments are processed by Apple/Google. We do not see your credit card info.</p>
 
-          <h3 class="h3">7) Warranties & Liability</h3>
-          <p>
-            The game is provided “as is” and “as available.” To the fullest
-            extent permitted by applicable law, we disclaim warranties of
-            merchantability, fitness for a particular purpose, and
-            non-infringement, and we limit liability to the maximum extent
-            permitted by law.
-          </p>
+          <h3>5) Children’s Privacy</h3>
+          <p>If you are under the age required by local law, please use the game with a parent or guardian.</p>
 
-          <h3 class="h3">8) Changes to These Terms</h3>
-          <p>
-            We may revise these Terms when features or requirements change.
-            Continued use after changes constitutes acceptance of the updated
-            Terms.
-          </p>
+          <h3>6) Contact</h3>
+          <p>Questions? <a href="mailto:contact@ashak.co">contact@ashak.co</a>.</p>
+        </article>
 
-          <h3 class="h3">9) Contact</h3>
-          <p>
-            For support or legal questions, contact:
-            <a href="mailto:contact@ashak.co">contact@ashak.co</a>
-          </p>
+        <!-- TERMS -->
+        <article id="terms" class="legal-card reveal" style="animation-delay:0.1s">
+          <h2 class="section-title">Terms of Service</h2>
+          <span class="meta-info">Effective Date: {EFFECTIVE_DATE}</span>
 
-          <div class="sep"></div>
-          <p class="meta">
-            Quick navigation:
-            <a href="#/privacy">Privacy Policy</a> •
-            <a href="#/terms">Terms of Service</a>
-          </p>
-        </div>
-      </div>
-    </section>
+          <h3>1) License</h3>
+          <p>Personal, non-exclusive license for entertainment. No reverse engineering.</p>
+
+          <h3>2) Ads & Payments</h3>
+          <ul>
+            <li><strong>Ads:</strong> Enable after 32 correct guesses.</li>
+            <li><strong>Pro Upgrade:</strong> Removes ads. Optional.</li>
+            <li><strong>Refunds:</strong> Managed by platform (Apple/Google).</li>
+          </ul>
+
+          <h3>3) Connectivity</h3>
+          <p>Internet required for ads and purchase validation. Offline play is possible but features may be limited.</p>
+
+          <h3>4) Liability</h3>
+          <p>Provided “as is”. No warranties implied.</p>
+
+          <h3>5) Contact</h3>
+          <p>Support: <a href="mailto:contact@ashak.co">contact@ashak.co</a></p>
+        </article>
+      </section>
+
+    </main>
 
     <Footer />
+
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    </script>
   </body>
 </html>

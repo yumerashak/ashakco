@@ -1,73 +1,170 @@
+---
+/* CompanyFooter.astro */
+const year = new Date().getFullYear();
+---
+
 <style>
-  .foot{border-top:1px solid #232536;background:#0B0C12;color:#EDEDF7;margin-top:40px}
-  .inner{max-width:1200px;margin:0 auto;padding:24px 20px;display:grid;gap:20px}
-  @media(min-width:900px){.inner{grid-template-columns:1.3fr 1fr 1fr 1fr}}
-  h4{margin:0 0 8px;font:700 16px system-ui}
-  a{color:#EDEDF7;opacity:.9;text-decoration:none}
-  a:hover{text-decoration:underline}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;margin-bottom:8px}
-  /* width sabitleme yok; yükseklik referans */
-  .brand img{
-    height: 16px;
+  .foot {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: #030304;
+    color: #EDEDF7;
+    margin-top: 80px;
+    padding: 60px 0 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    gap: 40px;
+  }
+  
+  /* Grid Layout */
+  @media (min-width: 900px) {
+    .inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+  }
+
+  /* Typography */
+  h4 {
+    margin: 0 0 20px;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #9ca3af;
+    margin: 0 0 20px;
+  }
+
+  /* Links */
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  
+  a:hover {
+    color: #fff;
+    transform: translateX(4px);
+    text-shadow: 0 0 10px rgba(141, 70, 231, 0.4);
+  }
+
+  /* Brand Section */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .brand img {
+    height: 24px;
     width: auto;
     object-fit: contain;
-    border-radius: 0px;
-    display: block;
   }
-  ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
-  .copy{border-top:1px solid #232536;margin-top:8px;padding-top:10px;font-size:13px;opacity:.7;grid-column:1 / -1}
-  .social{display:flex;gap:10px;margin-top:8px}
-  /* icon styles (Instagram stroke, others fill) */
-  .icon{width:16px;height:16px;display:block;color:#EDEDF7;opacity:.85}
-  .icon--stroke{stroke:currentColor;fill:none}
-  .icon--stroke *{fill:none}
-  .icon--fill{fill:currentColor}
+  .brand-name {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+  }
+
+  /* Social Icons (Row) */
+  .social {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .social-icon {
+    width: 36px; height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    transition: all 0.2s;
+  }
+  .social-icon:hover {
+    background: #8D46E7;
+    border-color: #8D46E7;
+    color: #fff;
+    transform: translateY(-3px);
+  }
+  
+  .icon { width: 18px; height: 18px; display: block; }
+  .icon--stroke { stroke: currentColor; fill: none; stroke-width: 2; }
+  .icon--fill { fill: currentColor; }
+
+  /* Copy */
+  .copy {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #52525b;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 </style>
 
 <footer class="foot" id="contact">
   <div class="inner">
+    
+    <!-- Brand Column -->
     <section>
       <div class="brand">
-        <img src="/assets/companylogo.png" alt="Company logo" />
+        <img src="/assets/companylogo2.png" alt="Ashak Studios Logo" />
+        <!-- Logoda zaten yazı varsa .brand-name'i kaldırabilirsin -->
       </div>
-      <p style="max-width:46ch;opacity:.85">
-        Game development studio. From idea to launch, fun and accessible experiences on mobile.
+      <p style="max-width: 36ch;">
+        Game development studio. Transforming ideas into accessible, fun, and memorable mobile experiences.
       </p>
+      
       <div class="social" aria-label="Social links">
-        <!-- Instagram: stroke (header ile aynı) -->
-        <a href="https://www.instagram.com/ashak.co/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener noreferrer">
-          <svg class="icon icon--stroke"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <circle cx="17.5" cy="6.5" r="1.25"></circle>
-          </svg>
+        <a href="https://www.instagram.com/ashak.co/" class="social-icon" aria-label="Instagram" target="_blank">
+          <svg class="icon icon--stroke" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.25"></circle></svg>
         </a>
-
-        <!-- YouTube: fill -->
-        <a href="https://www.youtube.com/@ashakstudios" aria-label="YouTube" title="YouTube" target="_blank" rel="noopener noreferrer">
-          <svg class="icon icon--fill" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/>
-          </svg>
+        <a href="https://www.youtube.com/@ashakstudios" class="social-icon" aria-label="YouTube" target="_blank">
+          <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/></svg>
         </a>
       </div>
     </section>
 
+    <!-- Navigation Column -->
     <section>
       <h4>Company</h4>
       <ul>
         <li><a href="/#about">About Us</a></li>
-        <li><a href="/#apps">Apps</a></li>
+        <li><a href="/#apps">Games</a></li>
         <li><a href="/careers">Careers</a></li>
       </ul>
     </section>
 
+    <!-- Games Column -->
     <section>
-      <h4>Links</h4>
+      <h4>Games</h4>
       <ul>
         <li><a href="/maxontheisland">Max On The Island</a></li>
         <li><a href="/maxonthespace">Max On The Space</a></li>
@@ -77,15 +174,20 @@
       </ul>
     </section>
 
-    <section id="about">
-      <h4>Contact</h4>
+    <!-- Legal/Contact Column -->
+    <section>
+      <h4>Support</h4>
       <ul>
         <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/legal#privacy">Privacy</a></li>
-        <li><a href="/legal#terms">Terms</a></li>
+        <li><a href="/legal#privacy">Privacy Policy</a></li>
+        <li><a href="/legal#terms">Terms of Service</a></li>
       </ul>
     </section>
 
-    <div class="copy">© {new Date().getFullYear()} Ashak Studios. All rights reserved.</div>
+    <div class="copy">
+      <span>© {year} Ashak Studios. All rights reserved.</span>
+      <span style="opacity:0.5;">Crafted for Mobile.</span>
+    </div>
+
   </div>
 </footer>

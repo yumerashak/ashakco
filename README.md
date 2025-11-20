@@ -1,66 +1,34 @@
-# Ashak Studios — README (Genel Tanıtım)
+# 🎮 Ashak Studios
 
-**Eğlenceli ve herkes için erişilebilir mobil oyunlar.**
-Ashak Studios, dünyadaki oyunculara keyif veren, yalın ve özenle tasarlanmış oyunlar üretir. Zamanı değerli görüyoruz; net bir deneyim, güçlü bir kalite standardı ve uzun vadeli marka güveni için çalışıyoruz.
+![Ashak Studios Cover](/public/assets/presskit-cover.png)
 
----
+> **Next Gen Mobile Gaming.**  
+> Eğlenceli, erişilebilir ve görsel olarak büyüleyici mobil deneyimler.
 
-## Hakkımızda
-
-- **Bağımsız stüdyo**: Kararlarımızı oyuncu deneyimi yönlendirir.
-- **Tasarım odağı**: Sade arayüz, tutarlı deneyim, güçlü görsel dil.
-- **Güven ve özen**: Her dokunuşta işçilik; söz verdiğimiz kaliteyi sunarız.
+**Ashak Studios**, mobil oyun dünyasında standartları yükseltmek için kurulmuş bağımsız bir oyun stüdyosudur. Sıradanlığa karşı netliği, gürültüye karşı kaliteyi savunuyoruz. Her pikseli özenle işliyor, oyuncularımızın zamanına saygı duyan zamansız deneyimler inşa ediyoruz.
 
 ---
 
-## Misyon
+## 🌌 Vizyon ve Tasarım
 
-Herkesin rahatça oynayabileceği, **erişilebilir** ve **zamana dayanıklı** oyunlar yapmak. Kısa vadeli heyecanın ötesinde, hatırlanan ve tavsiye edilen deneyimler inşa etmek.
+Web sitemiz ve oyunlarımız, **"Cyber-Space"** tasarım dilini benimser.
 
----
-
-## Değerlerimiz
-
-- **Sadelik**: Gereksiz karmaşıklığa yer yok.
-- **Tutarlılık**: Her ekranda aynı kalite.
-- **Saygı**: Oyuncunun zamanına ve geri bildirimine saygı.
-- **Uzun Vadeli Bakış**: Kalıcı marka itibarı.
+- **Cam Paneller (Glassmorphism):** Derinlik ve modernlik hissi veren yarı saydam arayüzler.
+- **Neon Vurgular:** Her oyunun ruhunu yansıtan dinamik renk paletleri (Mor, Turkuaz, Kırmızı).
+- **Akıcı Animasyonlar:** Kullanıcıyı yormayan, sinematik geçişler ve "Scroll Reveal" efektleri.
 
 ---
 
-## Oyunlarımız
+## 📱 Oyun Portföyü
 
-### Max On The Island — _Yayında_
+Şu anda geliştirdiğimiz ve yayınladığımız evrenler:
 
-Bulmacaları çöz, ilerle ve Adadan kaç!
-
-- **Her yerde oyna**: Telefon ve tablette akıcı deneyim.
-- **Keşif ve ilerleme**: Her bölüm yeni bir adım, çevresel anlatım.
-- **İpuçlarıyla akış**: Takıldığında yönlendirmeler yardımcı olur.
-- **Çok dilli deneyim**: Dünyanın her yerinden oyuncular için.
-
-### Max On The Space — _Yakında_
-
-Uzay temalı yeni bir macera. Daha fazlası yakında paylaşılacak...
+| Oyun                  | Tür                | Tema                   | Durum      |
+| :-------------------- | :----------------- | :--------------------- | :--------- |
+| **Max On The Island** | 🧩 Puzzle / Macera | Gizem, Hayatta Kalma   | 🟢 Yayında |
+| **Max On The Space**  | 🚀 Puzzle / Sci-Fi | Yerçekimi, Kozmos      | 🟢 Yayında |
+| **ImposterX**         | 🕵️‍♂️ Sosyal Çıkarım  | Parti, Gizem, Strateji | 🟢 Yayında |
+| **CityGuessr**        | 🏙️ Trivia / Geo    | Şehir Keşfi, Seyahat   | 🟢 Yayında |
+| **CountryGuessr**     | 🌍 Trivia / Geo    | Haritalar, Bayraklar   | 🟢 Yayında |
 
 ---
-
-## Topluluk ve İletişim
-
-Bizim için en değerli metrik **oyuncu memnuniyeti**. Geri bildirimlerinle deneyimi birlikte geliştiriyoruz.
-
-**İletişim:** [contact@ashak.co](mailto:contact@ashak.co)
-**Instagram:** [instagram.com/ashak.co](https://instagram.com/ashak.co)  
-**YouTube:** [youtube.com/@ashakstudios](https://youtube.com/@ashakstudios)
-
----
-
-## Basın ve İşbirlikleri
-
-Logo, ekran görüntüleri ve medya materyalleri talebi için bizimle iletişime geçin. Basın kiti bağlantısını burada paylaşacağız.
-
----
-
-## Telif
-
-© Ashak . Tüm hakları saklıdır.

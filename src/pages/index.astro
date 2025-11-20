@@ -6,290 +6,564 @@ import Footer from "../components/company/CompanyFooter.astro";
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Ashak Studios</title>
-    <meta name="description" content="Ashak Studios — fun and accessible games on mobile." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashak Studios | Next Gen Mobile Gaming</title>
+    <meta name="description" content="Ashak Studios — Fun and accessible games on mobile." />
     <meta name="theme-color" content="#8D46E7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Pixelify Sans (global typography) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Social -->
-    <meta property="og:title" content="Ashak Studios" />
-    <meta property="og:description" content="Fun and accessible games on mobile." />
-    <meta property="og:image" content="/assets/presskit-cover.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
     <style>
-      :root{
-        --bg:#050507; --bg-2:#0C0D12;
-        --panel:#0F1016; --panel-2:#131521;
-        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
-        --brand:#8D46E7; --brand-2:#2F4CB3;
-        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
-      }
-      *{box-sizing:border-box}
-      html,body{
-        margin:0; padding:0;
-        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
-        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
-        scroll-behavior:smooth;
-      }
-      a{color:inherit;text-decoration:none}
-      .container{max-width:1100px;margin:0 auto;padding:0 16px}
-      .section{padding:56px 0}
-
-      /* HERO yükseklik/padding AYNI, sadece içerik ortalandı */
-      .hero{padding:72px 0 28px}
-      .hero .container{ text-align:center; }
-
-      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
-      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
-      .cta{display:flex;gap:10px;margin-top:18px; justify-content:center;}
-
-      .btn{
-        display:inline-flex;align-items:center;justify-content:center;gap:8px;
-        height:44px;padding:0 16px;border-radius:999px;border:1px solid #2B2E44;
-        background:linear-gradient(180deg,#1A1C2A,#121422);color:#fff;cursor:pointer;
-        font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
-        transition:filter .15s ease;
-      }
-      .btn:hover{ filter:brightness(1.06) }
-      .btn-primary{
-        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
-        box-shadow:0 12px 30px rgba(109,86,249,.35);
-      }
-      /* remove previous outline */
-      .btn[aria-selected="true"]{ outline:none }
-
-      .grid{display:grid;gap:16px}
-      @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
-      .card{
-        background:linear-gradient(180deg,var(--panel),var(--panel-2));
-        border:1px solid var(--line); border-radius:var(--radius);
-        box-shadow:var(--shadow); padding:16px;
-      }
-      .badge{display:inline-block;font-size:12px;border:1px solid #2D3050;border-radius:999px;padding:4px 8px;background:#12142A}
-
-      /* ===== Apps: icon on top, fully centered content + 2 columns ===== */
-      .apps-list{
-        display:grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap:16px;
-        align-items:stretch;
-      }
-      .apps-list .app-card{
-        text-align:center;
-        display:grid;
-        justify-items:center;
-        gap:10px;
-        padding-top:18px;
-      }
-      .app-icon{
-        width:88px; height:88px;
-        border-radius:18px;
-        border:1px solid var(--line);
-        background:#0B0C12;
-        object-fit:cover;
-        box-shadow:0 10px 30px rgba(0,0,0,.35);
-      }
-      .app-badge{
-        display:inline-block;
-        font-size:12px;
-        border:1px solid #2D3050;
-        border-radius:999px;
-        padding:4px 8px;
-        background:#12142A;
-        margin-top:4px;
-      }
-      .app-title{ margin:8px 0 4px; }
-      .app-desc{ margin:0 0 10px; max-width:46ch; opacity:.95 }
-      .app-actions{
-        display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+      /* --- CORE VARIABLES & RESET --- */
+      :root {
+        --bg-dark: #030304;
+        --accent-primary: #8D46E7;
+        --accent-secondary: #5A41E3;
+        --accent-glow: #bd00ff;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af;
+        --card-bg: rgba(20, 20, 28, 0.6);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --glass-highlight: rgba(255, 255, 255, 0.05);
+        --radius: 24px;
       }
 
-      /* ===== Tab vvisibility ===== */
-      .hidden{ display:none !important; }
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif; /* Okunabilirlik için gövde Inter */
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-      /* ===== About: Use Pixelify Sans (not Inter) ===== */
-      .about-prose,
-      .about-prose *{
-        font-family:'Pixelify Sans', ui-sans-serif, system-ui !important;
-        font-weight:400;
+      h1, h2, h3, .brand-font {
+        font-family: 'Pixelify Sans', sans-serif;
       }
-      .about-prose h3{
-        font-weight:700 !important;
+
+      /* --- DYNAMIC BACKGROUND --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 60%);
+        overflow: hidden;
       }
-      .about-prose p{
-        margin:0 0 10px;
-        color:#E9EAF3;
-        line-height:1.75;
-        letter-spacing:.2px;
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.4;
+        animation: floatOrb 10s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 400px; height: 400px; background: var(--accent-primary); top: -10%; left: -10%; }
+      .orb-2 { width: 300px; height: 300px; background: var(--accent-secondary); bottom: 20%; right: -5%; animation-delay: -5s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(30px, 50px); }
+      }
+
+      /* --- LAYOUT UTILS --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        padding: 140px 0 80px;
+        text-align: center;
+        position: relative;
+      }
+      
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 16px;
+        border-radius: 100px;
+        background: rgba(141, 70, 231, 0.15);
+        border: 1px solid rgba(141, 70, 231, 0.3);
+        color: #cbb0ff;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(141, 70, 231, 0.2);
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 8vw, 96px);
+        line-height: 0.9;
+        margin: 0;
+        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 40px rgba(141, 70, 231, 0.3);
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: clamp(18px, 2vw, 22px);
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 24px auto 40px;
+        line-height: 1.6;
+      }
+
+      /* --- TABS / TOGGLE (Modern Switch) --- */
+      .nav-pill-container {
+        display: inline-flex;
+        background: rgba(255,255,255,0.05);
+        padding: 6px;
+        border-radius: 100px;
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        position: relative;
+        margin-bottom: 60px;
+      }
+      .nav-pill {
+        position: relative;
+        z-index: 2;
+        padding: 10px 32px;
+        border-radius: 100px;
+        color: var(--text-muted);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        cursor: pointer;
+        font-size: 15px;
+      }
+      .nav-pill.active {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      }
+      /* Sliding background for tabs */
+      .pill-bg {
+        position: absolute;
+        top: 6px; left: 6px;
+        height: calc(100% - 12px);
+        background: var(--accent-primary);
+        border-radius: 100px;
+        width: 0; /* JS ile set edilecek */
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(141, 70, 231, 0.5);
+      }
+
+      /* --- BENTO GRID (APPS) --- */
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 24px;
+        perspective: 1000px;
+      }
+
+      .game-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 32px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Glass effect */
+        backdrop-filter: blur(20px);
+      }
+
+      /* Hover States */
+      .game-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        border-color: rgba(141, 70, 231, 0.5);
+        box-shadow: 0 20px 50px -10px rgba(141, 70, 231, 0.25);
+      }
+      
+      /* Inner Glow Gradient */
+      .game-card::before {
+        content:'';
+        position: absolute;
+        top:0; left:0; right:0; height: 200px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+        pointer-events: none;
+      }
+
+      .game-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .game-icon {
+        width: 72px; height: 72px;
+        border-radius: 18px;
+        object-fit: cover;
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      }
+
+      .game-info h3 {
+        font-size: 24px;
+        margin: 0 0 6px 0;
+        color: #fff;
+      }
+      .tag {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #a5a5a5;
+        border: 1px solid #333;
+        padding: 2px 8px;
+        border-radius: 6px;
+        background: rgba(0,0,0,0.3);
+      }
+
+      .game-desc {
+        font-size: 15px;
+        color: #b0b0c0;
+        line-height: 1.6;
+        margin-bottom: 24px;
+        flex-grow: 1;
+      }
+
+      /* Action Buttons */
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      .btn-game {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
+
+      .btn-details {
+        background: #fff;
+        color: #000;
+        border: 1px solid #fff;
+      }
+      .btn-details:hover {
+        background: #e0e0e0;
+        box-shadow: 0 0 15px rgba(255,255,255,0.4);
+      }
+
+      .btn-store {
+        background: rgba(255,255,255,0.05);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      .btn-store:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: #fff;
+      }
+
+      /* --- ABOUT SECTION (Styled as a 'Terminal' / Data block) --- */
+      .about-section {
+        display: none; /* JS toggles this */
+        animation: fadeIn 0.5s ease;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+      }
+      @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+      .about-card {
+        background: linear-gradient(145deg, #101016, #0a0a0e);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 40px;
+        position: relative;
+      }
+      .about-card h2 {
+        font-size: 32px;
+        margin-top: 0;
+        color: var(--accent-primary);
+        margin-bottom: 24px;
+      }
+      .about-card p {
+        color: #cccccc;
+        line-height: 1.8;
+        font-size: 17px;
+        margin-bottom: 20px;
+      }
+      .stat-row {
+        display: flex;
+        gap: 40px;
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+      }
+      .stat h4 { font-size: 36px; margin: 0; color: #fff; }
+      .stat span { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+      /* --- ANIMATIONS --- */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .reveal {
+        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+      }
+      .reveal:nth-child(1) { animation-delay: 0.1s; }
+      .reveal:nth-child(2) { animation-delay: 0.2s; }
+      .reveal:nth-child(3) { animation-delay: 0.3s; }
+      .reveal:nth-child(4) { animation-delay: 0.4s; }
+
+      .hidden { display: none !important; }
+
+      /* Responsive Tweaks */
+      @media (max-width: 600px) {
+        .bento-grid { grid-template-columns: 1fr; }
+        .hero h1 { font-size: 48px; }
+        .game-card { padding: 24px; }
       }
     </style>
   </head>
   <body>
+
+    <!-- Animated BG -->
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
     <Header />
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="heading-1">Ashak Studios</h1>
-        <p class="kicker">We build fun and accessible games for mobile.</p>
-        <div class="cta" role="tablist" aria-label="Content tabs">
-          <a id="tab-apps" class="btn btn-primary" href="#apps" role="tab" aria-controls="apps" aria-selected="true">Apps</a>
-          <a id="tab-about" class="btn" href="#about" role="tab" aria-controls="about" aria-selected="false">About Us</a>
+    <main class="container">
+      
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-badge reveal">EST. 2024 • WORLDWIDE</div>
+        <h1 class="reveal">ASHAK STUDIOS</h1>
+        <p class="reveal">
+          We craft digital experiences that defy expectations. 
+          Fun, accessible, and visually stunning games for the modern era.
+        </p>
+
+        <!-- Custom Tab Switcher -->
+        <div class="nav-pill-container reveal" role="tablist">
+          <div class="pill-bg" id="pill-bg"></div>
+          <a id="tab-apps" class="nav-pill active" onclick="switchTab('apps')">Projects</a>
+          <a id="tab-about" class="nav-pill" onclick="switchTab('about')">Studio</a>
+        </div>
+      </section>
+
+      <!-- APPS GRID -->
+      <div id="apps-view" class="bento-grid reveal">
+        
+        <!-- Card 1 -->
+        <article class="game-card">
+          <div class="game-header">
+            <img class="game-icon" src="/assets/maxontheislandlogo.png" alt="Icon" />
+            <div class="game-info">
+              <span class="tag">Adventure</span>
+              <h3>Max On The Island</h3>
+            </div>
+          </div>
+          <p class="game-desc">
+            An immersive puzzle escape. Navigate the mysterious island, solve intricate mechanisms, and find your way home.
+          </p>
+          <div class="actions">
+            <a href="/maxontheisland" class="btn-game btn-details">Explore</a>
+            <a href="/maxontheisland#stores" class="btn-game btn-store">Get App</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="game-card">
+          <div class="game-header">
+            <img class="game-icon" src="/assets/max-on-the-space-icon.png" alt="Icon" />
+            <div class="game-info">
+              <span class="tag">Sci-Fi</span>
+              <h3>Max On The Space</h3>
+            </div>
+          </div>
+          <p class="game-desc">
+            Zero gravity puzzles. Travel through the cosmos, repair your ship, and discover alien artifacts.
+          </p>
+          <div class="actions">
+            <a href="/maxonthespace" class="btn-game btn-details">Explore</a>
+            <a href="/maxonthespace#stores" class="btn-game btn-store">Get App</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="game-card">
+          <div class="game-header">
+            <img class="game-icon" src="/assets/imposterx-icon.jpg" alt="Icon" />
+            <div class="game-info">
+              <span class="tag">Social</span>
+              <h3>ImposterX</h3>
+            </div>
+          </div>
+          <p class="game-desc">
+            Trust no one. A game of deception and deduction. Outsmart the crew before it's too late.
+          </p>
+          <div class="actions">
+            <a href="/imposterx" class="btn-game btn-details">Explore</a>
+            <a href="/imposterx#stores" class="btn-game btn-store">Get App</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="game-card">
+          <div class="game-header">
+            <img class="game-icon" src="/assets/cityguessr-icon.png" alt="Icon" />
+            <div class="game-info">
+              <span class="tag">Trivia</span>
+              <h3>CityGuessr</h3>
+            </div>
+          </div>
+          <p class="game-desc">
+            Travel the world from your phone. Guess the city based on street views and famous landmarks.
+          </p>
+          <div class="actions">
+            <a href="/cityguessr" class="btn-game btn-details">Explore</a>
+            <a href="/cityguessr#stores" class="btn-game btn-store">Get App</a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="game-card">
+          <div class="game-header">
+            <img class="game-icon" src="/assets/countryguessr-icon.png" alt="Icon" />
+            <div class="game-info">
+              <span class="tag">Educational</span>
+              <h3>CountryGuessr</h3>
+            </div>
+          </div>
+          <p class="game-desc">
+            Test your geography skills. Identify countries from maps, flags, and cultural clues.
+          </p>
+          <div class="actions">
+            <a href="/countryguessr" class="btn-game btn-details">Explore</a>
+            <a href="/countryguessr#stores" class="btn-game btn-store">Get App</a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <div id="about-view" class="about-section">
+        <div class="about-grid">
+          
+          <div class="about-card">
+            <h2>We Build Legacies.</h2>
+            <p>
+              Ashak Studios isn't just a game developer; we are architects of digital joy. 
+              We believe in the power of consistency, simplicity, and impeccable craftsmanship.
+            </p>
+            <p>
+              In an industry of noise, we choose clarity. Every pixel is placed with purpose, 
+              every mechanic tuned for satisfaction. We respect our players' time by delivering 
+              experiences that are polished, fair, and genuinely fun.
+            </p>
+            
+            <div class="stat-row">
+              <div class="stat">
+                <h4 class="brand-font">5+</h4>
+                <span>Games Released</span>
+              </div>
+              <div class="stat">
+                <h4 class="brand-font">Global</h4>
+                <span>Player Base</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-card" style="border-color: var(--accent-primary);">
+            <h3 style="color:#fff; margin-top:0;">Our Manifesto</h3>
+            <p style="font-size:15px; color:var(--text-muted);">
+              We don't chase trends. We chase quality. From the first line of code to the final release, our process is disciplined and our vision is clear.
+            </p>
+            <br/>
+            <h3 style="color:#fff; margin-top:0;">The Vision</h3>
+            <p style="font-size:15px; color:var(--text-muted);">
+              To create a portfolio that stands the test of time. Games that you keep installed because they just feel right.
+            </p>
+          </div>
+
         </div>
       </div>
-    </section>
 
-    <!-- APPS (no heading) -->
-    <section id="apps" class="section" role="tabpanel" aria-labelledby="tab-apps">
-      <div class="container">
-        <div class="apps-list">
-          <!-- App #1 -->
-          <article class="card app-card">
-            <img class="app-icon" src="/assets/maxontheislandlogo.png" alt="Max On The Island Logo" loading="lazy" />
-            <div class="app-badge">Released</div>
-            <h3 class="app-title">Max On The Island</h3>
-            <p class="app-desc">Solve puzzles, progress, and escape the Island! On iOS and Android.</p>
-            <div class="app-actions">
-              <a class="btn btn-primary" href="/maxontheisland">Details</a>
-              <a class="btn" href="/maxontheisland#stores">Stores</a>
-            </div>
-          </article>
-
-          <!-- App #2 -->
-          <article class="card app-card">
-            <img class="app-icon" src="/assets/max-on-the-space-icon.png" alt="Max On The Space icon" loading="lazy" />
-            <div class="app-badge">Released</div>
-            <h3 class="app-title">Max On The Space</h3>
-            <p class="app-desc">Solve puzzles, progress, and explore Space! On iOS and Android.</p>
-            <div class="app-actions">
-              <a class="btn btn-primary" href="/maxonthespace">Details</a>
-              <a class="btn" href="/maxonthespace#stores">Stores</a>
-            </div>
-          </article>
-
-          <!-- App #3 — ImposterX -->
-          <article class="card app-card">
-            <img class="app-icon" src="/assets/imposterx-icon.jpg" alt="ImposterX Logo" loading="lazy" />
-            <div class="app-badge">Released</div>
-            <h3 class="app-title">ImposterX</h3>
-            <p class="app-desc">Find the impostor. Outsmart the crew. Now on iOS and Android.</p>
-            <div class="app-actions">
-              <a class="btn btn-primary" href="/imposterx">Details</a>
-              <a class="btn" href="/imposterx#stores">Stores</a>
-            </div>
-          </article>
-
-          <!-- App #4 — CityGuessr -->
-          <article class="card app-card">
-            <img class="app-icon" src="/assets/cityguessr-icon.png" alt="CityGuessr icon" loading="lazy" />
-            <div class="app-badge">Released</div>
-            <h3 class="app-title">CityGuessr</h3>
-            <p class="app-desc">Guess the city from photos and landmarks. On iOS and Android.</p>
-            <div class="app-actions">
-              <a class="btn btn-primary" href="/cityguessr">Details</a>
-              <a class="btn" href="/cityguessr#stores">Stores</a>
-            </div>
-          </article>
-
-                    <!-- App #5 — CountryGuessr -->
-          <article class="card app-card">
-            <img class="app-icon" src="/assets/countryguessr-icon.png" alt="CountryGuessr icon" loading="lazy" />
-            <div class="app-badge">Released</div>
-            <h3 class="app-title">CountryGuessr</h3>
-            <p class="app-desc">Guess the country from real maps and outlines. On iOS and Android.</p>
-            <div class="app-actions">
-              <a class="btn btn-primary" href="/countryguessr">Details</a>
-              <a class="btn" href="/countryguessr#stores">Stores</a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT (now also Pixelify Sans) -->
-    <section id="about" class="section hidden" role="tabpanel" aria-labelledby="tab-about">
-      <div class="container grid about-prose">
-        <div class="card">
-          <h3 style="margin-top:0">Who Are We?</h3>
-          <p>
-            Ashak Studios is an independent game company trusted worldwide, aiming to create lasting value.
-            We pursue consistency, simplicity, and impeccable craftsmanship in every interaction; our brand is defined by
-            a long-term perspective and a work ethic others look up to. We respect our players’ time and commit to
-            delivering experiences that exceed expectations, inspire confidence, and spark inspiration.
-          </p>
-          <p>
-            Our corporate approach is built on clear principles, disciplined processes, and a measured sense of excellence.
-            Every product is designed to fully reflect the quality our brand promises; from aesthetics to performance,
-            each component is handled with the same care.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 style="margin-top:0">What Do We Do?</h3>
-          <p>
-            We develop timeless games that anyone around the world can access. We present our products with a clear design
-            language, consistent user experience, and exemplary trust standards. Beyond short-term gains, we aim to build
-            a lasting brand reputation and a portfolio remembered for generations.
-          </p>
-          <p>
-            Our commitment is clear: an inspiring vision, zero compromise on quality, and professionalism felt at every stage.
-            We work so that the name Ashak Studios is synonymous with an experience you can trust.
-          </p>
-        </div>
-      </div>
-    </section>
+    </main>
 
     <Footer />
 
-  <script type="module">
-    const apps = document.getElementById('apps');
-    const about = document.getElementById('about');
-    const tabApps = document.getElementById('tab-apps');
-    const tabAbout = document.getElementById('tab-about');
+    <script is:inline>
+      // Basit Tab Değiştirme Mantığı
+      const pillBg = document.getElementById('pill-bg');
+      const tabApps = document.getElementById('tab-apps');
+      const tabAbout = document.getElementById('tab-about');
+      const viewApps = document.getElementById('apps-view');
+      const viewAbout = document.getElementById('about-view');
 
-    function toggleSelected(isApps){
-      if(isApps){
-        tabApps.classList.add('btn-primary');
-        tabAbout.classList.remove('btn-primary');
-        tabApps.setAttribute('aria-selected','true');
-        tabAbout.setAttribute('aria-selected','false');
-      }else{
-        tabAbout.classList.add('btn-primary');
-        tabApps.classList.remove('btn-primary');
-        tabAbout.setAttribute('aria-selected','true');
-        tabApps.setAttribute('aria-selected','false');
+      function updatePill(activeTabElement) {
+        pillBg.style.width = activeTabElement.offsetWidth + 'px';
+        pillBg.style.left = activeTabElement.offsetLeft + 'px';
       }
-    }
 
-    function show(hash) {
-      const wantApps = (hash === '#apps');
-      const wantAbout = (hash === '#about');
-      // default: apps visible when no/unknown hash (but don't touch URL)
-      const showApps = wantApps || (!wantAbout && !wantApps);
-      apps.classList.toggle('hidden', !showApps);
-      about.classList.toggle('hidden', showApps);
-      toggleSelected(showApps);
-    }
+      function switchTab(tabName) {
+        if (tabName === 'apps') {
+          tabApps.classList.add('active');
+          tabAbout.classList.remove('active');
+          viewApps.classList.remove('hidden');
+          viewAbout.classList.add('hidden');
+          viewAbout.style.display = 'none'; // force hide
+          viewApps.style.display = 'grid'; // force show grid
+          updatePill(tabApps);
+        } else {
+          tabAbout.classList.add('active');
+          tabApps.classList.remove('active');
+          viewApps.classList.add('hidden');
+          viewApps.style.display = 'none';
+          viewAbout.classList.remove('hidden');
+          viewAbout.style.display = 'block';
+          updatePill(tabAbout);
+        }
+      }
 
-    // U R L ' i  D E Ğ İ Ş T İ R M E D E N  uygula
-    const allowed = new Set(['#apps', '#about']);
-    if (allowed.has(location.hash)) {
-      show(location.hash);
-    } else {
-      show('#apps'); // hash eklemeden varsayılan görünüm
-    }
+      // İlk Yükleme Ayarı
+      window.addEventListener('load', () => {
+        updatePill(tabApps);
+        // URL Hash kontrolü
+        if(window.location.hash === '#about') {
+          switchTab('about');
+        }
+      });
 
-    window.addEventListener('hashchange', () => show(location.hash));
-  </script>
-
+      // Resize'da pill pozisyonunu düzelt
+      window.addEventListener('resize', () => {
+        const active = document.querySelector('.nav-pill.active');
+        if(active) updatePill(active);
+      });
+    </script>
   </body>
 </html>

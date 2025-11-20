@@ -5,27 +5,30 @@ import Footer from "../components/company/CompanyFooter.astro";
 const roles = [
   {
     id: "swift-developer",
-    title: "SwiftUI Developer (Mobile)",
+    title: "SwiftUI Developer",
+    department: "Engineering",
     location: "Remote",
     type: "Full-time",
     summary:
-      "Performance-focused mobile game development in Swift, optimization, and live release support.",
+      "Performance-focused mobile game development in Swift. You will optimize engines, squash bugs, and ensure smooth live releases.",
   },
   {
     id: "game-designer",
     title: "Game Designer",
+    department: "Design",
     location: "Remote",
     type: "Full-time",
     summary:
-      "Level design, coin and subscription theme, plus iterative prototyping and playtesting.",
+      "Craft addiction-free but engaging loops. Level design, economy balancing, and iterative prototyping are your daily bread.",
   },
   {
     id: "ui-ux-designer",
-    title: "UI/UX Designer (Game)",
+    title: "UI/UX Designer",
+    department: "Creative",
     location: "Remote",
     type: "Full-time",
     summary:
-      "Build a consistent UI system, user flows, mockups/prototypes, and a cohesive visual language.",
+      "Build the visual language of our universe. Consistent UI systems, intuitive user flows, and high-fidelity mockups.",
   },
 ];
 ---
@@ -33,147 +36,396 @@ const roles = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Careers • Ashak Studios</title>
     <meta name="description" content="Join the Ashak Studios team — open roles and how to apply." />
     <meta name="theme-color" content="#8D46E7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Pixelify Sans -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <style>
-      :root{
-        --bg:#050507; --bg-2:#0C0D12;
-        --panel:#0F1016; --panel-2:#131521;
-        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
-        --brand:#8D46E7; --brand-2:#2F4CB3;
-        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
-      }
-      *{box-sizing:border-box}
-      html,body{
-        margin:0; padding:0;
-        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
-        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
-        scroll-behavior:smooth;
-      }
-      a{color:inherit;text-decoration:none}
-      .container{max-width:1100px;margin:0 auto;padding:0 16px}
-      .section{padding:56px 0}
-      .hero{padding:72px 0 28px;text-align:center}
-      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
-      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
-
-      .grid{display:grid;gap:16px}
-      @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
-      .card{
-        background:linear-gradient(180deg,var(--panel),var(--panel-2));
-        border:1px solid var(--line); border-radius:var(--radius);
-        box-shadow:var(--shadow); padding:18px;
-      }
-      .role{
-        display:grid; gap:10px; align-content:start;
-      }
-      .role h3{margin:0;font-size:clamp(18px,2.1vw,22px);font-weight:700}
-      .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:#C9CAE2}
-      .meta .chip{
-        border:1px solid #2D3050;background:#12142A;border-radius:999px;padding:4px 8px;font-weight:600;color:#E7E7F4
-      }
-      .btn{
-        display:inline-flex;align-items:center;justify-content:center;gap:8px;
-        height:40px;padding:0 14px;border-radius:999px;border:1px solid #2B2E44;
-        background:linear-gradient(180deg,#1A1C2A,#121422);color:#fff;cursor:pointer;
-        font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.25); transition:filter .15s ease;
-      }
-      .btn:hover{ filter:brightness(1.06) }
-      .btn-primary{
-        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
-        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      /* --- CORE VARIABLES & RESET --- */
+      :root {
+        --bg-dark: #030304;
+        --accent-primary: #8D46E7;
+        --accent-secondary: #5A41E3;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af;
+        --card-bg: rgba(20, 20, 28, 0.6);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
       }
 
-      .cols{display:grid;gap:16px}
-      @media(min-width:1000px){.cols{grid-template-columns:1.2fr .8fr}}
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
 
-      .list{margin:8px 0 0 18px}
-      .list li{margin:6px 0}
-      .h2{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0 0 8px}
-      .sep{height:1px;background:linear-gradient(90deg,transparent,#262944,transparent);margin:24px 0}
-      .note{font-size:13px;color:#C9CAE2}
+      h1, h2, h3, .brand-font {
+        font-family: 'Pixelify Sans', sans-serif;
+      }
+
+      /* --- ANIMATED BACKGROUND --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 70%);
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.35;
+        animation: floatOrb 12s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 500px; height: 500px; background: var(--accent-primary); top: -10%; right: -20%; }
+      .orb-2 { width: 300px; height: 300px; background: var(--accent-secondary); bottom: 10%; left: -10%; animation-delay: -3s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(30px, 50px); }
+      }
+
+      /* --- LAYOUT --- */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero {
+        padding: 140px 0 60px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(48px, 6vw, 80px);
+        margin: 0;
+        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 40px rgba(141, 70, 231, 0.3);
+      }
+      .hero p {
+        color: var(--text-muted);
+        font-size: 18px;
+        margin-top: 16px;
+      }
+
+      /* --- MAIN GRID --- */
+      .layout-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        gap: 30px;
+        margin-bottom: 80px;
+      }
+      @media(max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
+
+      /* --- JOB CARDS (Mission Modules) --- */
+      .job-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .job-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 32px;
+        backdrop-filter: blur(20px);
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.6s ease backwards;
+      }
+      
+      /* Hover Effect */
+      .job-card:hover {
+        transform: translateY(-5px) scale(1.01);
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 40px rgba(141, 70, 231, 0.15);
+      }
+      .job-card:hover h3 { color: var(--accent-primary); }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .job-title-group h3 {
+        font-size: 24px;
+        margin: 0;
+        color: #fff;
+        transition: color 0.3s;
+      }
+      .department {
+        font-size: 12px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        letter-spacing: 1px;
+        margin-top: 4px;
+        display: block;
+      }
+
+      .badges { display: flex; gap: 8px; }
+      .badge {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #ccc;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .job-summary {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #d1d5db;
+        margin-bottom: 24px;
+      }
+
+      .job-actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      /* --- BUTTONS --- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 20px;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(180deg, #795CFF, #5A41E3);
+        color: #fff;
+        border: 1px solid #795CFF;
+        box-shadow: 0 4px 15px rgba(109,86,249,0.3);
+      }
+      .btn-primary:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 25px rgba(109,86,249,0.5);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid transparent;
+      }
+      .btn-ghost:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.05);
+        border-color: rgba(255,255,255,0.1);
+      }
+
+      /* --- SIDEBAR (Manifesto) --- */
+      .sidebar-card {
+        background: rgba(15, 16, 22, 0.8);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 32px;
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .sidebar-card h2 {
+        font-size: 20px;
+        margin: 0 0 20px 0;
+        color: #fff;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 12px;
+      }
+
+      .perk-list, .process-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+      }
+      .perk-list li {
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: #ccc;
+        padding-left: 16px;
+        position: relative;
+      }
+      .perk-list li::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+      }
+
+      .process-list li {
+        margin-bottom: 16px;
+        display: flex;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+      .step-num {
+        font-family: 'Pixelify Sans', sans-serif;
+        color: var(--accent-primary);
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .general-apply {
+        background: rgba(141, 70, 231, 0.05);
+        border: 1px dashed rgba(141, 70, 231, 0.3);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+      }
+      .general-apply p {
+        font-size: 13px;
+        margin: 0 0 12px 0;
+        color: #fff;
+      }
+      .btn-outline {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #fff;
+      }
+      .btn-outline:hover {
+        border-color: #fff;
+        background: rgba(255,255,255,0.05);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .reveal { animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+
     </style>
   </head>
   <body>
+
+    <!-- Background FX -->
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
     <Header />
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="heading-1">Careers</h1>
-        <p class="kicker">We build timeless, accessible games. Join us.</p>
-      </div>
-    </section>
+    <main class="container">
+      
+      <!-- HERO -->
+      <section class="hero">
+        <h1 class="reveal">JOIN THE CREW</h1>
+        <p class="reveal">We build worlds, not just games. Find your role in the mission.</p>
+      </section>
 
-    <!-- OPEN ROLES -->
-    <section class="section">
-      <div class="container cols">
-        <!-- Left: roles -->
-        <div class="grid">
-          {roles.map((r) => (
-            <article class="card role" id={r.id}>
-              <h3>{r.title}</h3>
-              <div class="meta">
-                <span class="chip">{r.location}</span>
-                <span class="chip">{r.type}</span>
+      <div class="layout-grid">
+        
+        <!-- LEFT: JOBS -->
+        <div class="job-list reveal delay-1">
+          {roles.map((r, index) => (
+            <article class="job-card" id={r.id} style={`animation-delay: ${index * 0.1}s`}>
+              <div class="job-header">
+                <div class="job-title-group">
+                  <h3>{r.title}</h3>
+                  <span class="department">{r.department}</span>
+                </div>
+                <div class="badges">
+                  <span class="badge">{r.location}</span>
+                  <span class="badge">{r.type}</span>
+                </div>
               </div>
-              <p style="margin:0">{r.summary}</p>
-              <div>
+              
+              <p class="job-summary">{r.summary}</p>
+              
+              <div class="job-actions">
                 <a
                   class="btn btn-primary"
-                  href={`mailto:contact@ashak.co?subject=Application — ${encodeURIComponent(r.title)}&body=Hi%Ashak%Studios%20Team,%0D%0A%0D%0AMy%20name%20is%20...%20I'm%20applying%20for%20${encodeURIComponent(r.title)}.%0D%0A%0D%0A•%20Portfolio%3A%20%0D%0A•%20LinkedIn%3A%20%0D%0A•%20Location%3A%20%0D%0A%0D%0ABriefly%20about%20me%3A%0D%0A...%0D%0A%0D%0ABest,%0D%0A`}
-                >Apply</a>
+                  href={`mailto:contact@ashak.co?subject=Application: ${encodeURIComponent(r.title)}&body=Hi Team,%0D%0A%0D%0AI am applying for the ${encodeURIComponent(r.title)} position.%0D%0A%0D%0A[Link to Portfolio/CV]%0D%0A%0D%0ABriefly about me:%0D%0A...`}
+                >
+                  Apply Now
+                </a>
                 <a
-                  class="btn"
-                  style="margin-left:8px"
-                  href={`mailto:contact@ashak.co?subject=Question about ${encodeURIComponent(r.title)}`}
-                >Ask a question</a>
+                  class="btn btn-ghost"
+                  href={`mailto:contact@ashak.co?subject=Question: ${encodeURIComponent(r.title)}`}
+                >
+                  Ask Question
+                </a>
               </div>
             </article>
           ))}
         </div>
 
-        <!-- Right: about hiring -->
-        <aside class="card">
-          <h2 class="h2" style="margin-top:0">Why Join Us</h2>
-          <ul class="list">
+        <!-- RIGHT: SIDEBAR -->
+        <aside class="sidebar-card reveal delay-2">
+          
+          <h2>Why Ashak Studios?</h2>
+          <ul class="perk-list">
             <li>Small, senior team — high ownership.</li>
-            <li>Quality-first craft: design, performance, polish.</li>
-            <li>Remote-friendly workflow and async communication.</li>
-            <li>Impactful shipped products used by real players.</li>
+            <li>Quality-first craft & zero bloat.</li>
+            <li>Remote-friendly async workflow.</li>
+            <li>Impactful games played by millions.</li>
           </ul>
 
-          <div class="sep"></div>
-
-          <h2 class="h2">Hiring Process</h2>
-          <ul class="list">
-            <li>Quick intro call (15–20 min).</li>
-            <li>Portfolio/code review & deep-dive (45–60 min).</li>
-            <li>Paid take-home or live task (role-dependent).</li>
-            <li>Offer.</li>
+          <h2>Hiring Protocol</h2>
+          <ul class="process-list">
+            <li><span class="step-num">01</span> <span>Intro Call (15m)</span></li>
+            <li><span class="step-num">02</span> <span>Portfolio / Deep Dive</span></li>
+            <li><span class="step-num">03</span> <span>Paid Take-home Task</span></li>
+            <li><span class="step-num">04</span> <span>The Offer</span></li>
           </ul>
 
-          <div class="sep"></div>
+          <div class="general-apply">
+            <p>Don't see your role?</p>
+            <a 
+              class="btn btn-outline" 
+              href="mailto:contact@ashak.co?subject=General Application — Ashak Studios"
+            >
+              General Application
+            </a>
+            <p style="font-size:11px; color:var(--text-muted); margin:8px 0 0;">
+              Include your portfolio links.
+            </p>
+          </div>
 
-          <h2 class="h2">No Perfect Match?</h2>
-          <p style="margin:0 0 8px">Send a general application with your portfolio.</p>
-          <a class="btn" href="mailto:contact@ashak.co?subject=General Application — Ashak Studios">General application</a>
-          <p class="note" style="margin-top:8px">Tip: Links to a portfolio, shipped games, GitHub, or design case studies help a lot.</p>
         </aside>
       </div>
-    </section>
+
+    </main>
 
     <Footer />
   </body>

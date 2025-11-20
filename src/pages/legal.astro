@@ -2,180 +2,357 @@
 import Header from "../components/company/CompanyHeader.astro";
 import Footer from "../components/company/CompanyFooter.astro";
 
-// If you place this file in a different folder depth, adjust the import paths above.
 const EFFECTIVE_DATE = "September 21, 2025";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Privacy & Terms • Ashak Studios</title>
-    <meta name="description" content="Privacy Policy and Terms of Use for the ashak.co promotional website." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal Center • Ashak Studios</title>
+    <meta name="description" content="Privacy Policy and Terms of Use for Ashak Studios." />
     <meta name="theme-color" content="#8D46E7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Inter (serious, clean) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Make Header/Footer also use Inter via a shared var -->
-    <style is:global>
-      :root { --ff: 'Inter', ui-sans-serif, system-ui; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
     <style>
-      :root{
-        --bg:#050507; --bg-2:#0C0D12;
-        --panel:#0F1016; --panel-2:#131521;
-        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
-        --brand:#8D46E7; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45)
+      /* --- CORE VARIABLES & RESET (Homepage ile Aynı) --- */
+      :root {
+        --bg-dark: #030304;
+        --accent-primary: #8D46E7;
+        --accent-secondary: #5A41E3;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af; /* Daha okunaklı gri */
+        --card-bg: rgba(20, 20, 28, 0.75); /* Metin için biraz daha koyu opaklık */
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
       }
-      *{box-sizing:border-box}
-      html,body{
-        margin:0; padding:0;
-        background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
-        color:var(--text); font:16px/1.7 'Inter', ui-sans-serif, system-ui;
-        scroll-behavior:smooth;
-      }
-      a{color:inherit}
-      .container{max-width:1000px;margin:0 auto;padding:0 16px}
-      .section{padding:56px 0}
-      .hero{padding:72px 0 28px;text-align:center}
-      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
-      .kicker{color:var(--muted);font-weight:500;font-size:14px;margin:10px 0 0}
 
-      .card{
-        background:linear-gradient(180deg,var(--panel),var(--panel-2));
-        border:1px solid var(--line); border-radius:var(--radius);
-        box-shadow:var(--shadow); padding:20px;
+      * { box-sizing: border-box; }
+      
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      .h2{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:0 0 8px}
-      .h3{font-size:18px;font-weight:700;margin:16px 0 6px}
-      .meta{font-size:13px;color:#C9CAE2}
-      .list{margin:8px 0 0 18px}
-      .list li{margin:4px 0}
-      .sep{height:1px;background:linear-gradient(90deg,transparent,#262944,transparent);margin:24px 0}
-      .toc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-      .chip{font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid #2D3050;background:#12142A;color:#E7E7F4;font-weight:600}
+
+      h1, h2, h3, .brand-font {
+        font-family: 'Pixelify Sans', sans-serif;
+      }
+
+      /* --- BACKGROUND FX --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 70%);
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.35;
+        animation: floatOrb 12s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 500px; height: 500px; background: var(--accent-primary); top: -15%; left: -10%; }
+      .orb-2 { width: 400px; height: 400px; background: var(--accent-secondary); bottom: 10%; right: -10%; animation-delay: -4s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(40px, 60px); }
+      }
+
+      /* --- LAYOUT --- */
+      .container {
+        max-width: 900px; /* Okuma kolaylığı için biraz daraltıldı */
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .section { padding: 40px 0 80px; }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 140px 0 60px;
+        text-align: center;
+      }
+      
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 72px);
+        margin: 0 0 16px;
+        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(141, 70, 231, 0.2);
+      }
+
+      .hero .date {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: var(--text-muted);
+        font-size: 13px;
+        font-family: 'Inter', sans-serif;
+        margin-bottom: 30px;
+      }
+
+      /* --- TOC CHIPS --- */
+      .toc {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .toc-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        border-radius: 100px;
+        background: rgba(141, 70, 231, 0.1);
+        border: 1px solid rgba(141, 70, 231, 0.3);
+        color: #dcbfff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+      .toc-link:hover {
+        background: var(--accent-primary);
+        color: #fff;
+        box-shadow: 0 0 20px rgba(141, 70, 231, 0.4);
+        transform: translateY(-2px);
+      }
+
+      /* --- DOC CARD (The Paper) --- */
+      .doc-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 48px;
+        margin-bottom: 40px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
+        scroll-margin-top: 100px; /* Header payı */
+      }
+
+      /* Doc Typography */
+      .doc-title {
+        font-size: 32px;
+        color: var(--accent-primary);
+        margin-top: 0;
+        margin-bottom: 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 20px;
+      }
+      
+      .meta-scope {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-bottom: 32px;
+        font-style: italic;
+        display: block;
+      }
+
+      .doc-card h3 {
+        font-size: 20px;
+        color: #fff;
+        margin: 32px 0 12px;
+      }
+      
+      .doc-card p, .doc-card li {
+        font-size: 16px;
+        line-height: 1.7;
+        color: #d1d5db; /* Hafif kırık beyaz */
+        margin-bottom: 16px;
+      }
+      
+      .doc-card ul {
+        margin: 0;
+        padding-left: 24px;
+        margin-bottom: 16px;
+      }
+      .doc-card li {
+        margin-bottom: 8px;
+      }
+      .doc-card a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--accent-primary);
+        transition: 0.2s;
+      }
+      .doc-card a:hover {
+        color: #fff;
+        border-bottom-style: solid;
+      }
+      
+      code {
+        background: rgba(255,255,255,0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-family: monospace;
+        color: #fff;
+      }
+
+      /* --- ANIMATION --- */
+      .reveal {
+        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      @keyframes fadeIn {
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .reveal:nth-child(1) { animation-delay: 0.1s; }
+      .reveal:nth-child(2) { animation-delay: 0.2s; }
+      .reveal:nth-child(3) { animation-delay: 0.3s; }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+        .doc-card { padding: 24px; }
+        .hero h1 { font-size: 42px; }
+        .toc { flex-direction: column; padding: 0 40px; }
+        .toc-link { justify-content: center; }
+      }
     </style>
   </head>
   <body>
+
+    <!-- Background FX -->
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
     <Header />
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 class="heading-1">Privacy Policy & Terms of Use</h1>
-        <p class="kicker">Effective Date: {EFFECTIVE_DATE}</p>
-        <div class="toc">
-          <a class="chip" href="#privacy">Go to Privacy Policy</a>
-          <a class="chip" href="#terms">Go to Terms of Use</a>
+    <main>
+      
+      <!-- Hero Section -->
+      <section class="hero container">
+        <span class="date reveal">Effective: {EFFECTIVE_DATE}</span>
+        <h1 class="reveal">LEGAL & TERMS</h1>
+        
+        <div class="toc reveal">
+          <a href="#privacy" class="toc-link">
+            <span>↓</span> Privacy Policy
+          </a>
+          <a href="#terms" class="toc-link">
+            <span>↓</span> Terms of Use
+          </a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PRIVACY POLICY -->
-    <section id="privacy" class="section" aria-labelledby="privacy-heading">
-      <div class="container">
-        <div class="card">
-          <h2 id="privacy-heading" class="h2">Privacy Policy</h2>
-          <div class="meta">Scope: This policy applies to the promotional website located at <code>ashak.co</code> (the “Site”). It does <em>not</em> cover our games or app stores.</div>
+      <!-- Content Section -->
+      <section class="container">
+        
+        <!-- Privacy Policy Card -->
+        <article id="privacy" class="doc-card reveal">
+          <h2 class="doc-title">Privacy Policy</h2>
+          <span class="meta-scope">Scope: This policy applies to the promotional website located at <code>ashak.co</code>. It does not cover our games or app stores.</span>
 
-          <h3 class="h3">1) Summary</h3>
+          <h3>1) Summary</h3>
           <p>
             This Site is a simple, read‑only company presentation. We do not run sign‑ups, comments, contact forms, or user accounts. We do not ask you for your name, email address, phone number, payment details, or any similar personal information on this Site.
           </p>
 
-          <h3 class="h3">2) What We Collect</h3>
+          <h3>2) What We Collect</h3>
           <p>
             <strong>Nothing that identifies you personally.</strong> We do not use first‑party cookies, analytics beacons, fingerprinting, or tracking pixels on this Site. We do not combine, sell, or share any personal data.
           </p>
 
-          <h3 class="h3">3) Hosting & Basic Technical Logs</h3>
+          <h3>3) Hosting & Basic Technical Logs</h3>
           <p>
             Our hosting provider may process minimal, short‑lived technical logs (e.g., IP address and user‑agent) solely to deliver the Site securely and for anti‑abuse and reliability purposes. We do not use these logs to identify you, and we do not merge them with any other data.
           </p>
 
-          <h3 class="h3">4) Third‑Party Links</h3>
+          <h3>4) Third‑Party Links</h3>
           <p>
             The Site may link to third‑party pages (e.g., App Store / Google Play, social profiles). When you follow those links, their privacy policies apply.
           </p>
 
-          <h3 class="h3">5) Children</h3>
+          <h3>5) Children</h3>
           <p>
             The Site is a general‑audience informational page. It does not collect personal information from anyone, including children.
           </p>
 
-          <h3 class="h3">6) Changes</h3>
+          <h3>6) Changes</h3>
           <p>
             If we materially change this policy, we will update the Effective Date above. Your continued use of the Site after changes means you accept the updated policy.
           </p>
 
-          <h3 class="h3">7) Contact</h3>
+          <h3>7) Contact</h3>
           <p>
             Questions? Email <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
           </p>
-        </div>
-      </div>
-    </section>
+        </article>
 
-    <!-- TERMS OF USE -->
-    <section id="terms" class="section" aria-labelledby="terms-heading">
-      <div class="container">
-        <div class="card">
-          <h2 id="terms-heading" class="h2">Terms of Use</h2>
-          <div class="meta">Effective Date: {EFFECTIVE_DATE}</div>
-
-          <h3 class="h3">1) About These Terms</h3>
+        <!-- Terms of Use Card -->
+        <article id="terms" class="doc-card reveal">
+          <h2 class="doc-title">Terms of Use</h2>
+          
+          <h3>1) About These Terms</h3>
           <p>
             These Terms govern your access to and use of this Site. By visiting or using the Site, you agree to these Terms.
           </p>
 
-          <h3 class="h3">2) Informational Website Only</h3>
-          <ul class="list">
+          <h3>2) Informational Website Only</h3>
+          <ul>
             <li>No account creation, sign‑in, or user‑generated content features exist on this Site.</li>
             <li>We provide company and product information and outbound links only.</li>
           </ul>
 
-          <h3 class="h3">3) Acceptable Use</h3>
-          <ul class="list">
+          <h3>3) Acceptable Use</h3>
+          <ul>
             <li>Do not interfere with the Site’s operation or security.</li>
             <li>Do not attempt to scrape at a rate that degrades service or violates applicable laws.</li>
             <li>Do not use the Site in a way that infringes intellectual property or privacy rights.</li>
           </ul>
 
-          <h3 class="h3">4) Intellectual Property</h3>
+          <h3>4) Intellectual Property</h3>
           <p>
             Unless otherwise noted, the Site’s text, graphics, logos, and other materials are owned by Ashak Studios or licensed to us and are protected by applicable laws. You may view the Site for personal, non‑commercial use. Any other use requires prior written permission.
           </p>
 
-          <h3 class="h3">5) Links to Third Parties</h3>
+          <h3>5) Links to Third Parties</h3>
           <p>
             Outbound links (e.g., app stores, social media) are provided for convenience. We are not responsible for their content, availability, or policies.
           </p>
 
-          <h3 class="h3">6) Disclaimer & Limitation of Liability</h3>
+          <h3>6) Disclaimer & Limitation of Liability</h3>
           <p>
             The Site is provided “as is” and “as available” without warranties of any kind. To the maximum extent permitted by law, we disclaim all warranties and will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or relating to your use of the Site.
           </p>
 
-          <h3 class="h3">7) Changes</h3>
+          <h3>7) Changes</h3>
           <p>
             We may update or discontinue the Site or these Terms at any time. If we update these Terms, the Effective Date above will change.
           </p>
 
-          <h3 class="h3">8) Contact</h3>
+          <h3>8) Contact</h3>
           <p>
             For any questions about these Terms, contact <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
           </p>
+        </article>
 
-          <div class="sep"></div>
-          <p class="meta">Quick Navigation: <a href="#privacy">Privacy Policy</a> • <a href="#terms">Terms of Use</a></p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <Footer />
   </body>

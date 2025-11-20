@@ -13,33 +13,34 @@ interface Section {
   caption?: string;
   tags?: string[];
 }
+
 const sections: Section[] = [
   {
     img: "/assets/screenshot-4.png",
     title: "Play Anywhere",
-    text: "Tablet, phone… playable on every device. Original visuals and a user-friendly design.",
-    caption: "Play on iOS and Android — access from anywhere.",
+    text: "Tablet, phone… playable on every device. Original visuals and a user-friendly design optimized for touch controls.",
+    caption: "Seamless Cross-Platform.",
     tags: ["Mobile", "Accessible", "Interface"]
   },
   {
     img: "/assets/screenshot-3.PNG",
     title: "Escape the Island",
-    text: "Max is stranded on the Island. Help him escape. Every level is a new adventure.",
-    caption: "Puzzle-focused progression, environmental storytelling.",
+    text: "Max is stranded. The Island is full of mysteries, traps, and puzzles. Help him escape. Every level is a new adventure.",
+    caption: "Survival & Logic.",
     tags: ["Story", "Escape", "Levels"]
   },
   {
     img: "/assets/screenshot-2.PNG",
     title: "Progress with Hints",
-    text: "Stuck? Hints point you in the right direction. Timing and decisions matter.",
-    caption: "The right move, at the right moment.",
+    text: "Stuck on a puzzle? Hints point you in the right direction. Timing, reflexes, and smart decisions matter.",
+    caption: "Master the mechanics.",
     tags: ["Timing", "Reflexes", "Hints"]
   },
   {
     img: "/assets/screenshot-1.PNG",
-    title: "Experience in 82 Languages",
-    text: "A fantastic experience in 82 languages. Play in any language you like.",
-    caption: "Accessibility through localization.",
+    title: "Global Experience",
+    text: "A fantastic experience in 82 languages. Play in your native language, no matter where you are.",
+    caption: "No Language Barriers.",
     tags: ["82 Languages", "Localization", "Accessible"]
   }
 ];
@@ -48,169 +49,375 @@ const sections: Section[] = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Max On The Island • Product Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Max On The Island • Ashak Studios</title>
     <meta name="description" content="Max On The Island — Solve puzzles, progress, and escape the Island!" />
     <meta name="theme-color" content="#8D46E7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Pixelify Sans -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 
     <!-- Social -->
     <meta property="og:title" content="Max On The Island" />
     <meta property="og:description" content="Explore, craft, fight. The Island awaits." />
-    <meta property="og:image" content="assets/presskit-cover.png" />
+    <meta property="og:image" content="/assets/presskit-cover.png" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
-      :root{
-        --bg:#050507; --bg-2:#0C0D12;
-        --panel:#0F1016; --panel-2:#131521;
-        --text:#F2F2F7; --muted:#B8B9C8; --line:#232536;
-        --brand:#8D46E7; --brand-2:#2F4CB3;
-        --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.45);
+      /* --- CORE VARIABLES & RESET --- */
+      :root {
+        --bg-dark: #030304;
+        --accent-primary: #8D46E7;
+        --accent-secondary: #5A41E3;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af;
+        --card-bg: rgba(20, 20, 28, 0.6);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
       }
-      *{box-sizing:border-box}
-      html,body{
-        margin:0; padding:0; background:radial-gradient(1200px 400px at 50% -10%, #121327 0%, transparent 60%), var(--bg);
-        color:var(--text); font:16px/1.7 'Pixelify Sans', ui-sans-serif, system-ui;
-        scroll-behavior:smooth;
+
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      a{color:inherit;text-decoration:none}
-      img{display:block;max-width:100%;height:auto}
-      .container{max-width:1100px;margin:0 auto;padding:0 16px}
-      .section{padding:48px 0}
-      .heading-1{font-weight:700;letter-spacing:.2px;font-size:clamp(24px,3.2vw,40px);line-height:1.15;margin:0}
-      .kicker{color:var(--muted);font-weight:500;font-size:14px}
-      .panel{
-        background:linear-gradient(180deg,var(--panel),var(--panel-2));
-        border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);
+
+      h1, h2, h3, .brand-font {
+        font-family: 'Pixelify Sans', sans-serif;
       }
-      .btn{
-        display:inline-flex;align-items:center;justify-content:center;gap:8px;
-        height:44px;padding:0 16px;border-radius:999px;
-        border:1px solid #2B2E44;background:linear-gradient(180deg,#1A1C2A,#121422);
-        color:#fff;cursor:pointer;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);
+
+      /* --- BACKGROUND FX --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 70%);
+        overflow: hidden;
       }
-      .btn-primary{
-        border-color:#4331B8;background:linear-gradient(180deg,#795CFF,#5A41E3);
-        box-shadow:0 12px 30px rgba(109,86,249,.35);
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.35;
+        animation: floatOrb 12s infinite alternate ease-in-out;
       }
-      /* HERO */
-      .hero{padding:68px 0 28px}
-      .logo-row{display:flex;justify-content:center;margin-bottom:12px}
-      .logo{height:90px;width:auto;border-radius:14px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
-      .video-wrap{margin-top:36px;border-radius:18px;overflow:hidden;position:relative;border:1px solid #2E3150;box-shadow:0 20px 60px rgba(0,0,0,.45);max-width:990px;margin-left:auto;margin-right:auto}
-      .video-inner{aspect-ratio:1920 / 886;background:#000;position:relative}
-      .video-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-      .sep{height:1px;background:linear-gradient(90deg,transparent,#262944,transparent);margin:8px auto 0;max-width:1100px}
-      /* Stores */
-      .stores{display:flex;gap:1px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-      .stores a{display:flex;align-items:center;justify-content:center;width:220px;height:64px;border-radius:12px}
-      .stores a img{max-width:100%;max-height:100%;display:block;object-fit:contain}
-      /* Features */
-      .features-wrap{max-width:1100px;margin:0 auto}
-      .feat{display:grid;gap:24px;align-items:center;margin-bottom:32px;grid-template-columns: 1fr}
-      @media (min-width: 1000px){.feat{grid-template-columns: 1fr 1fr}}
-      .media{position:relative;border-radius:18px;overflow:hidden;border:1px solid #2C2E45;background:#0A0B12;box-shadow: 0 20px 60px rgba(0,0,0,.45)}
-      .img-wrap{position: relative;overflow: hidden;aspect-ratio:16/9;background:#0b0d15;display:grid;place-items:center}
-      .img-wrap::before{content:"";position:absolute;inset:0;background-image: var(--bg);background-size: cover;background-position: center;filter: blur(24px) saturate(1.1);transform: scale(1.06);z-index:0}
-      .img-wrap img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
-      .content .caption{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:#B8B9C8}
-      .content h3{font-size:clamp(20px,2.2vw,28px);font-weight:700;margin:8px 0 8px}
-      .content p{font-weight:500;color:#DCDDED;margin:0 0 10px}
-      .bullets{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-      .chip{font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid #2D3050;background:#12142A;color:#E7E7F4;font-weight:600}
+      .orb-1 { width: 600px; height: 600px; background: var(--accent-primary); top: -20%; right: 10%; }
+      .orb-2 { width: 400px; height: 400px; background: var(--accent-secondary); bottom: 10%; left: -10%; animation-delay: -4s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(30px, 50px); }
+      }
+
+      /* --- LAYOUT --- */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        padding: 120px 0 60px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo-wrap {
+        position: relative;
+        margin-bottom: 24px;
+        animation: floatLogo 6s ease-in-out infinite;
+      }
+      @keyframes floatLogo {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .app-icon {
+        width: 100px; height: 100px;
+        border-radius: 22px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border: 2px solid rgba(255,255,255,0.1);
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 64px);
+        margin: 0;
+        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(141, 70, 231, 0.3);
+        line-height: 1.1;
+      }
+
+      .kicker {
+        font-size: 18px;
+        color: var(--text-muted);
+        margin-top: 16px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      /* STORES */
+      .stores {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 32px;
+        flex-wrap: wrap;
+      }
+      .store-btn {
+        transition: transform 0.2s, filter 0.2s;
+        display: block;
+        height: 50px;
+      }
+      .store-btn img { height: 100%; width: auto; display: block; }
+      .store-btn:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.1);
+      }
+
+      /* VIDEO CONTAINER */
+      .video-frame {
+        margin-top: 60px;
+        width: 100%;
+        max-width: 960px;
+        aspect-ratio: 16/9;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        background: #000;
+        position: relative;
+      }
+      .video-frame iframe {
+        width: 100%; height: 100%; border: none;
+      }
+
+      /* --- FEATURES SECTION (ZigZag) --- */
+      .features-section {
+        padding: 80px 0;
+      }
+
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 100px;
+      }
+      .feature-row:last-child { margin-bottom: 0; }
+      
+      .feature-row.reverse .text-col { order: 2; }
+      .feature-row.reverse .img-col { order: 1; }
+
+      @media (max-width: 900px) {
+        .feature-row, .feature-row.reverse {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          text-align: center;
+        }
+        .feature-row.reverse .text-col { order: 0; }
+        .feature-row.reverse .img-col { order: 1; }
+        .text-col { align-items: center; }
+        .bullets { justify-content: center; }
+      }
+
+      /* Text Column */
+      .text-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .caption {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent-primary);
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .caption::before {
+        content:''; display:block; width:20px; height:2px; background:var(--accent-primary);
+      }
+
+      .text-col h3 {
+        font-size: 36px;
+        margin: 0 0 16px 0;
+        color: #fff;
+        line-height: 1.1;
+      }
+
+      .text-col p {
+        font-size: 16px;
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      .bullets {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .chip {
+        font-size: 13px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #ccc;
+        font-weight: 600;
+      }
+
+      /* Image Column */
+      .img-col { position: relative; }
+      
+      .device-frame {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: #000;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        aspect-ratio: 16/9;
+        transition: transform 0.3s ease;
+      }
+      .device-frame:hover {
+        transform: scale(1.02);
+        border-color: var(--accent-primary);
+      }
+
+      .img-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        filter: blur(30px) brightness(0.6);
+        transform: scale(1.2);
+        z-index: 1;
+      }
+      .device-frame img {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      /* Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: revealAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes revealAnim {
+        to { opacity: 1; transform: translateY(0); }
+      }
     </style>
   </head>
 
   <body>
-    <ProductHeader productName="Max On The Island" />
+    
+    <!-- Background FX -->
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <ProductHeader productName="Max On The Island" logoSrc="/assets/maxontheislandlogo.png" />
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="logo-row">
-          <img src="/assets/maxontheislandlogo.png" alt="Max On The Island" class="logo" loading="eager" />
-        </div>
-        <h1 class="heading-1" style="text-align:center">Max On The Island</h1>
-        <p class="kicker" style="text-align:center">Solve Puzzles • Progress • Escape the Island</p>
-
-        <!-- Store buttons -->
-        <div class="stores" id="stores">
-          <a href="#"><img src="/assets/appstore.png" alt="App Store" /></a>
-          <a href="#"><img src="/assets/googleplay.png" alt="Google Play" /></a>
-        </div>
-
-        <!-- YouTube trailer -->
-        <div class="video-wrap container">
-          <div class="video-inner">
-            <iframe
-              src={`https://www.youtube.com/embed/${trailerId}?rel=0&modestbranding=1&color=white`}
-              title="Max On The Island Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        </div>
+    <section class="hero container">
+      <div class="logo-wrap reveal" style="animation-delay: 0.1s;">
+        <img src="/assets/maxontheislandlogo.png" alt="Max On The Island" class="app-icon" />
       </div>
-      <div class="sep"></div>
+      
+      <h1 class="reveal" style="animation-delay: 0.2s;">MAX ON THE ISLAND</h1>
+      <p class="kicker reveal" style="animation-delay: 0.3s;">Solve Puzzles • Progress • Escape</p>
+
+      <!-- Stores -->
+      <div class="stores reveal" id="stores" style="animation-delay: 0.4s;">
+        <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
+        <a href="#" class="store-btn"><img src="/assets/googleplay.png" alt="Get it on Google Play" /></a>
+      </div>
+
+      <!-- Trailer -->
+      <div class="video-frame reveal" style="animation-delay: 0.5s;">
+        <iframe
+          src={`https://www.youtube.com/embed/${trailerId}?rel=0&modestbranding=1&controls=1&showinfo=0`}
+          title="Max On The Island Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </section>
 
     <!-- FEATURES -->
-    <main id="features" class="container">
-      <section class="section features-wrap">
-        {
-          sections.map((s, i) => (
-            <div class="feat">
-              { i % 2 === 0 ? (
-                <>
-                  <figure class="media" style="order:0">
-                    <div class="img-wrap" style={`--bg: url('${s.img}')`}>
-                      <img src={s.img} alt={s.title} loading={i===0 ? "eager" : "lazy"} />
-                    </div>
-                  </figure>
-                  <div class="content" style="order:1">
-                    {s.caption && <span class="caption">✨ {s.caption}</span>}
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                    {s.tags && (
-                      <div class="bullets">
-                        {s.tags.map((t) => <span class="chip">{t}</span>)}
-                      </div>
-                    )}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div class="content" style="order:0">
-                    {s.caption && <span class="caption">✨ {s.caption}</span>}
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                    {s.tags && (
-                      <div class="bullets">
-                        {s.tags.map((t) => <span class="chip">{t}</span>)}
-                      </div>
-                    )}
-                  </div>
-                  <figure class="media" style="order:1">
-                    <div class="img-wrap" style={`--bg: url('${s.img}')`}>
-                      <img src={s.img} alt={s.title} loading="lazy" />
-                    </div>
-                  </figure>
-                </>
-              )}
+    <main class="container features-section">
+      {sections.map((s, i) => (
+        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''} reveal`}>
+          
+          <!-- Text Side -->
+          <div class="text-col">
+            <div class="caption">{s.caption || "Feature"}</div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            {s.tags && (
+              <div class="bullets">
+                {s.tags.map(t => <span class="chip">{t}</span>)}
+              </div>
+            )}
+          </div>
+
+          <!-- Image Side -->
+          <div class="img-col">
+            <div class="device-frame">
+              <div class="img-bg" style={`background-image: url('${s.img}')`}></div>
+              <img src={s.img} alt={s.title} loading="lazy" />
             </div>
-          ))
-        }
-      </section>
+          </div>
+
+        </div>
+      ))}
     </main>
 
-    <ProductFooter productName="Max On The Island" />
+    <ProductFooter productName="Max On The Island" logoSrc="/assets/maxontheislandlogo.png" />
+
+    <!-- Scroll Reveal Script -->
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    </script>
+
   </body>
 </html>

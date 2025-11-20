@@ -1,336 +1,356 @@
 ---
 import ProductHeader from "../../components/countryguessr/ProductHeader.astro";
 import ProductFooter from "../../components/countryguessr/ProductFooter.astro";
+
+/** Feature content */
+interface Section {
+  img: string;
+  title: string;
+  text: string;
+  caption?: string;
+  tags?: string[];
+}
+
+const sections: Section[] = [
+  {
+    img: "/assets/countryguessr-ss-1.jpg",
+    title: "Real World Maps",
+    text: "No cartoons. Explore the world through real satellite imagery and street maps. Pan, zoom, and investigate borders like a detective.",
+    caption: "Satellite Uplink Established.",
+    tags: ["Real Maps", "Education", "Explore"]
+  },
+  {
+    img: "/assets/countryguessr-ss-2.jpg",
+    title: "Identify the Nation",
+    text: "Analyze the geography. Is it a coastline? A desert? A jungle? Use your knowledge to pick the correct country from the options.",
+    caption: "Target Locked.",
+    tags: ["Geography", "Quiz", "Trivia"]
+  },
+  {
+    img: "/assets/countryguessr-ss-3.jpg",
+    title: "Tactical Hints",
+    text: "Stuck on a tough border? Unlock hints like Region, Flag, or Capital City to narrow down the possibilities.",
+    caption: "Intel Available.",
+    tags: ["Flags", "Capitals", "Hints"]
+  },
+  {
+    img: "/assets/countryguessr-ss-4.jpg",
+    title: "Global Leaderboard",
+    text: "Build your streak. Collect every country in your passport. Compete with players worldwide for the highest geo-IQ.",
+    caption: "Rank Up.",
+    tags: ["Streaks", "Stats", "Competition"]
+  }
+];
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>CountryGuessr • Product Page</title>
-    <meta
-      name="description"
-      content="CountryGuessr — Guess the country from real maps and outlines. Play on iOS and Android."
-    />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CountryGuessr • Ashak Studios</title>
+    <meta name="description" content="CountryGuessr — Guess the country from real maps. Play on iOS and Android." />
+    <meta name="theme-color" content="#2FB3A2" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Luckiest Guy (GLOBAL FONT) -->
+    <!-- Fonts: Luckiest Guy for Headlines, Inter for Body -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Social -->
     <meta property="og:title" content="CountryGuessr" />
-    <meta
-      property="og:description"
-      content="Guess the country • Sharpen your geo skills."
-    />
+    <meta property="og:description" content="Guess the country. Sharpen your geo skills." />
     <meta property="og:image" content="/assets/countryguessr-icon.png" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
+      /* --- CORE VARIABLES --- */
       :root {
-        --bg: #050507;
-        --bg-2: #0c0d12;
-        --panel: #0f1016;
-        --panel-2: #131521;
-        --text: #f2f2f7;
-        --muted: #b8b9c8;
-        --line: #232536;
-        --brand: #8d46e7;
-        --brand-2: #2f4cb3;
-        --radius: 16px;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
-        --accent: #2fb3a2;
+        --bg-dark: #050507;
+        --geo-teal: #2FB3A2; /* Yeni Vurgu Rengi */
+        --brand-purple: #8D46E7;
+        --text-main: #ffffff;
+        --text-muted: #9ca3af;
+        --card-bg: rgba(20, 20, 28, 0.6);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
       }
-      * {
-        box-sizing: border-box;
-      }
-      html,
+
+      * { box-sizing: border-box; }
+      
       body {
         margin: 0;
-        padding: 0;
-        background: radial-gradient(
-            1200px 400px at 50% -10%,
-            #121327 0%,
-            transparent 60%
-          ),
-          var(--bg);
-        color: var(--text);
-        font: 16px/1.6 'Luckiest Guy', ui-sans-serif, system-ui;
-        scroll-behavior: smooth;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      a {
-        color: inherit;
-        text-decoration: none;
+
+      /* Headlines Font */
+      h1, h2, h3, .game-font {
+        font-family: 'Luckiest Guy', cursive;
+        letter-spacing: 1px;
       }
-      img {
-        display: block;
-        max-width: 100%;
-        height: auto;
+
+      /* --- BACKGROUND FX (Teal & Purple) --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #0d1816 0%, #050507 70%);
+        overflow: hidden;
       }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.3;
+        animation: floatOrb 12s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 600px; height: 600px; background: var(--geo-teal); top: -15%; right: -10%; }
+      .orb-2 { width: 400px; height: 400px; background: var(--brand-purple); bottom: 5%; left: -5%; animation-delay: -5s; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(30px, 50px); }
+      }
+
+      /* --- LAYOUT --- */
       .container {
-        max-width: 1280px;
+        max-width: 1100px;
         margin: 0 auto;
-        padding: 0 16px;
-      }
-      .section {
-        padding: 48px 0;
-      }
-
-      /* Panels & buttons */
-      .panel {
-        background: linear-gradient(180deg, var(--panel), var(--panel-2));
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        height: 44px;
-        padding: 0 16px;
-        border-radius: 999px;
-        border: 1px solid #2b2e44;
-        background: linear-gradient(180deg, #1a1c2a, #121422);
-        color: #fff;
-        cursor: pointer;
-        font-weight: 600;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      }
-      .btn-primary {
-        border-color: #4331b8;
-        background: linear-gradient(180deg, #795cff, #5a41e3);
-        box-shadow: 0 12px 30px rgba(109, 86, 249, 0.35);
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
       }
 
-      /* HERO */
+      /* --- HERO SECTION --- */
       .hero {
-        padding: 68px 0 28px;
-      }
-      .logo-row {
+        padding: 120px 0 60px;
+        text-align: center;
         display: flex;
-        justify-content: center;
-        margin-bottom: 12px;
-      }
-      .logo {
-        height: 90px;
-        width: auto;
-        border-radius: 14px;
-        filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
-      }
-      .heading-1 {
-        font-weight: 700;
-        letter-spacing: 0.2px;
-        font-size: clamp(24px, 3.2vw, 40px);
-        line-height: 1.15;
-        margin: 0;
-        text-align: center;
-      }
-      .kicker {
-        color: var(--muted);
-        font-weight: 500;
-        font-size: 16px;
-        text-align: center;
-        margin-top: 6px;
+        flex-direction: column;
+        align-items: center;
       }
 
-      /* Stores */
+      .logo-wrap {
+        position: relative;
+        margin-bottom: 24px;
+        animation: pulseLogo 4s ease-in-out infinite;
+      }
+      @keyframes pulseLogo {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+      }
+
+      .app-icon {
+        width: 110px; height: 110px;
+        border-radius: 26px;
+        box-shadow: 0 15px 40px rgba(47, 179, 162, 0.3); /* Teal glow */
+        border: 2px solid rgba(255,255,255,0.1);
+      }
+
+      .hero h1 {
+        font-size: clamp(44px, 7vw, 72px);
+        margin: 0;
+        background: linear-gradient(180deg, #fff 0%, #b0eadd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 10px 30px rgba(47, 179, 162, 0.4);
+      }
+
+      .kicker {
+        font-size: 19px;
+        color: var(--text-muted);
+        margin-top: 12px;
+        font-weight: 600;
+      }
+
+      /* STORES */
       .stores {
         display: flex;
-        gap: 8px;
+        gap: 16px;
         justify-content: center;
+        margin-top: 32px;
         flex-wrap: wrap;
-        margin-top: 14px;
       }
-      .stores a {
+      .store-btn {
+        transition: transform 0.2s, filter 0.2s;
+        display: block;
+        height: 50px;
+      }
+      .store-btn img { height: 100%; width: auto; display: block; }
+      .store-btn:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.1);
+      }
+
+      /* --- FEATURES (ZigZag) --- */
+      .features-section { padding: 80px 0; }
+
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 100px;
+      }
+      .feature-row:last-child { margin-bottom: 0; }
+      .feature-row.reverse .text-col { order: 2; }
+      .feature-row.reverse .img-col { order: 1; }
+
+      @media (max-width: 900px) {
+        .feature-row, .feature-row.reverse { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+        .feature-row.reverse .text-col { order: 0; }
+        .feature-row.reverse .img-col { order: 1; }
+        .text-col { align-items: center; }
+        .bullets { justify-content: center; }
+      }
+
+      .text-col h3 {
+        font-size: 32px;
+        margin: 0 0 16px 0;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      .caption {
+        font-size: 13px;
+        color: var(--geo-teal);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 10px;
+        font-family: 'Inter', sans-serif;
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 220px;
-        height: 64px;
-        border-radius: 12px;
+        gap: 8px;
       }
-      .stores a img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+      .caption::before {
+        content:''; display:block; width:16px; height:2px; background:var(--geo-teal);
       }
 
-      /* Screenshots — 5 görsel için responsive grid, full image */
-      .shots {
-        display: grid;
-        gap: 2px;
-        margin-top: 16px;
+      .text-col p {
+        font-size: 17px;
+        color: #d1d5db;
+        line-height: 1.6;
+        margin-bottom: 20px;
       }
-      .shot {
+
+      .bullets { display: flex; flex-wrap: wrap; gap: 10px; }
+      .chip {
+        font-size: 13px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: rgba(47, 179, 162, 0.1);
+        border: 1px solid rgba(47, 179, 162, 0.3);
+        color: #fff;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Device Frame */
+      .img-col { position: relative; }
+      .device-frame {
         position: relative;
-        border-radius: 12px;
+        border-radius: 20px;
         overflow: hidden;
-        border: 1px solid #1f2135;
-        background: #0a0b12;
-        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255,255,255,0.1);
+        background: #000;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        aspect-ratio: 9/16; 
+        max-width: 320px;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
       }
-      .shot img {
-        width: 100%;
-        height: auto; /* tam görsel, kırpmasız */
-        display: block;
+      .device-frame:hover {
+        transform: scale(1.02);
+        border-color: var(--geo-teal);
       }
-      @media (min-width: 700px) {
-        .shots {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (min-width: 1024px) {
-        .shots {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
+      .device-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-      /* How to Play */
-      .section-title {
-        font-size: clamp(20px, 2.2vw, 28px);
-        font-weight: 700;
-        margin: 0 0 12px;
-        text-align: center;
+      /* Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: revealAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
       }
-      .rules.panel {
-        padding: 16px;
-      }
-      ol.rules-list {
-        margin: 0;
-        padding-left: 22px;
-      }
-      ol.rules-list li {
-        margin: 6px 0;
-      }
+      @keyframes revealAnim { to { opacity: 1; transform: translateY(0); } }
 
-      /* Badges */
-      .badge {
-        display: inline-block;
-        padding: 2px 10px;
-        border-radius: 999px;
-        border: 1px solid rgba(47, 179, 162, 0.4);
-        background: #111321;
-        letter-spacing: 0.3px;
-        color: #effffa;
-        box-shadow: inset 0 0 0 9999px rgba(47, 179, 162, 0.12);
-      }
     </style>
   </head>
 
   <body>
-    <ProductHeader productName="CountryGuessr" />
+    
+    <!-- Background FX -->
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <ProductHeader productName="CountryGuessr" logoSrc="/assets/countryguessr-icon.png" />
 
     <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="logo-row">
-          <img
-            src="/assets/countryguessr-icon.png"
-            alt="CountryGuessr"
-            class="logo"
-            loading="eager"
-          />
-        </div>
-        <h1 class="heading-1">CountryGuessr</h1>
-        <p class="kicker">Guess the country • Sharpen your geo skills</p>
+    <section class="hero container">
+      <div class="logo-wrap reveal" style="animation-delay: 0.1s;">
+        <img src="/assets/countryguessr-icon.png" alt="CountryGuessr Logo" class="app-icon" />
+      </div>
+      
+      <h1 class="reveal" style="animation-delay: 0.2s;">COUNTRY GUESSR</h1>
+      <p class="kicker reveal" style="animation-delay: 0.3s;">Guess the country • Master the map</p>
 
-        <!-- Store buttons -->
-        <div class="stores" id="stores">
-          <a href="#" aria-label="Get on the App Store"
-            ><img src="/assets/appstore.png" alt="App Store"
-          /></a>
-          <a href="#" aria-label="Get on Google Play"
-            ><img src="/assets/googleplay.png" alt="Google Play"
-          /></a>
-        </div>
-
-        <!-- Screenshots (5 görsel) -->
-        <div class="shots">
-          <figure class="shot">
-            <img
-              src="/assets/countryguessr-ss-1.jpg"
-              alt="CountryGuessr Screenshot 1"
-              loading="lazy"
-            />
-          </figure>
-          <figure class="shot">
-            <img
-              src="/assets/countryguessr-ss-2.jpg"
-              alt="CountryGuessr Screenshot 2"
-              loading="lazy"
-            />
-          </figure>
-          <figure class="shot">
-            <img
-              src="/assets/countryguessr-ss-3.jpg"
-              alt="CountryGuessr Screenshot 3"
-              loading="lazy"
-            />
-          </figure>
-          <figure class="shot">
-            <img
-              src="/assets/countryguessr-ss-4.jpg"
-              alt="CountryGuessr Screenshot 4"
-              loading="lazy"
-            />
-          </figure>
-          <figure class="shot">
-            <img
-              src="/assets/countryguessr-ss-5.jpg"
-              alt="CountryGuessr Screenshot 5"
-              loading="lazy"
-            />
-          </figure>
-        </div>
+      <!-- Stores -->
+      <div class="stores reveal" id="stores" style="animation-delay: 0.4s;">
+        <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
+        <a href="#" class="store-btn"><img src="/assets/googleplay.png" alt="Get it on Google Play" /></a>
       </div>
     </section>
 
-    <!-- HOW TO PLAY -->
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">How to Play</h2>
-        <div class="rules panel">
-          <ol class="rules-list">
-            <li>
-              Look at the highlighted country on the real-world map. Pan & zoom
-              to inspect borders and shape.
-            </li>
-            <li>
-              Check the answer options and trust your instincts about which
-              country you’re seeing.
-            </li>
-            <li>
-              Use hints like
-              <span class="badge">Region</span>,
-              <span class="badge">Subregion</span>,
-              <span class="badge">Country Code</span>, and
-              <span class="badge">Flag</span> if you get stuck.
-            </li>
-            <li>
-              Tap the country you believe is correct. The faster and more
-              accurate you are, the more points you earn.
-            </li>
-            <li>
-              Build streaks, collect every country, and climb the global
-              leaderboards.
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
+    <!-- FEATURES -->
+    <main class="container features-section">
+      {sections.map((s, i) => (
+        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''} reveal`}>
+          
+          <div class="text-col">
+            <div class="caption">{s.caption}</div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            {s.tags && (
+              <div class="bullets">
+                {s.tags.map(t => <span class="chip">{t}</span>)}
+              </div>
+            )}
+          </div>
 
-    <ProductFooter
-      productName="CountryGuessr"
-      logoSrc="/assets/countryguessr-icon.png"
-    />
+          <div class="img-col">
+            <div class="device-frame">
+              <img src={s.img} alt={s.title} loading="lazy" />
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </main>
+
+    <ProductFooter productName="CountryGuessr" logoSrc="/assets/countryguessr-icon.png" />
+
+    <!-- Scroll Reveal Script -->
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    </script>
+
   </body>
 </html>
