@@ -1,0 +1,375 @@
+---
+import ProductHeader from "../../components/pexa/ProductHeader.astro";
+import ProductFooter from "../../components/pexa/ProductFooter.astro";
+
+/** Feature Content Interface */
+interface Section {
+  img: string;
+  title: string;
+  text: string;
+  caption: string;
+  tags?: string[];
+}
+
+const sections: Section[] = [
+  {
+    img: "/assets/pexa-ss-1.png",
+    title: "Dream It. Type It.",
+    text: "Transform your wildest ideas into reality with a single sentence. PEXA's advanced AI models understand nuance, lighting, and composition to deliver breathtaking results in seconds.",
+    caption: "Instant Generation",
+    tags: ["Text-to-Image", "Fast", "AI Power"]
+  },
+  {
+    img: "/assets/pexa-ss-2.jpg",
+    title: "Master Every Style",
+    text: "From hyper-realistic portraits to voxel art, watercolor, or cyberpunk aesthetics. Access a professional library of art styles curated to make your visuals stand out.",
+    caption: "Extensive Library",
+    tags: ["Voxel", "Oil Paint", "Cyberpunk", "Anime"]
+  },
+  {
+    img: "/assets/pexa-ss-3.jpg",
+    title: "Precision Control",
+    text: "Don't just generate; create. Adjust aspect ratios, fine-tune lighting settings, and modify color palettes to match your exact vision. You have full control over the creative process.",
+    caption: "Advanced Settings",
+    tags: ["Aspect Ratio", "Lighting", "Guidance"]
+  },
+  {
+    img: "/assets/pexa-ss-4.jpg",
+    title: "Crystal Clear Quality",
+    text: "Export high-resolution images suitable for professional use. PEXA ensures every pixel is crisp, making it the perfect tool for designers, marketers, and content creators.",
+    caption: "HD & 4K Ready",
+    tags: ["High Res", "Detailed", "Pro"]
+  },
+  {
+    img: "/assets/pexa-ss-5.jpg",
+    title: "Your Private Gallery",
+    text: "Organize your creations securely. With iCloud integration, your generated artworks are synced across all your devices and stored privately in your own cloud.",
+    caption: "Sync & Store",
+    tags: ["iCloud", "Privacy", "Gallery"]
+  }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEXA AI • Ashak Studios</title>
+    <meta name="description" content="PEXA — Professional AI Image Generator. Turn text into art in seconds on iOS." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Fonts: 'Outfit' for modern tech feel, 'Inter' for reading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Social Meta -->
+    <meta property="og:title" content="PEXA AI Generator" />
+    <meta property="og:description" content="Create stunning AI art in seconds." />
+    <meta property="og:image" content="/assets/pexa-icon.png" />
+    <meta property="og:type" content="website" />
+
+    <style>
+      /* --- CORE VARIABLES --- */
+      :root {
+        --bg-dark: #020205; /* Deep Black/Purple tint */
+        --accent-primary: #8D46E7; /* Brand Purple */
+        --accent-glow: #D946E7; /* Magenta Glow */
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Outfit', sans-serif; /* Modern, Tech Font */
+        letter-spacing: -0.02em;
+      }
+
+      /* --- BACKGROUND FX --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% -10%, #1a0b2e 0%, #020205 60%);
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.4;
+        animation: floatOrb 10s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 600px; height: 600px; background: var(--accent-primary); top: -20%; left: 20%; }
+      .orb-2 { width: 500px; height: 500px; background: var(--accent-glow); bottom: 10%; right: -10%; animation-delay: -5s; opacity: 0.2; }
+
+      @keyframes floatOrb {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(20px, 40px) scale(1.05); }
+      }
+
+      /* --- LAYOUT UTILS --- */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* --- HERO SECTION --- */
+      .hero {
+        padding: 160px 0 80px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .app-icon-wrapper {
+        position: relative;
+        margin-bottom: 32px;
+      }
+      /* Icon Glow Effect */
+      .app-icon-wrapper::before {
+        content:''; position: absolute;
+        top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 120%; height: 120%;
+        background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+        opacity: 0.5; filter: blur(20px); z-index: -1;
+      }
+
+      .app-icon {
+        width: 120px; height: 120px;
+        border-radius: 28px;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 8vw, 84px);
+        line-height: 1;
+        margin: 0 0 16px;
+        background: linear-gradient(180deg, #fff 20%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+      }
+
+      .kicker {
+        font-size: 20px;
+        color: var(--text-muted);
+        font-weight: 500;
+        max-width: 600px;
+        line-height: 1.5;
+        margin-bottom: 40px;
+      }
+
+      /* Stores */
+      .stores {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 10px;
+      }
+      .store-btn img { height: 50px; width: auto; transition: transform 0.2s; }
+      .store-btn:hover img { transform: translateY(-3px); }
+
+      /* --- FEATURES SECTION --- */
+      .features-section { padding: 100px 0; }
+
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        margin-bottom: 140px;
+      }
+      .feature-row:last-child { margin-bottom: 0; }
+      
+      .feature-row.reverse .text-col { order: 2; }
+      .feature-row.reverse .img-col { order: 1; }
+
+      @media (max-width: 900px) {
+        .feature-row, .feature-row.reverse { grid-template-columns: 1fr; text-align: center; gap: 40px; margin-bottom: 100px; }
+        .feature-row.reverse .text-col { order: 0; }
+        .feature-row.reverse .img-col { order: 1; }
+        .bullets { justify-content: center; }
+      }
+
+      /* Text Column */
+      .caption {
+        font-size: 12px;
+        color: var(--accent-primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      /* Caption Line */
+      .caption::before {
+        content:''; display: block; width: 20px; height: 2px;
+        background: linear-gradient(90deg, var(--accent-primary), transparent);
+      }
+      @media (max-width: 900px) { .caption { justify-content: center; } .caption::before { display: none; } }
+
+      .text-col h3 {
+        font-size: 40px;
+        margin: 0 0 20px 0;
+        color: #fff;
+        font-weight: 700;
+      }
+      
+      .text-col p {
+        font-size: 18px;
+        color: #b0b0b0;
+        line-height: 1.7;
+        margin-bottom: 24px;
+      }
+
+      /* Chips / Tags */
+      .bullets { display: flex; flex-wrap: wrap; gap: 10px; }
+      .chip {
+        font-size: 13px;
+        padding: 8px 16px;
+        border-radius: 100px;
+        background: rgba(141, 70, 231, 0.1);
+        border: 1px solid rgba(141, 70, 231, 0.3);
+        color: #e0ccff;
+        font-weight: 600;
+      }
+
+      /* Image Column (Device Frame) */
+      .img-col { position: relative; perspective: 1000px; }
+      
+      .device-frame {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 4px solid #1a1a20; /* Darker bezel */
+        background: #000;
+        box-shadow: 
+          0 0 0 1px rgba(255,255,255,0.1), /* Outer subtle ring */
+          0 30px 60px -10px rgba(0,0,0,0.6);
+        aspect-ratio: 9/19.5; /* Modern iPhone Ratio */
+        max-width: 340px;
+        margin: 0 auto;
+        transition: transform 0.4s ease;
+      }
+      
+      /* Subtle Screen Glare */
+      .device-frame::after {
+        content: ''; position: absolute; top:0; left:0; right:0; height: 100%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%);
+        pointer-events: none;
+      }
+
+      .device-frame:hover {
+        transform: scale(1.02) rotateY(-2deg);
+        border-color: #2a2a30;
+      }
+      
+      .device-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      /* Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: revealAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes revealAnim { to { opacity: 1; transform: translateY(0); } }
+
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Assuming Generic or Specific Header -->
+    <ProductHeader productName="PEXA" logoSrc="/assets/pexa-icon.png" />
+
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="app-icon-wrapper reveal" style="animation-delay: 0.1s;">
+        <img src="/assets/pexa-icon.png" alt="PEXA Logo" class="app-icon" />
+      </div>
+      
+      <h1 class="reveal" style="animation-delay: 0.2s;">VISUALIZE YOUR<br/>IMAGINATION</h1>
+      <p class="kicker reveal" style="animation-delay: 0.3s;">
+        The advanced AI studio in your pocket. <br/>Create, edit, and inspire.
+      </p>
+
+      <div class="stores reveal" style="animation-delay: 0.4s;">
+        <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
+        <!-- Assuming iOS only based on text, but can add Google Play if needed -->
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <main class="container features-section">
+      {sections.map((s, i) => (
+        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''} reveal`}>
+          
+          <div class="text-col">
+            <div class="caption">{s.caption}</div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+            {s.tags && (
+              <div class="bullets">
+                {s.tags.map(t => <span class="chip">{t}</span>)}
+              </div>
+            )}
+          </div>
+
+          <div class="img-col">
+            <div class="device-frame">
+              <img src={s.img} alt={s.title} loading="lazy" />
+            </div>
+          </div>
+
+        </div>
+      ))}
+    </main>
+
+    <ProductFooter productName="PEXA" logoSrc="/assets/pexa-icon.png" />
+
+    <script is:inline>
+      // Intersection Observer for Scroll Animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    </script>
+
+  </body>
+</html>

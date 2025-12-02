@@ -1,0 +1,303 @@
+---
+import Header from "../../components/company/CompanyHeader.astro";
+import Footer from "../../components/company/CompanyFooter.astro";
+
+const LAST_UPDATED = "December 2, 2025";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transparency & Legal • PEXA</title>
+    <meta name="description" content="Privacy Policy, Terms of Service, and Fair Usage Policy for PEXA AI." />
+    <meta name="theme-color" content="#8D46E7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      /* --- CORE VARIABLES --- */
+      :root {
+        --bg-dark: #020205;
+        --accent: #8D46E7;
+        --accent-glow: #bd00ff;
+        --text-main: #ffffff;
+        --text-muted: #94a3b8;
+        --card-bg: rgba(20, 20, 28, 0.7);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --radius: 24px;
+      }
+
+      * { box-sizing: border-box; }
+      
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+
+      /* --- BACKGROUND FX --- */
+      .background-fx {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #020205 70%);
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.3;
+        animation: floatOrb 12s infinite alternate ease-in-out;
+      }
+      .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -10%; right: -5%; }
+      .orb-2 { width: 400px; height: 400px; background: #5A41E3; bottom: 5%; left: -10%; animation-delay: -3s; }
+
+      @keyframes floatOrb { 0% { transform: translate(0,0); } 100% { transform: translate(30px,50px); } }
+
+      /* --- LAYOUT --- */
+      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+      /* Hero */
+      .hero { padding: 140px 0 60px; text-align: center; }
+      
+      .hero h1 {
+        font-size: clamp(40px, 6vw, 64px);
+        margin: 0 0 16px;
+        background: linear-gradient(180deg, #fff 0%, #d0bfff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(141, 70, 231, 0.3);
+      }
+
+      .meta-badge {
+        display: inline-block; padding: 6px 16px;
+        background: rgba(141, 70, 231, 0.1); border: 1px solid rgba(141, 70, 231, 0.3);
+        border-radius: 100px; color: #dcbfff; font-size: 13px; margin-bottom: 24px;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Navigation (TOC) */
+      .toc { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+      .toc-btn {
+        padding: 12px 24px;
+        border-radius: 100px; background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
+        text-decoration: none; font-weight: 500; font-size: 14px;
+        transition: 0.3s;
+      }
+      .toc-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+
+      /* Card Style */
+      .legal-card {
+        background: var(--card-bg); border: 1px solid var(--card-border);
+        border-radius: var(--radius); padding: 48px; margin-bottom: 40px;
+        backdrop-filter: blur(20px);
+        scroll-margin-top: 100px;
+      }
+
+      .section-title {
+        font-size: 28px; color: #fff; margin: 0 0 24px 0;
+        padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      h3 { font-size: 18px; color: #fff; margin: 32px 0 12px; font-weight: 700; }
+      p, li { font-size: 15px; line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+      ul { margin: 0 0 24px 0; padding-left: 20px; }
+      li { margin-bottom: 8px; }
+      li::marker { color: var(--accent); }
+
+      a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); transition: 0.2s; }
+      a:hover { color: #fff; border-bottom-style: solid; }
+
+      /* Info & Alert Boxes */
+      .box { padding: 24px; border-radius: 16px; margin: 24px 0; }
+      
+      .box-info {
+        background: rgba(141, 70, 231, 0.1);
+        border: 1px solid rgba(141, 70, 231, 0.2);
+      }
+      .box-transparent {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+      }
+
+      .box h4 { margin: 0 0 8px 0; color: #fff; font-size: 16px; font-weight: 600; }
+      .box p { margin: 0; font-size: 14px; color: #d1d5db; }
+
+      /* Animation */
+      .reveal {
+        opacity: 0; transform: translateY(20px);
+        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+      @media(max-width: 700px) {
+        .legal-card { padding: 24px; }
+        .hero h1 { font-size: 40px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="background-fx">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+
+    <Header />
+
+    <main>
+      
+      <!-- HERO -->
+      <section class="hero container">
+        <div class="meta-badge reveal">Last Updated: {LAST_UPDATED}</div>
+        <h1 class="reveal" style="animation-delay:0.1s">TRANSPARENCY & LEGAL</h1>
+        <p class="reveal" style="color:#9ca3af; max-width:600px; margin:0 auto;">
+          We believe you should know exactly how your data is handled and how our limits work. No hidden clauses.
+        </p>
+        
+        <div class="toc reveal" style="animation-delay:0.2s">
+          <a class="toc-btn" href="#privacy">Privacy Policy</a>
+          <a class="toc-btn" href="#fair-use">Fair Usage & Limits</a>
+          <a class="toc-btn" href="#terms">Terms of Service</a>
+        </div>
+      </section>
+
+      <section class="container">
+        
+        <!-- 1. PRIVACY POLICY (DATA & SERVERS) -->
+        <article id="privacy" class="legal-card reveal" style="animation-delay:0.3s">
+          <h2 class="section-title">Privacy Policy</h2>
+          
+          <div class="box box-info">
+            <h4>🛡️ The "No-Server" Architecture</h4>
+            <p>
+              Ashak Studios <strong>does not have a central database</strong> of your chats or generated images. 
+              PEXA is built on a serverless architecture where your data resides in your personal iCloud container.
+            </p>
+          </div>
+
+          <h3>1. Where is my data stored?</h3>
+          <p>
+            Your chat history, prompts, and generated images are synchronized via Apple's <strong>CloudKit Private Database</strong>. 
+            This means only you (via your Apple ID) have access to this data. We (the developers) literally cannot see, access, or mine your personal history.
+          </p>
+
+          <h3>2. How are images generated?</h3>
+          <p>
+            Since we don't have GPU servers, we act as a secure bridge between your device and specialized AI providers. Here is the exact data flow:
+          </p>
+          <ul>
+            <li><strong>Text Analysis:</strong> Your prompt is sent to Google Gemini API purely for translation and safety checks. Data is not used for model training.</li>
+            <li><strong>Image Synthesis:</strong> The processed prompt is sent to either <strong>Fal.ai</strong> (for Turbo Mode) or <strong>Pollinations.ai</strong> (for Standard Mode).</li>
+            <li><strong>Delivery:</strong> The generated image is returned directly to your device and saved to your iCloud. The providers process the request but do not build a profile on you.</li>
+          </ul>
+
+          <h3>3. Analytics</h3>
+          <p>
+            We collect minimal, anonymous usage data (e.g., "App crashed on launch", "User clicked Premium button") to fix bugs. This data is never linked to your identity or your image content.
+          </p>
+        </article>
+
+        <!-- 2. FAIR USAGE & LIMITS (TRANSPARENCY ON LIMITS) -->
+        <article id="fair-use" class="legal-card reveal" style="animation-delay:0.4s">
+          <h2 class="section-title">Fair Usage & Limits Policy</h2>
+          <p>
+            PEXA relies on high-cost GPU computing power. To keep the app sustainable and fast for everyone, we implement specific limits based on your tier.
+          </p>
+
+          <div class="box box-transparent">
+            <h4>🪙 Free Tier Mechanics</h4>
+            <p>
+              <strong>Credits:</strong> You start with 5 fast credits. <br/>
+              <strong>Ad-Supported:</strong> Once credits run out, you can generate images by watching a short ad. <br/>
+              <strong>Speed:</strong> Free generations mostly use our Standard Engine (Pollinations), which may be slower during peak hours.
+            </p>
+          </div>
+
+          <h3>Premium "Smart Limits" (Server Health)</h3>
+          <p>
+            "Unlimited" refers to access, but we must protect the API from bot abuse and overheating. Even as a Premium user, you might encounter cool-down periods if you generate extremely fast.
+          </p>
+          <ul>
+            <li><strong>20 Images Rapidly:</strong> You may be asked to wait ~10 minutes.</li>
+            <li><strong>40 Images Rapidly:</strong> A ~30-minute cool-down may apply.</li>
+            <li><strong>60+ Images Rapidly:</strong> A longer cool-down (~50 mins) ensures fair allocation of GPU resources for other users.</li>
+          </ul>
+          <p>
+            <em>Note: If you hit a limit on the Turbo Engine (Fal.ai), the app may seamlessly switch you to the Standard Engine (Pollinations) so you can keep creating, albeit at a standard speed.</em>
+          </p>
+        </article>
+
+        <!-- 3. TERMS OF SERVICE -->
+        <article id="terms" class="legal-card reveal" style="animation-delay:0.5s">
+          <h2 class="section-title">Terms of Service</h2>
+          
+          <h3>1. Acceptance & Content Safety</h3>
+          <p>
+            By using PEXA, you agree not to generate content that involves Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech. 
+            <strong>Our AI system (Gemini) automatically scans prompts</strong> before generation. If a prompt violates these safety rules, it will be sanitized or rejected.
+          </p>
+
+          <h3>2. Ownership of Generations</h3>
+          <p>
+            <strong>You own the images you create.</strong> Ashak Studios claims no copyright over your creations. You are free to use them for personal or commercial purposes, subject to local laws regarding AI-generated content.
+          </p>
+
+          <h3>3. Subscriptions & Refunds</h3>
+          <p>
+            PEXA offers a renewable subscription processed entirely by Apple.
+          </p>
+          <ul>
+            <li>Payment is charged to your Apple ID.</li>
+            <li>Subscriptions auto-renew unless canceled 24 hours before the end of the period.</li>
+            <li><strong>Refunds:</strong> We do not handle payments directly. All refund requests must be made to Apple Support.</li>
+          </ul>
+
+          <h3>4. "As Is" Disclaimer</h3>
+          <p>
+            AI is an evolving technology. We cannot guarantee that every image will be perfect (e.g., correct number of fingers/limbs). The service is provided "as is" without warranties regarding specific artistic output.
+          </p>
+
+          <h3>5. Contact</h3>
+          <p>
+            For support, bug reports, or legal inquiries:<br/>
+            <a href="mailto:contact@ashak.co">contact@ashak.co</a>
+          </p>
+        </article>
+
+      </section>
+
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
