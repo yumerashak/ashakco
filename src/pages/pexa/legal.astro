@@ -2,7 +2,7 @@
 import Header from "../../components/company/CompanyHeader.astro";
 import Footer from "../../components/company/CompanyFooter.astro";
 
-const LAST_UPDATED = "December 2, 2025";
+const LAST_UPDATED = "December 7, 2025";
 ---
 
 <html lang="en">
@@ -14,7 +14,6 @@ const LAST_UPDATED = "December 2, 2025";
     <meta name="theme-color" content="#8D46E7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -160,12 +159,11 @@ const LAST_UPDATED = "December 2, 2025";
 
     <main>
       
-      <!-- HERO -->
       <section class="hero container">
         <div class="meta-badge reveal">Last Updated: {LAST_UPDATED}</div>
         <h1 class="reveal" style="animation-delay:0.1s">TRANSPARENCY & LEGAL</h1>
         <p class="reveal" style="color:#9ca3af; max-width:600px; margin:0 auto;">
-          We believe you should know exactly how your data is handled and how our limits work. No hidden clauses.
+          We believe in absolute transparency regarding our Hybrid Architecture and Usage Limits. No hidden clauses.
         </p>
         
         <div class="toc reveal" style="animation-delay:0.2s">
@@ -177,99 +175,103 @@ const LAST_UPDATED = "December 2, 2025";
 
       <section class="container">
         
-        <!-- 1. PRIVACY POLICY (DATA & SERVERS) -->
         <article id="privacy" class="legal-card reveal" style="animation-delay:0.3s">
           <h2 class="section-title">Privacy Policy</h2>
           
           <div class="box box-info">
-            <h4>🛡️ The "No-Server" Architecture</h4>
+            <h4>🛡️ The Hybrid Secure Architecture</h4>
             <p>
-              Ashak Studios <strong>does not have a central database</strong> of your chats or generated images. 
-              PEXA is built on a serverless architecture where your data resides in your personal iCloud container.
+              PEXA uses a split-data approach to ensure maximum privacy. Your conversations stay with Apple, while your account limits are managed by our encrypted cloud.
             </p>
           </div>
 
-          <h3>1. Where is my data stored?</h3>
+          <h3>1. Chat History (Stored in iCloud)</h3>
           <p>
-            Your chat history, prompts, and generated images are synchronized via Apple's <strong>CloudKit Private Database</strong>. 
-            This means only you (via your Apple ID) have access to this data. We (the developers) literally cannot see, access, or mine your personal history.
+            Your text prompts, chat history, and generated image references are stored in your personal <strong>iCloud Private Storage</strong>. 
+            This data is encrypted by Apple. We (Ashak Studios) strictly do not have access to read your conversations or see your generated images.
           </p>
 
-          <h3>2. How are images generated?</h3>
+          <h3>2. Account Data (Stored in Secure Cloud)</h3>
           <p>
-            Since we don't have GPU servers, we act as a secure bridge between your device and specialized AI providers. Here is the exact data flow:
+            To manage your credits, subscription status, and usage limits, we use an industry-standard <strong>Secure Cloud Database</strong>. 
+            When you use "Sign in with Apple", <strong>we strictly do not store your email address</strong> or personal details. We only store:
           </p>
           <ul>
-            <li><strong>Text Analysis:</strong> Your prompt is sent to Google Gemini API purely for translation and safety checks. Data is not used for model training.</li>
-            <li><strong>Image Synthesis:</strong> The processed prompt is sent to either <strong>Fal.ai</strong> (for Turbo Mode) or <strong>Pollinations.ai</strong> (for Standard Mode).</li>
-            <li><strong>Delivery:</strong> The generated image is returned directly to your device and saved to your iCloud. The providers process the request but do not build a profile on you.</li>
+            <li>Your unique User ID provided by Apple (to identify your account).</li>
+            <li>Your Pexa credit balance and daily usage counters.</li>
           </ul>
 
-          <h3>3. Analytics</h3>
+          <h3>3. Device Identification</h3>
           <p>
-            We collect minimal, anonymous usage data (e.g., "App crashed on launch", "User clicked Premium button") to fix bugs. This data is never linked to your identity or your image content.
+             To prevent abuse of our free tier and protect the service integrity, we may store a securely <strong>hashed device identifier</strong>. This identifier is anonymized, not linked to your personal chat content, and is used solely to enforce usage policies.
           </p>
+
+          <h3>4. Right to Erasure (Delete Account)</h3>
+          <p>
+            You have full control. If you choose <strong>"Delete Account"</strong> within the app:
+          </p>
+          <ul>
+            <li><strong>Cloud Account:</strong> Your user record and credit data are permanently wiped from our secure servers.</li>
+            <li><strong>iCloud:</strong> The app automatically instructs iCloud to wipe your chat history container associated with PEXA.</li>
+          </ul>
         </article>
 
-        <!-- 2. FAIR USAGE & LIMITS (TRANSPARENCY ON LIMITS) -->
         <article id="fair-use" class="legal-card reveal" style="animation-delay:0.4s">
           <h2 class="section-title">Fair Usage & Limits Policy</h2>
           <p>
-            PEXA relies on high-cost GPU computing power. To keep the app sustainable and fast for everyone, we implement specific limits based on your tier.
+            PEXA relies on high-performance GPU computing power. To ensure the system remains fast and stable for all users, we enforce dynamic limits based on usage intensity.
           </p>
 
           <div class="box box-transparent">
-            <h4>🪙 Free Tier Mechanics</h4>
+            <h4>🪙 Free Tier</h4>
             <p>
-              <strong>Credits:</strong> You start with 5 fast credits. <br/>
-              <strong>Ad-Supported:</strong> Once credits run out, you can generate images by watching a short ad. <br/>
-              <strong>Speed:</strong> Free generations mostly use our Standard Engine (Pollinations), which may be slower during peak hours.
+              Free users operate on a <strong>Credit System</strong>. Once your initial credits are depleted, you may continue generating images by supporting the app (e.g., watching ads).
             </p>
           </div>
 
-          <h3>Premium "Smart Limits" (Server Health)</h3>
+          <h3>Premium Smart Limits & Cooling Down</h3>
           <p>
-            "Unlimited" refers to access, but we must protect the API from bot abuse and overheating. Even as a Premium user, you might encounter cool-down periods if you generate extremely fast.
+            While Premium offers "Unlimited" access to the generation engine, "Unlimited" is defined by <strong>reasonable human use</strong>. To prevent bot abuse and server overheating, the following automated cool-down logic applies to high-frequency users:
           </p>
           <ul>
-            <li><strong>20 Images Rapidly:</strong> You may be asked to wait ~10 minutes.</li>
-            <li><strong>40 Images Rapidly:</strong> A ~30-minute cool-down may apply.</li>
-            <li><strong>60+ Images Rapidly:</strong> A longer cool-down (~50 mins) ensures fair allocation of GPU resources for other users.</li>
+            <li><strong>At 20 Rapid Generations:</strong> A short cool-down of <strong>10 minutes</strong> applies ("System Hot").</li>
+            <li><strong>At 40 Rapid Generations:</strong> A cool-down of <strong>20 minutes</strong> applies ("Cooling Down").</li>
+            <li><strong>At 60 Daily Generations:</strong> To ensure fair resource allocation, a <strong>12-hour reset period</strong> may apply if this limit is hit within a short timeframe.</li>
           </ul>
           <p>
-            <em>Note: If you hit a limit on the Turbo Engine (Fal.ai), the app may seamlessly switch you to the Standard Engine (Pollinations) so you can keep creating, albeit at a standard speed.</em>
+            <em>These counters are reset automatically based on the time passed since your last generation.</em>
           </p>
         </article>
 
-        <!-- 3. TERMS OF SERVICE -->
         <article id="terms" class="legal-card reveal" style="animation-delay:0.5s">
           <h2 class="section-title">Terms of Service</h2>
           
-          <h3>1. Acceptance & Content Safety</h3>
+          <h3>1. Content Safety & AI Moderation</h3>
           <p>
-            By using PEXA, you agree not to generate content that involves Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech. 
-            <strong>Our AI system (Gemini) automatically scans prompts</strong> before generation. If a prompt violates these safety rules, it will be sanitized or rejected.
+            All text prompts are analyzed by our <strong>automated AI safety system</strong> before image generation. 
+            You agree not to attempt to generate content involving Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech. 
+            Such prompts will be automatically sanitized or rejected by the safety protocol.
           </p>
 
-          <h3>2. Ownership of Generations</h3>
+          <h3>2. Authentication & Security</h3>
+          <p>
+            PEXA uses <strong>Sign in with Apple</strong> for secure authentication. You are responsible for maintaining the security of your Apple ID. We are not liable for data loss resulting from a compromised Apple account.
+          </p>
+
+          <h3>3. Ownership of Generations</h3>
           <p>
             <strong>You own the images you create.</strong> Ashak Studios claims no copyright over your creations. You are free to use them for personal or commercial purposes, subject to local laws regarding AI-generated content.
           </p>
 
-          <h3>3. Subscriptions & Refunds</h3>
+          <h3>4. Subscriptions & Refunds</h3>
           <p>
-            PEXA offers a renewable subscription processed entirely by Apple.
+            PEXA offers renewable subscriptions processed entirely by Apple (StoreKit 2).
           </p>
           <ul>
             <li>Payment is charged to your Apple ID.</li>
-            <li>Subscriptions auto-renew unless canceled 24 hours before the end of the period.</li>
-            <li><strong>Refunds:</strong> We do not handle payments directly. All refund requests must be made to Apple Support.</li>
+            <li>Subscriptions auto-renew unless canceled at least 24 hours before the end of the period in your iPhone Settings.</li>
+            <li><strong>Refunds:</strong> As developers, we do not have access to your billing information. All refund requests must be handled directly by Apple Support.</li>
           </ul>
-
-          <h3>4. "As Is" Disclaimer</h3>
-          <p>
-            AI is an evolving technology. We cannot guarantee that every image will be perfect (e.g., correct number of fingers/limbs). The service is provided "as is" without warranties regarding specific artistic output.
-          </p>
 
           <h3>5. Contact</h3>
           <p>
