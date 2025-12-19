@@ -1,6 +1,6 @@
 ---
-import ProductHeader from "../../components/cityguessr/ProductHeader.astro";
-import ProductFooter from "../../components/cityguessr/ProductFooter.astro";
+import Header from "../../components/company/CompanyHeader.astro";
+import Footer from "../../components/company/CompanyFooter.astro";
 
 /** Feature content */
 interface Section {
@@ -16,28 +16,28 @@ const sections: Section[] = [
     img: "/assets/cityguessr-ss-1.jpg",
     title: "Urban Exploration",
     text: "Walk the streets virtually. Look at architecture, signs, and landmarks. Can you identify the city just by its vibe?",
-    caption: "Virtual Tourism.",
+    caption: "Virtual Tourism",
     tags: ["Street View", "Travel", "Explore"]
   },
   {
     img: "/assets/cityguessr-ss-2.jpg",
     title: "Pinpoint Precision",
     text: "Don't just guess the country. Find the exact city. Drop your pin on the map and see how close you really are.",
-    caption: "Close Enough?",
+    caption: "High Accuracy",
     tags: ["Maps", "Accuracy", "Points"]
   },
   {
     img: "/assets/cityguessr-ss-3.jpg",
     title: "Unlock Hints",
     text: "Lost in a concrete jungle? Use hints like License Plates, Language, or famous Landmarks to get back on track.",
-    caption: "Detective Mode.",
+    caption: "Detective Mode",
     tags: ["Clues", "Landmarks", "Logic"]
   },
   {
     img: "/assets/cityguessr-ss-4.jpg",
     title: "City Collection",
     text: "From Paris to Tokyo, collect cities in your travel log. Complete challenges and become the ultimate world traveler.",
-    caption: "Global Status.",
+    caption: "Global Status",
     tags: ["Collection", "Achievements", "Travel"]
   }
 ];
@@ -47,123 +47,88 @@ const sections: Section[] = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CityGuessr • Ashak Studios</title>
+    <title>CityGuessr | Ashak Studios</title>
     <meta name="description" content="CityGuessr — Guess the city from photos and landmarks. Play on iOS and Android." />
-    <meta name="theme-color" content="#0EA5E9" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts: Luckiest Guy for fun, Inter for readability -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Social -->
-    <meta property="og:title" content="CityGuessr" />
-    <meta property="og:description" content="Guess the city. Explore the world." />
-    <meta property="og:image" content="/assets/cityguessr-icon.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #050507;
-        --city-blue: #0EA5E9; /* Cyan/Blue Neon */
-        --text-main: #ffffff;
-        --text-muted: #9ca3af;
-        --card-bg: rgba(20, 20, 28, 0.6);
-        --card-border: rgba(255, 255, 255, 0.08);
-        --radius: 24px;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D; /* Bronz */
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        
+        --shadow-lg: 0 15px 30px -5px rgba(44, 36, 32, 0.1);
       }
 
       * { box-sizing: border-box; }
       
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
       }
 
-      h1, h2, h3, .game-font {
-        font-family: 'Luckiest Guy', cursive;
-        letter-spacing: 1px;
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
 
-      /* --- BACKGROUND FX (City Lights) --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 0%, #0a1116 0%, #050507 70%);
-        overflow: hidden;
-      }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(90px);
-        opacity: 0.3;
-        animation: floatOrb 12s infinite alternate ease-in-out;
-      }
-      .orb-1 { width: 600px; height: 600px; background: var(--city-blue); top: -15%; left: 20%; }
-      .orb-2 { width: 400px; height: 400px; background: #6366f1; bottom: 5%; right: -5%; animation-delay: -5s; }
-
-      @keyframes floatOrb {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(30px, 50px); }
-      }
-
-      /* --- LAYOUT --- */
       .container {
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px;
-        position: relative;
-        z-index: 2;
       }
 
       /* --- HERO SECTION --- */
       .hero {
-        padding: 120px 0 60px;
+        padding: 100px 0 80px;
         text-align: center;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        border-bottom: 1px solid #E6DFD5;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
 
-      .logo-wrap {
-        position: relative;
-        margin-bottom: 24px;
-        animation: pulseLogo 4s ease-in-out infinite;
-      }
-      @keyframes pulseLogo {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.03); }
-      }
-
       .app-icon {
         width: 110px; height: 110px;
-        border-radius: 26px;
-        box-shadow: 0 15px 40px rgba(14, 165, 233, 0.3); /* Blue glow */
-        border: 2px solid rgba(255,255,255,0.1);
+        border-radius: 24px;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid #E6DFD5;
+        margin-bottom: 24px;
+        background-color: #fff;
+        object-fit: cover;
       }
 
       .hero h1 {
-        font-size: clamp(44px, 7vw, 72px);
-        margin: 0;
-        background: linear-gradient(180deg, #fff 0%, #a5e3ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+        font-size: clamp(42px, 6vw, 72px);
+        margin: 0 0 16px;
+        color: #1A1410;
+        letter-spacing: -0.5px;
       }
 
       .kicker {
-        font-size: 19px;
-        color: var(--text-muted);
-        margin-top: 12px;
-        font-weight: 600;
+        font-size: 18px;
+        color: var(--color-text-muted);
+        margin-bottom: 32px;
+        font-weight: 400;
+        max-width: 600px;
       }
 
       /* STORES */
@@ -171,144 +136,129 @@ const sections: Section[] = [
         display: flex;
         gap: 16px;
         justify-content: center;
-        margin-top: 32px;
-        flex-wrap: wrap;
+        margin-bottom: 40px;
       }
-      .store-btn {
-        transition: transform 0.2s, filter 0.2s;
-        display: block;
-        height: 50px;
-      }
-      .store-btn img { height: 100%; width: auto; display: block; }
-      .store-btn:hover {
-        transform: translateY(-3px);
-        filter: brightness(1.1);
-      }
+      .store-btn img { height: 44px; width: auto; transition: transform 0.2s; }
+      .store-btn:hover img { transform: translateY(-2px); }
 
-      /* --- FEATURES (ZigZag) --- */
-      .features-section { padding: 80px 0; }
+      /* --- FEATURES SECTION --- */
+      .features-section { padding: 100px 0; }
 
       .feature-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        gap: 80px;
         align-items: center;
-        margin-bottom: 100px;
+        margin-bottom: 120px;
       }
       .feature-row:last-child { margin-bottom: 0; }
+      
       .feature-row.reverse .text-col { order: 2; }
       .feature-row.reverse .img-col { order: 1; }
 
       @media (max-width: 900px) {
-        .feature-row, .feature-row.reverse { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+        .feature-row, .feature-row.reverse { grid-template-columns: 1fr; text-align: center; gap: 40px; margin-bottom: 100px; }
         .feature-row.reverse .text-col { order: 0; }
         .feature-row.reverse .img-col { order: 1; }
-        .text-col { align-items: center; }
         .bullets { justify-content: center; }
+        .caption { justify-content: center; }
       }
 
-      .text-col h3 {
-        font-size: 32px;
-        margin: 0 0 16px 0;
-        color: #fff;
-        text-transform: uppercase;
-      }
+      /* Text Column */
       .caption {
-        font-size: 13px;
-        color: var(--city-blue);
+        font-family: 'Lato', sans-serif;
+        font-size: 12px;
+        color: var(--color-primary);
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 10px;
-        font-family: 'Inter', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
       }
       .caption::before {
-        content:''; display:block; width:16px; height:2px; background:var(--city-blue);
+        content:''; display: block; width: 30px; height: 1px;
+        background: var(--color-primary);
       }
+      @media (max-width: 900px) { .caption::before { display: none; } }
 
+      .text-col h3 {
+        font-size: 36px;
+        margin: 0 0 20px 0;
+        line-height: 1.2;
+      }
+      
       .text-col p {
-        font-size: 17px;
-        color: #d1d5db;
-        line-height: 1.6;
-        margin-bottom: 20px;
+        font-size: 16px;
+        color: var(--color-text-muted);
+        line-height: 1.7;
+        margin-bottom: 24px;
       }
 
+      /* Tags */
       .bullets { display: flex; flex-wrap: wrap; gap: 10px; }
       .chip {
-        font-size: 13px;
+        font-family: 'Lato', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
         padding: 6px 14px;
-        border-radius: 100px;
-        background: rgba(14, 165, 233, 0.1);
-        border: 1px solid rgba(14, 165, 233, 0.3);
-        color: #fff;
-        font-weight: 600;
-        font-family: 'Inter', sans-serif;
+        border-radius: 4px;
+        background: #F5F0E6;
+        color: #7D7065;
+        border: 1px solid #E6DFD5;
       }
 
-      /* Device Frame */
+      /* Image Column (Clean Frame) */
       .img-col { position: relative; }
+      
       .device-frame {
         position: relative;
-        border-radius: 20px;
+        border-radius: 24px;
         overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 6px solid #FFFFFF;
         background: #000;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        aspect-ratio: 9/16;
+        box-shadow: 
+          0 0 0 1px #E6DFD5,
+          var(--shadow-lg);
+        aspect-ratio: 9/19.5; /* Portrait */
         max-width: 320px;
         margin: 0 auto;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s ease;
       }
+      
       .device-frame:hover {
-        transform: scale(1.02);
-        border-color: var(--city-blue);
+        transform: translateY(-8px);
       }
+      
       .device-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-      /* Animation */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: revealAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      }
-      @keyframes revealAnim { to { opacity: 1; transform: translateY(0); } }
 
     </style>
   </head>
 
   <body>
-    
-    <!-- Background FX -->
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
 
-    <ProductHeader productName="CityGuessr" logoSrc="/assets/cityguessr-icon.png" />
+    <Header />
 
-    <!-- HERO -->
-    <section class="hero container">
-      <div class="logo-wrap reveal" style="animation-delay: 0.1s;">
+    <section class="hero">
+      <div class="container">
         <img src="/assets/cityguessr-icon.png" alt="CityGuessr Logo" class="app-icon" />
-      </div>
-      
-      <h1 class="reveal" style="animation-delay: 0.2s;">CITY GUESSR</h1>
-      <p class="kicker reveal" style="animation-delay: 0.3s;">Guess the City • Explore the World</p>
+        
+        <h1>CityGuessr</h1>
+        <p class="kicker">Guess the City • Explore the World</p>
 
-      <!-- Stores -->
-      <div class="stores reveal" id="stores" style="animation-delay: 0.4s;">
-        <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
-        <a href="#" class="store-btn"><img src="/assets/googleplay.png" alt="Get it on Google Play" /></a>
+        <div class="stores">
+          <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
+          <a href="#" class="store-btn"><img src="/assets/googleplay.png" alt="Get it on Google Play" /></a>
+        </div>
       </div>
     </section>
 
-    <!-- FEATURES -->
     <main class="container features-section">
       {sections.map((s, i) => (
-        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''} reveal`}>
+        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''}`}>
           
           <div class="text-col">
             <div class="caption">{s.caption}</div>
@@ -331,24 +281,6 @@ const sections: Section[] = [
       ))}
     </main>
 
-    <ProductFooter productName="CityGuessr" logoSrc="/assets/cityguessr-icon.png" />
-
-    <!-- Scroll Reveal Script -->
-    <script is:inline>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-      });
-    </script>
-
+    <Footer />
   </body>
 </html>

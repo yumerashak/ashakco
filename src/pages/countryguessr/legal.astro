@@ -9,155 +9,166 @@ const EFFECTIVE_DATE = "November 10, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legal Protocols • CountryGuessr</title>
+    <title>Legal Protocols | CountryGuessr</title>
     <meta name="description" content="Privacy Policy and Terms of Service for CountryGuessr." />
-    <meta name="theme-color" content="#2FB3A2" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #030304;
-        --geo-teal: #2FB3A2;
-        --text-main: #ffffff;
-        --text-muted: #9ca3af;
-        --card-bg: rgba(20, 20, 28, 0.75);
-        --card-border: rgba(255, 255, 255, 0.08);
-        --radius: 24px;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
       }
 
       * { box-sizing: border-box; }
-      
       html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
       }
 
-      h1, h2, h3, h4 { font-family: 'Pixelify Sans', sans-serif; }
-
-      /* --- BACKGROUND FX --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 0%, #0d1816 0%, #050507 70%);
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.25;
-        animation: floatOrb 12s infinite alternate ease-in-out;
+
+      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 100px 0 80px;
+        text-align: center;
+        border-bottom: 1px solid #E6DFD5;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
       }
-      .orb-1 { width: 500px; height: 500px; background: var(--geo-teal); top: -15%; left: -10%; }
-      .orb-2 { width: 400px; height: 400px; background: #8D46E7; bottom: 10%; right: -10%; animation-delay: -4s; }
-
-      @keyframes floatOrb { 0% { transform: translate(0,0); } 100% { transform: translate(40px,40px); } }
-
-      /* --- LAYOUT --- */
-      .container { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-
-      .hero { padding: 140px 0 60px; text-align: center; }
+      
       .hero h1 {
-        font-size: clamp(40px, 6vw, 72px);
+        font-size: clamp(36px, 5vw, 56px);
         margin: 0 0 16px;
-        background: linear-gradient(180deg, #fff 0%, #99e6d9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #1A1410;
       }
 
       .date-badge {
         display: inline-block; padding: 6px 16px;
-        background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-        border-radius: 100px; color: var(--text-muted); font-size: 13px; margin-bottom: 32px;
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-bottom: 24px;
       }
 
       /* TOC */
-      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
       .toc-btn {
-        display: flex; align-items: center; gap: 8px; padding: 12px 24px;
-        border-radius: 100px; background: rgba(47, 179, 162, 0.1);
-        border: 1px solid rgba(47, 179, 162, 0.3); color: #b3fff6;
-        text-decoration: none; font-weight: 600; font-size: 14px;
-        transition: 0.3s; backdrop-filter: blur(10px);
+        padding: 10px 24px;
+        border-radius: 4px;
+        background: #FFFFFF;
+        border: 1px solid #D6CFC5;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
       }
-      .toc-btn:hover { background: var(--geo-teal); color: #fff; }
+      .toc-btn:hover {
+        background: #FDFBF7;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
 
-      /* CARD */
+      /* --- LEGAL CARD --- */
       .legal-card {
-        background: var(--card-bg); border: 1px solid var(--card-border);
-        border-radius: var(--radius); padding: 48px; margin-bottom: 60px;
-        backdrop-filter: blur(20px);
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 60px;
+        margin: 60px 0;
+        box-shadow: var(--shadow-sm);
+        scroll-margin-top: 40px;
       }
 
       .section-title {
-        font-size: 32px; color: #fff; margin: 0 0 8px 0;
-        padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 32px;
+        margin: 0 0 24px 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F0EBE3;
       }
-      .meta-info { font-size: 13px; color: var(--text-muted); font-style: italic; display: block; margin-bottom: 32px; }
+      
+      .meta-info {
+        font-size: 14px; color: var(--color-text-muted);
+        font-style: italic; display: block; margin-top: -16px; margin-bottom: 32px;
+      }
 
-      h3 { font-size: 20px; color: #e5e7eb; margin: 32px 0 12px; }
-      p, li { font-size: 16px; line-height: 1.7; color: #d1d5db; margin-bottom: 16px; }
+      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
+      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
       ul { margin: 0 0 24px 0; padding-left: 20px; }
       li { margin-bottom: 8px; }
-      li::marker { color: var(--geo-teal); }
+      
+      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
+      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
 
-      a { color: var(--geo-teal); text-decoration: none; border-bottom: 1px dotted; }
-      a:hover { border-bottom-style: solid; }
-
-      /* Highlighting */
+      /* Info Box (Ad Rules) */
       .highlight-box {
-        background: rgba(47, 179, 162, 0.05);
-        border: 1px solid rgba(47, 179, 162, 0.3);
-        border-radius: 16px;
+        background: #F9F6F1;
+        border: 1px solid #E6DFD5;
+        border-radius: 4px;
         padding: 24px;
-        margin-top: 40px;
+        margin-top: 32px;
+        border-left: 3px solid var(--color-primary);
       }
-      .highlight-box h3 { margin-top: 0; color: #fff; }
+      .highlight-box h3 { margin-top: 0; color: var(--color-primary); font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Lato', sans-serif; }
+      .highlight-box p { color: #5D5550; font-size: 15px; margin: 0; }
 
-      /* Animation */
-      .reveal {
-        opacity: 0; transform: translateY(20px);
-        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      @media(max-width: 768px) {
+        .legal-card { padding: 32px; margin: 40px 0; }
+        .hero h1 { font-size: 32px; }
       }
-      @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
   </head>
   <body>
-
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
 
     <Header />
 
     <main>
       
-      <!-- HERO -->
-      <section class="hero container">
-        <div class="date-badge reveal">Effective: {EFFECTIVE_DATE}</div>
-        <h1 class="reveal" style="animation-delay:0.1s">LEGAL PROTOCOLS</h1>
-        
-        <div class="toc reveal" style="animation-delay:0.2s">
-          <a class="toc-btn" href="#privacy">Privacy Policy</a>
-          <a class="toc-btn" href="#terms">Terms of Service</a>
+      <section class="hero">
+        <div class="container">
+          <span class="date-badge">Effective: {EFFECTIVE_DATE}</span>
+          <h1>Legal Protocols</h1>
+          
+          <div class="toc">
+            <a class="toc-btn" href="#privacy">Privacy Policy</a>
+            <a class="toc-btn" href="#terms">Terms of Service</a>
+          </div>
         </div>
       </section>
 
-      <!-- PRIVACY -->
       <section class="container">
-        <article id="privacy" class="legal-card reveal" style="animation-delay:0.3s">
+        <article id="privacy" class="legal-card">
           <h2 class="section-title">Privacy Policy</h2>
           <span class="meta-info">Applies to: “CountryGuessr” for iOS and Android.</span>
 
@@ -166,7 +177,7 @@ const EFFECTIVE_DATE = "November 10, 2025";
 
           <div class="highlight-box">
             <h3>Important: Ad Threshold</h3>
-            <p>Ads are provided by <strong>Google AdMob</strong> and only appear after you have correctly identified <strong>32 cities</strong>. Before this milestone, the game is ad-free.</p>
+            <p>Ads are provided by <strong>Google AdMob</strong> and only appear after you have correctly identified <strong>32 cities</strong>. Before this milestone, the game is completely ad-free.</p>
           </div>
 
           <h3>2) Data We Do <em>Not</em> Collect</h3>
@@ -177,7 +188,7 @@ const EFFECTIVE_DATE = "November 10, 2025";
           </ul>
 
           <h3>3) Third-Party Ads (AdMob)</h3>
-          <p>When ads are shown (after 32 cities), Google AdMob may process device info, IP address, and approximate location to serve ads. This is governed by Google’s privacy policy.</p>
+          <p>When ads are shown (after the 32-city milestone), Google AdMob may process device info, IP address, and approximate location to serve ads. This is governed by Google’s privacy policy.</p>
 
           <h3>4) Purchases</h3>
           <p>We offer an optional "Pro" upgrade to remove ads. Payments are processed by Apple/Google. We do not see your credit card info.</p>
@@ -189,26 +200,25 @@ const EFFECTIVE_DATE = "November 10, 2025";
           <p>Questions? <a href="mailto:contact@ashak.co">contact@ashak.co</a>.</p>
         </article>
 
-        <!-- TERMS -->
-        <article id="terms" class="legal-card reveal" style="animation-delay:0.1s">
+        <article id="terms" class="legal-card">
           <h2 class="section-title">Terms of Service</h2>
           <span class="meta-info">Effective Date: {EFFECTIVE_DATE}</span>
 
           <h3>1) License</h3>
-          <p>Personal, non-exclusive license for entertainment. No reverse engineering.</p>
+          <p>We grant you a personal, non-exclusive license for entertainment purposes only. No reverse engineering or redistribution is allowed.</p>
 
           <h3>2) Ads & Payments</h3>
           <ul>
-            <li><strong>Ads:</strong> Enable after 32 correct guesses.</li>
-            <li><strong>Pro Upgrade:</strong> Removes ads. Optional.</li>
-            <li><strong>Refunds:</strong> Managed by platform (Apple/Google).</li>
+            <li><strong>Ads:</strong> Enable only after 32 correct guesses.</li>
+            <li><strong>Pro Upgrade:</strong> A one-time purchase that removes ads permanently.</li>
+            <li><strong>Refunds:</strong> Managed by the platform (Apple/Google) according to their policies.</li>
           </ul>
 
           <h3>3) Connectivity</h3>
-          <p>Internet required for ads and purchase validation. Offline play is possible but features may be limited.</p>
+          <p>Internet connection is required for serving ads and validating purchases. Offline play is possible but some features may be limited.</p>
 
           <h3>4) Liability</h3>
-          <p>Provided “as is”. No warranties implied.</p>
+          <p>The game is provided “as is”. We disclaim warranties of merchantability and fitness for a particular purpose.</p>
 
           <h3>5) Contact</h3>
           <p>Support: <a href="mailto:contact@ashak.co">contact@ashak.co</a></p>
@@ -218,21 +228,5 @@ const EFFECTIVE_DATE = "November 10, 2025";
     </main>
 
     <Footer />
-
-    <script is:inline>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-      });
-    </script>
   </body>
 </html>

@@ -9,263 +9,235 @@ const EFFECTIVE_DATE = "September 21, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legal Center • Ashak Studios</title>
+    <title>Legal Center | Ashak Studios</title>
     <meta name="description" content="Privacy Policy and Terms of Use for Ashak Studios." />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES & RESET (Homepage ile Aynı) --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #030304;
-        --accent-primary: #8D46E7;
-        --accent-secondary: #5A41E3;
-        --text-main: #ffffff;
-        --text-muted: #9ca3af; /* Daha okunaklı gri */
-        --card-bg: rgba(20, 20, 28, 0.75); /* Metin için biraz daha koyu opaklık */
-        --card-border: rgba(255, 255, 255, 0.08);
-        --radius: 24px;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D; /* Bronz */
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(44, 36, 32, 0.08);
       }
 
       * { box-sizing: border-box; }
-      
       html { scroll-behavior: smooth; }
-
+      
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
       }
 
-      h1, h2, h3, .brand-font {
-        font-family: 'Pixelify Sans', sans-serif;
+      h1, h2, h3, h4 {
+        margin: 0;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
 
-      /* --- BACKGROUND FX --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 70%);
-        overflow: hidden;
-      }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(90px);
-        opacity: 0.35;
-        animation: floatOrb 12s infinite alternate ease-in-out;
-      }
-      .orb-1 { width: 500px; height: 500px; background: var(--accent-primary); top: -15%; left: -10%; }
-      .orb-2 { width: 400px; height: 400px; background: var(--accent-secondary); bottom: 10%; right: -10%; animation-delay: -4s; }
-
-      @keyframes floatOrb {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(40px, 60px); }
-      }
-
-      /* --- LAYOUT --- */
       .container {
         max-width: 900px; /* Okuma kolaylığı için biraz daraltıldı */
         margin: 0 auto;
         padding: 0 24px;
-        position: relative;
-        z-index: 2;
       }
 
-      .section { padding: 40px 0 80px; }
-
-      /* --- HERO --- */
+      /* --- HERO SECTION --- */
       .hero {
-        padding: 140px 0 60px;
+        padding: 100px 0 60px;
         text-align: center;
-      }
-      
-      .hero h1 {
-        font-size: clamp(40px, 6vw, 72px);
-        margin: 0 0 16px;
-        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px rgba(141, 70, 231, 0.2);
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        border-bottom: 1px solid #E6DFD5;
       }
 
-      .hero .date {
+      .hero-label {
         display: inline-block;
-        padding: 6px 14px;
-        border-radius: 100px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: var(--text-muted);
-        font-size: 13px;
-        font-family: 'Inter', sans-serif;
-        margin-bottom: 30px;
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin-bottom: 24px;
       }
 
-      /* --- TOC CHIPS --- */
-      .toc {
+      .hero h1 {
+        font-size: clamp(36px, 5vw, 56px);
+        margin-bottom: 32px;
+        color: #1A1410;
+      }
+
+      /* --- TOC NAVIGATION --- */
+      .toc-wrapper {
         display: flex;
         justify-content: center;
         gap: 16px;
         flex-wrap: wrap;
       }
-      .toc-link {
-        display: flex;
+
+      .toc-btn {
+        display: inline-flex;
         align-items: center;
-        gap: 8px;
         padding: 10px 24px;
-        border-radius: 100px;
-        background: rgba(141, 70, 231, 0.1);
-        border: 1px solid rgba(141, 70, 231, 0.3);
-        color: #dcbfff;
+        background: #FFFFFF;
+        border: 1px solid #D6CFC5;
+        border-radius: 4px;
+        color: var(--color-text-muted);
         text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s ease;
       }
-      .toc-link:hover {
-        background: var(--accent-primary);
-        color: #fff;
-        box-shadow: 0 0 20px rgba(141, 70, 231, 0.4);
+
+      .toc-btn:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        background: #FDFBF7;
         transform: translateY(-2px);
       }
 
-      /* --- DOC CARD (The Paper) --- */
-      .doc-card {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 48px;
-        margin-bottom: 40px;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 50px -10px rgba(0,0,0,0.5);
-        scroll-margin-top: 100px; /* Header payı */
+      /* --- CONTENT SECTION --- */
+      .content-section {
+        padding: 80px 0;
       }
 
-      /* Doc Typography */
+      /* --- LEGAL CARD --- */
+      .legal-card {
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 60px;
+        margin-bottom: 60px;
+        box-shadow: var(--shadow-sm);
+        scroll-margin-top: 100px;
+      }
+
+      .legal-card:last-child {
+        margin-bottom: 0;
+      }
+
       .doc-title {
         font-size: 32px;
-        color: var(--accent-primary);
-        margin-top: 0;
         margin-bottom: 8px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 20px;
-      }
-      
-      .meta-scope {
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-bottom: 32px;
-        font-style: italic;
-        display: block;
+        color: var(--color-text-main);
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F0EBE3;
       }
 
-      .doc-card h3 {
+      .meta-scope {
+        display: block;
+        font-family: 'Lato', sans-serif;
+        font-size: 13px;
+        color: #8C6A5D; /* Bronz aksan */
+        margin-top: -12px;
+        margin-bottom: 40px;
+        font-style: italic;
+        background: #F9F6F1;
+        padding: 10px 16px;
+        border-radius: 4px;
+        border-left: 3px solid #8C6A5D;
+      }
+
+      .legal-card h3 {
         font-size: 20px;
-        color: #fff;
-        margin: 32px 0 12px;
+        margin: 40px 0 16px;
+        color: #4A3F39;
       }
-      
-      .doc-card p, .doc-card li {
+
+      .legal-card p, .legal-card li {
         font-size: 16px;
-        line-height: 1.7;
-        color: #d1d5db; /* Hafif kırık beyaz */
+        color: var(--color-text-muted);
         margin-bottom: 16px;
+        line-height: 1.8;
+      }
+
+      .legal-card ul {
+        margin: 0 0 24px 0;
+        padding-left: 20px;
       }
       
-      .doc-card ul {
-        margin: 0;
-        padding-left: 24px;
-        margin-bottom: 16px;
-      }
-      .doc-card li {
+      .legal-card li {
         margin-bottom: 8px;
       }
-      .doc-card a {
-        color: var(--accent-primary);
+
+      .legal-card a {
+        color: var(--color-primary);
         text-decoration: none;
-        border-bottom: 1px dotted var(--accent-primary);
-        transition: 0.2s;
+        border-bottom: 1px dotted var(--color-border);
+        transition: all 0.2s;
+        font-weight: 700;
       }
-      .doc-card a:hover {
-        color: #fff;
+
+      .legal-card a:hover {
+        color: var(--color-primary-dark);
         border-bottom-style: solid;
       }
-      
+
       code {
-        background: rgba(255,255,255,0.1);
+        background: #F5F0E6; /* Latte rengi */
+        color: #5D4B42;
         padding: 2px 6px;
         border-radius: 4px;
         font-size: 0.9em;
-        font-family: monospace;
-        color: #fff;
+        font-family: 'Menlo', 'Monaco', monospace;
       }
 
-      /* --- ANIMATION --- */
-      .reveal {
-        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      @keyframes fadeIn {
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .reveal:nth-child(1) { animation-delay: 0.1s; }
-      .reveal:nth-child(2) { animation-delay: 0.2s; }
-      .reveal:nth-child(3) { animation-delay: 0.3s; }
-
-      /* Responsive */
-      @media (max-width: 700px) {
-        .doc-card { padding: 24px; }
-        .hero h1 { font-size: 42px; }
-        .toc { flex-direction: column; padding: 0 40px; }
-        .toc-link { justify-content: center; }
+      @media (max-width: 768px) {
+        .legal-card { padding: 32px; }
+        .hero h1 { font-size: 32px; }
+        .toc-wrapper { flex-direction: column; align-items: stretch; padding: 0 40px; }
+        .toc-btn { justify-content: center; }
       }
     </style>
   </head>
   <body>
 
-    <!-- Background FX -->
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-
     <Header />
 
     <main>
       
-      <!-- Hero Section -->
-      <section class="hero container">
-        <span class="date reveal">Effective: {EFFECTIVE_DATE}</span>
-        <h1 class="reveal">LEGAL & TERMS</h1>
-        
-        <div class="toc reveal">
-          <a href="#privacy" class="toc-link">
-            <span>↓</span> Privacy Policy
-          </a>
-          <a href="#terms" class="toc-link">
-            <span>↓</span> Terms of Use
-          </a>
+      <section class="hero">
+        <div class="container">
+          <span class="hero-label">Effective: {EFFECTIVE_DATE}</span>
+          <h1>Legal Center</h1>
+          
+          <div class="toc-wrapper">
+            <a href="#privacy" class="toc-btn">Privacy Policy</a>
+            <a href="#terms" class="toc-btn">Terms of Use</a>
+          </div>
         </div>
       </section>
 
-      <!-- Content Section -->
-      <section class="container">
+      <div class="container content-section">
         
-        <!-- Privacy Policy Card -->
-        <article id="privacy" class="doc-card reveal">
+        <article id="privacy" class="legal-card">
           <h2 class="doc-title">Privacy Policy</h2>
-          <span class="meta-scope">Scope: This policy applies to the promotional website located at <code>ashak.co</code>. It does not cover our apps or app stores.</span>
+          <div class="meta-scope">
+            <strong>Scope:</strong> This policy applies to the promotional website located at <code>ashak.co</code>. It does not cover our apps or app stores.
+          </div>
 
           <h3>1) Summary</h3>
           <p>
@@ -303,8 +275,7 @@ const EFFECTIVE_DATE = "September 21, 2025";
           </p>
         </article>
 
-        <!-- Terms of Use Card -->
-        <article id="terms" class="doc-card reveal">
+        <article id="terms" class="legal-card">
           <h2 class="doc-title">Terms of Use</h2>
           
           <h3>1) About These Terms</h3>
@@ -351,7 +322,7 @@ const EFFECTIVE_DATE = "September 21, 2025";
           </p>
         </article>
 
-      </section>
+      </div>
     </main>
 
     <Footer />

@@ -4,190 +4,135 @@ const year = new Date().getFullYear();
 ---
 
 <style>
-  .foot {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: #030304;
-    color: #EDEDF7;
-    margin-top: 80px;
-    padding: 60px 0 30px;
-    font-family: 'Inter', sans-serif;
+  .footer-section {
+    background-color: #F5F0E6; /* Koyu Krem/Latte */
+    border-top: 1px solid #E6DFD5;
+    padding: 80px 0 30px;
+    font-family: 'Lato', sans-serif;
+    color: #5D5550;
   }
 
-  .inner {
+  .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 24px;
     display: grid;
     gap: 40px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  /* Brand Column */
+  .brand-col p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 300px;
+    color: #8B7E74;
   }
   
-  /* Grid Layout */
-  @media (min-width: 900px) {
-    .inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
-  }
-
-  /* Typography */
-  h4 {
-    margin: 0 0 20px;
-    font-family: 'Pixelify Sans', sans-serif;
+  .brand-title {
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 18px;
-    color: #fff;
-    letter-spacing: 0.5px;
+    font-size: 24px;
+    color: #2C2420;
+    letter-spacing: -0.5px;
   }
 
-  p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #9ca3af;
-    margin: 0 0 20px;
+  /* Links Columns */
+  h4 {
+    color: #2C2420;
+    font-family: 'Playfair Display', serif; /* Başlıklar Serif */
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 24px;
+    margin-top: 0;
   }
 
-  /* Links */
   ul {
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
-  
+
   a {
-    color: #9ca3af;
+    color: #6B635E;
     text-decoration: none;
     font-size: 14px;
-    transition: all 0.2s ease;
-    display: inline-block;
+    transition: color 0.2s;
   }
-  
+
   a:hover {
-    color: #fff;
-    transform: translateX(4px);
-    text-shadow: 0 0 10px rgba(141, 70, 231, 0.4);
+    color: #8C6A5D; /* Bronze Accent */
   }
 
-  /* Brand Section */
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .brand img {
-    height: 24px;
-    width: auto;
-    object-fit: contain;
-  }
-  .brand-name {
-    font-family: 'Pixelify Sans', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #fff;
-  }
-
-  /* Social Icons (Row) */
-  .social {
-    display: flex;
-    gap: 12px;
-    margin-top: 10px;
-  }
-  .social-icon {
-    width: 36px; height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #ccc;
-    transition: all 0.2s;
-  }
-  .social-icon:hover {
-    background: #8D46E7;
-    border-color: #8D46E7;
-    color: #fff;
-    transform: translateY(-3px);
-  }
-  
-  .icon { width: 18px; height: 18px; display: block; }
-  .icon--stroke { stroke: currentColor; fill: none; stroke-width: 2; }
-  .icon--fill { fill: currentColor; }
-
-  /* Copy */
-  .copy {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    margin-top: 40px;
-    padding-top: 20px;
-    font-size: 12px;
-    color: #52525b;
-    grid-column: 1 / -1;
+  /* Bottom Bar */
+  .bottom-bar {
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 24px 24px 0;
+    border-top: 1px solid #E6DFD5;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
+    font-size: 13px;
+    color: #9C9288;
   }
 </style>
 
-<footer class="foot" id="contact">
-  <div class="inner">
+<footer class="footer-section">
+  <div class="container">
     
-    <!-- Brand Column -->
-    <section>
-      <div class="brand">
-        <img src="/assets/companylogo2.png" alt="Ashak Studios Logo" />
-      </div>
-      <p style="max-width: 36ch;">
-        App development studio. Transforming ideas into accessible, fun, and memorable mobile experiences.
+    <div class="brand-col">
+      <div class="brand-title">Ashak Studios.</div>
+      <p>
+        Building the next generation of mobile experiences with precision, creativity, and cutting-edge technology.
       </p>
-      
-      <div class="social" aria-label="Social links">
-        <a href="https://www.instagram.com/ashak.co/" class="social-icon" aria-label="Instagram" target="_blank">
-          <svg class="icon icon--stroke" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.25"></circle></svg>
-        </a>
-        <a href="https://www.youtube.com/@ashakstudios" class="social-icon" aria-label="YouTube" target="_blank">
-          <svg class="icon icon--fill" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- Navigation Column -->
-    <section>
-      <h4>Company</h4>
-      <ul>
-        <li><a href="/#about">About Us</a></li>
-        <li><a href="/#apps">Apps</a></li>
-        <li><a href="/careers">Careers</a></li>
-      </ul>
-    </section>
-
-    <!-- Apps Column -->
-    <section>
-      <h4>Apps</h4>
-      <ul>
-        <li><a href="/maxontheisland">Max On The Island</a></li>
-        <li><a href="/maxonthespace">Max On The Space</a></li>
-        <li><a href="/imposterx">ImposterX</a></li>
-        <li><a href="/cityguessr">CityGuessr</a></li>
-        <li><a href="/countryguessr">CountryGuessr</a></li>
-        <li><a href="/pexa">PEXA</a></li>
-      </ul>
-    </section>
-
-    <!-- Legal/Contact Column -->
-    <section>
-      <h4>Support</h4>
-      <ul>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/legal#privacy">Privacy Policy</a></li>
-        <li><a href="/legal#terms">Terms of Service</a></li>
-      </ul>
-    </section>
-
-    <div class="copy">
-      <span>© {year} Ashak Studios. All rights reserved.</span>
-      <span style="opacity:0.5;">Crafted for Mobile.</span>
     </div>
 
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/press">Press Kit</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Products</h4>
+      <ul>
+        <li><a href="/pexa">Pexa AI</a></li>
+        <li><a href="/maxontheisland">Max Series</a></li>
+        <li><a href="/cityguessr">CityGuessr</a></li>
+        <li><a href="/countryguessr">CountryGuessr</a></li>
+        <li><a href="/imposterx">ImposterX</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/legal#privacy">Privacy Policy</a></li>
+        <li><a href="/legal#terms">Terms of Service</a></li>
+        <li><a href="/legal#cookies">Cookie Settings</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="bottom-bar">
+    <span>&copy; {year} Ashak Studios Inc. All rights reserved.</span>
+    <span>Designed in Istanbul.</span>
   </div>
 </footer>

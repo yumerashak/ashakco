@@ -1,6 +1,6 @@
 ---
-import ProductHeader from "../../components/pexa/ProductHeader.astro";
-import ProductFooter from "../../components/pexa/ProductFooter.astro";
+import Header from "../../components/company/CompanyHeader.astro";
+import Footer from "../../components/company/CompanyFooter.astro";
 
 /** Feature Content Interface */
 interface Section {
@@ -54,72 +54,46 @@ const sections: Section[] = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PEXA AI • Ashak Studios</title>
+    <title>PEXA AI | Ashak Studios</title>
     <meta name="description" content="PEXA — Professional AI Image Generator. Turn text into art in seconds on iOS." />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts: 'Outfit' for modern tech feel, 'Inter' for reading -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
-    <!-- Social Meta -->
-    <meta property="og:title" content="PEXA AI Generator" />
-    <meta property="og:description" content="Create stunning AI art in seconds." />
-    <meta property="og:image" content="/assets/pexa-icon.png" />
-    <meta property="og:type" content="website" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #020205; /* Deep Black/Purple tint */
-        --accent-primary: #8D46E7; /* Brand Purple */
-        --accent-glow: #D946E7; /* Magenta Glow */
-        --text-main: #ffffff;
-        --text-muted: #94a3b8;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
         
-        --glass-bg: rgba(255, 255, 255, 0.03);
-        --glass-border: rgba(255, 255, 255, 0.08);
+        --color-primary: #8C6A5D; /* Bronz */
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        
+        --shadow-lg: 0 15px 30px -5px rgba(44, 36, 32, 0.1);
       }
 
       * { box-sizing: border-box; }
       
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
       }
 
       h1, h2, h3 {
-        font-family: 'Outfit', sans-serif; /* Modern, Tech Font */
-        letter-spacing: -0.02em;
-      }
-
-      /* --- BACKGROUND FX --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% -10%, #1a0b2e 0%, #020205 60%);
-        overflow: hidden;
-      }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.4;
-        animation: floatOrb 10s infinite alternate ease-in-out;
-      }
-      .orb-1 { width: 600px; height: 600px; background: var(--accent-primary); top: -20%; left: 20%; }
-      .orb-2 { width: 500px; height: 500px; background: var(--accent-glow); bottom: 10%; right: -10%; animation-delay: -5s; opacity: 0.2; }
-
-      @keyframes floatOrb {
-        0% { transform: translate(0, 0) scale(1); }
-        100% { transform: translate(20px, 40px) scale(1.05); }
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
 
       /* --- LAYOUT UTILS --- */
@@ -127,67 +101,53 @@ const sections: Section[] = [
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px;
-        position: relative;
-        z-index: 2;
       }
 
       /* --- HERO SECTION --- */
       .hero {
-        padding: 160px 0 80px;
+        padding: 120px 0 100px;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .app-icon-wrapper {
-        position: relative;
-        margin-bottom: 32px;
-      }
-      /* Icon Glow Effect */
-      .app-icon-wrapper::before {
-        content:''; position: absolute;
-        top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 120%; height: 120%;
-        background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
-        opacity: 0.5; filter: blur(20px); z-index: -1;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        border-bottom: 1px solid #E6DFD5;
       }
 
       .app-icon {
         width: 120px; height: 120px;
-        border-radius: 28px;
-        border: 1px solid rgba(255,255,255,0.2);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        border-radius: 24px;
+        border: 1px solid #E6DFD5;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 32px;
+        background-color: #fff;
+        object-fit: cover;
       }
 
       .hero h1 {
-        font-size: clamp(48px, 8vw, 84px);
-        line-height: 1;
-        margin: 0 0 16px;
-        background: linear-gradient(180deg, #fff 20%, #a5a5a5 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 800;
+        font-size: clamp(42px, 6vw, 72px);
+        line-height: 1.1;
+        margin: 0 0 24px;
+        color: #1A1410;
       }
 
       .kicker {
         font-size: 20px;
-        color: var(--text-muted);
-        font-weight: 500;
-        max-width: 600px;
-        line-height: 1.5;
-        margin-bottom: 40px;
+        color: var(--color-text-muted);
+        max-width: 580px;
+        margin: 0 auto 40px;
+        font-weight: 300;
       }
 
-      /* Stores */
-      .stores {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        margin-top: 10px;
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        background: #000; /* Store butonları genelde siyahtır */
+        color: #fff;
+        padding: 10px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: transform 0.2s;
       }
-      .store-btn img { height: 50px; width: auto; transition: transform 0.2s; }
-      .store-btn:hover img { transform: translateY(-3px); }
+      .btn-download:hover { transform: translateY(-2px); }
+      .btn-download img { height: 32px; width: auto; }
 
       /* --- FEATURES SECTION --- */
       .features-section { padding: 100px 0; }
@@ -209,127 +169,105 @@ const sections: Section[] = [
         .feature-row.reverse .text-col { order: 0; }
         .feature-row.reverse .img-col { order: 1; }
         .bullets { justify-content: center; }
+        .caption { justify-content: center; }
       }
 
       /* Text Column */
       .caption {
+        font-family: 'Lato', sans-serif;
         font-size: 12px;
-        color: var(--accent-primary);
+        color: var(--color-primary);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 2px;
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
       }
-      /* Caption Line */
       .caption::before {
-        content:''; display: block; width: 20px; height: 2px;
-        background: linear-gradient(90deg, var(--accent-primary), transparent);
+        content:''; display: block; width: 30px; height: 1px;
+        background: var(--color-primary);
       }
-      @media (max-width: 900px) { .caption { justify-content: center; } .caption::before { display: none; } }
+      @media (max-width: 900px) { .caption::before { display: none; } }
 
       .text-col h3 {
-        font-size: 40px;
+        font-size: 38px;
         margin: 0 0 20px 0;
-        color: #fff;
-        font-weight: 700;
+        line-height: 1.2;
       }
       
       .text-col p {
-        font-size: 18px;
-        color: #b0b0b0;
+        font-size: 17px;
+        color: var(--color-text-muted);
         line-height: 1.7;
-        margin-bottom: 24px;
+        margin-bottom: 32px;
       }
 
-      /* Chips / Tags */
+      /* Tags */
       .bullets { display: flex; flex-wrap: wrap; gap: 10px; }
       .chip {
-        font-size: 13px;
-        padding: 8px 16px;
-        border-radius: 100px;
-        background: rgba(141, 70, 231, 0.1);
-        border: 1px solid rgba(141, 70, 231, 0.3);
-        color: #e0ccff;
-        font-weight: 600;
+        font-family: 'Lato', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 6px 14px;
+        border-radius: 4px; /* Köşeli */
+        background: #F5F0E6;
+        color: #7D7065;
+        border: 1px solid #E6DFD5;
       }
 
-      /* Image Column (Device Frame) */
-      .img-col { position: relative; perspective: 1000px; }
+      /* Image Column (Device Frame - Elegant) */
+      .img-col { position: relative; }
       
       .device-frame {
         position: relative;
         border-radius: 24px;
         overflow: hidden;
-        border: 4px solid #1a1a20; /* Darker bezel */
+        border: 6px solid #FFFFFF;
         background: #000;
         box-shadow: 
-          0 0 0 1px rgba(255,255,255,0.1), /* Outer subtle ring */
-          0 30px 60px -10px rgba(0,0,0,0.6);
-        aspect-ratio: 9/19.5; /* Modern iPhone Ratio */
-        max-width: 340px;
+          0 0 0 1px #E6DFD5, /* Outer thin border */
+          var(--shadow-lg);
+        aspect-ratio: 9/19.5; 
+        max-width: 320px;
         margin: 0 auto;
         transition: transform 0.4s ease;
       }
-      
-      /* Subtle Screen Glare */
-      .device-frame::after {
-        content: ''; position: absolute; top:0; left:0; right:0; height: 100%;
-        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 40%);
-        pointer-events: none;
-      }
 
       .device-frame:hover {
-        transform: scale(1.02) rotateY(-2deg);
-        border-color: #2a2a30;
+        transform: translateY(-8px);
       }
       
       .device-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-      /* Animations */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        animation: revealAnim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      }
-      @keyframes revealAnim { to { opacity: 1; transform: translateY(0); } }
 
     </style>
   </head>
 
   <body>
-    
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
 
-    <!-- Assuming Generic or Specific Header -->
-    <ProductHeader productName="PEXA" logoSrc="/assets/pexa-icon.png" />
+    <Header />
 
-    <!-- HERO -->
-    <section class="hero container">
-      <div class="app-icon-wrapper reveal" style="animation-delay: 0.1s;">
+    <section class="hero">
+      <div class="container">
         <img src="/assets/pexa-icon.png" alt="PEXA Logo" class="app-icon" />
-      </div>
-      
-      <h1 class="reveal" style="animation-delay: 0.2s;">VISUALIZE YOUR<br/>IMAGINATION</h1>
-      <p class="kicker reveal" style="animation-delay: 0.3s;">
-        The advanced AI studio in your pocket. <br/>Create, edit, and inspire.
-      </p>
+        
+        <h1>Visualize Your<br/>Imagination.</h1>
+        <p class="kicker">
+          The professional AI studio in your pocket. <br/>Create, edit, and inspire with uncompromised quality.
+        </p>
 
-      <div class="stores reveal" style="animation-delay: 0.4s;">
-        <a href="#" class="store-btn"><img src="/assets/appstore.png" alt="Download on App Store" /></a>
-        <!-- Assuming iOS only based on text, but can add Google Play if needed -->
+        <a href="#" class="btn-download">
+          <img src="/assets/appstore.png" alt="Download on App Store" />
+        </a>
       </div>
     </section>
 
-    <!-- FEATURES -->
     <main class="container features-section">
       {sections.map((s, i) => (
-        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''} reveal`}>
+        <div class={`feature-row ${i % 2 !== 0 ? 'reverse' : ''}`}>
           
           <div class="text-col">
             <div class="caption">{s.caption}</div>
@@ -352,24 +290,6 @@ const sections: Section[] = [
       ))}
     </main>
 
-    <ProductFooter productName="PEXA" logoSrc="/assets/pexa-icon.png" />
-
-    <script is:inline>
-      // Intersection Observer for Scroll Animations
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15 });
-
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-      });
-    </script>
-
+    <Footer />
   </body>
 </html>

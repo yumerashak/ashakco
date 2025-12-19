@@ -10,7 +10,7 @@ const roles = [
     location: "Remote",
     type: "Full-time",
     summary:
-      "Performance-focused mobile app development in Swift. You will optimize engines, squash bugs, and ensure smooth live releases.",
+      "We are looking for a performance-focused engineer to optimize our core engines and ensure stability across our iOS portfolio.",
   },
   {
     id: "app-designer",
@@ -19,7 +19,7 @@ const roles = [
     location: "Remote",
     type: "Full-time",
     summary:
-      "Craft addiction-free but engaging loops. UI flow, economy balancing, and iterative prototyping are your daily bread.",
+      "Design engaging, sustainable user loops and balance economies. You will bridge the gap between pure creativity and user retention metrics.",
   },
   {
     id: "ui-ux-designer",
@@ -28,7 +28,7 @@ const roles = [
     location: "Remote",
     type: "Full-time",
     summary:
-      "Build the visual language of our universe. Consistent UI systems, intuitive user flows, and high-fidelity mockups.",
+      "Build the visual language of our products. We need consistent UI systems, intuitive user flows, and high-fidelity mockups.",
   },
 ];
 ---
@@ -37,176 +37,164 @@ const roles = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers • Ashak Studios</title>
+    <title>Careers | Ashak Studios</title>
     <meta name="description" content="Join the Ashak Studios team — open roles and how to apply." />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES & RESET --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #030304;
-        --accent-primary: #8D46E7;
-        --accent-secondary: #5A41E3;
-        --text-main: #ffffff;
-        --text-muted: #9ca3af;
-        --card-bg: rgba(20, 20, 28, 0.6);
-        --card-border: rgba(255, 255, 255, 0.08);
-        --radius: 24px;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D; /* Bronz */
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(44, 36, 32, 0.08);
       }
 
       * { box-sizing: border-box; }
       
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
         -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
       }
 
-      h1, h2, h3, .brand-font {
-        font-family: 'Pixelify Sans', sans-serif;
+      h1, h2, h3 {
+        margin: 0;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
 
-      /* --- ANIMATED BACKGROUND --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 0%, #1a112c 0%, #030304 70%);
-        overflow: hidden;
-      }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(90px);
-        opacity: 0.35;
-        animation: floatOrb 12s infinite alternate ease-in-out;
-      }
-      .orb-1 { width: 500px; height: 500px; background: var(--accent-primary); top: -10%; right: -20%; }
-      .orb-2 { width: 300px; height: 300px; background: var(--accent-secondary); bottom: 10%; left: -10%; animation-delay: -3s; }
-
-      @keyframes floatOrb {
-        0% { transform: translate(0, 0); }
-        100% { transform: translate(30px, 50px); }
-      }
-
-      /* --- LAYOUT --- */
       .container {
         max-width: 1100px;
         margin: 0 auto;
         padding: 0 24px;
-        position: relative;
-        z-index: 2;
       }
 
+      /* --- HERO SECTION --- */
       .hero {
-        padding: 140px 0 60px;
+        padding: 100px 0 80px;
         text-align: center;
-      }
-      .hero h1 {
-        font-size: clamp(48px, 6vw, 80px);
-        margin: 0;
-        background: linear-gradient(180deg, #fff 0%, #a5a5a5 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 40px rgba(141, 70, 231, 0.3);
-      }
-      .hero p {
-        color: var(--text-muted);
-        font-size: 18px;
-        margin-top: 16px;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        border-bottom: 1px solid #E6DFD5;
+        margin-bottom: 80px;
       }
 
-      /* --- MAIN GRID --- */
+      .hero-label {
+        display: inline-block;
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        padding: 6px 16px;
+        border-radius: 4px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 5vw, 64px);
+        margin-bottom: 16px;
+        color: #1A1410;
+      }
+      
+      .hero p {
+        color: var(--color-text-muted);
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* --- LAYOUT GRID --- */
       .layout-grid {
         display: grid;
-        grid-template-columns: 1.3fr 0.7fr;
-        gap: 30px;
-        margin-bottom: 80px;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 40px;
+        margin-bottom: 100px;
       }
       @media(max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
 
-      /* --- JOB CARDS (Mission Modules) --- */
+      /* --- JOB LIST --- */
       .job-list {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
       }
 
       .job-card {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 32px;
-        backdrop-filter: blur(20px);
-        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        animation: fadeIn 0.6s ease backwards;
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 36px;
+        transition: all 0.3s ease;
       }
       
-      /* Hover Effect */
       .job-card:hover {
-        transform: translateY(-5px) scale(1.01);
-        border-color: var(--accent-primary);
-        box-shadow: 0 10px 40px rgba(141, 70, 231, 0.15);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: #D6CFC5;
       }
-      .job-card:hover h3 { color: var(--accent-primary); }
 
       .job-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 12px;
       }
 
       .job-title-group h3 {
         font-size: 24px;
-        margin: 0;
-        color: #fff;
-        transition: color 0.3s;
+        margin-bottom: 4px;
       }
       .department {
-        font-size: 12px;
+        font-size: 13px;
         text-transform: uppercase;
-        color: var(--text-muted);
-        letter-spacing: 1px;
-        margin-top: 4px;
-        display: block;
+        color: var(--color-primary);
+        letter-spacing: 0.5px;
+        font-weight: 700;
       }
 
       .badges { display: flex; gap: 8px; }
       .badge {
         font-size: 11px;
-        padding: 4px 10px;
-        border-radius: 100px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: #ccc;
-        font-weight: 600;
+        padding: 4px 12px;
+        border-radius: 4px;
+        background: #F5F0E6;
+        color: #6B635E;
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       .job-summary {
         font-size: 15px;
-        line-height: 1.6;
-        color: #d1d5db;
-        margin-bottom: 24px;
+        line-height: 1.7;
+        color: var(--color-text-muted);
+        margin-bottom: 32px;
       }
 
       .job-actions {
         display: flex;
-        gap: 12px;
+        gap: 16px;
       }
 
       /* --- BUTTONS --- */
@@ -214,10 +202,10 @@ const roles = [
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        height: 40px;
-        padding: 0 20px;
-        border-radius: 100px;
-        font-weight: 600;
+        height: 44px;
+        padding: 0 24px;
+        border-radius: 4px;
+        font-weight: 700;
         font-size: 13px;
         text-decoration: none;
         transition: all 0.2s;
@@ -227,64 +215,61 @@ const roles = [
       }
 
       .btn-primary {
-        background: linear-gradient(180deg, #795CFF, #5A41E3);
+        background: var(--color-primary);
         color: #fff;
-        border: 1px solid #795CFF;
-        box-shadow: 0 4px 15px rgba(109,86,249,0.3);
       }
       .btn-primary:hover {
-        filter: brightness(1.1);
-        transform: translateY(-1px);
-        box-shadow: 0 8px 25px rgba(109,86,249,0.5);
+        background: var(--color-primary-dark);
       }
 
-      .btn-ghost {
+      .btn-outline {
         background: transparent;
-        color: var(--text-muted);
-        border: 1px solid transparent;
+        border: 1px solid #D6CFC5;
+        color: var(--color-text-main);
       }
-      .btn-ghost:hover {
-        color: #fff;
-        background: rgba(255,255,255,0.05);
-        border-color: rgba(255,255,255,0.1);
+      .btn-outline:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        background: #FDFBF7;
       }
 
-      /* --- SIDEBAR (Manifesto) --- */
+      /* --- SIDEBAR --- */
       .sidebar-card {
-        background: rgba(15, 16, 22, 0.8);
-        border: 1px solid var(--card-border);
-        border-radius: var(--radius);
-        padding: 32px;
+        background: #F9F6F1; /* Çok açık bej/gri */
+        border: 1px solid #E6DFD5;
+        border-radius: 8px;
+        padding: 40px;
         height: fit-content;
         position: sticky;
-        top: 20px;
+        top: 100px; /* Header payı */
       }
 
       .sidebar-card h2 {
-        font-size: 20px;
-        margin: 0 0 20px 0;
-        color: #fff;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-bottom: 12px;
+        font-size: 18px;
+        margin: 0 0 24px 0;
+        color: var(--color-text-main);
+        border-bottom: 1px solid #E6DFD5;
+        padding-bottom: 16px;
       }
 
-      .perk-list, .process-list {
+      .info-list {
         list-style: none;
         padding: 0;
-        margin: 0 0 30px 0;
+        margin: 0 0 40px 0;
       }
-      .perk-list li {
-        margin-bottom: 12px;
-        font-size: 14px;
-        color: #ccc;
-        padding-left: 16px;
+      .info-list li {
+        margin-bottom: 16px;
+        font-size: 15px;
+        color: var(--color-text-muted);
+        padding-left: 20px;
         position: relative;
       }
-      .perk-list li::before {
-        content: '▹';
+      .info-list li::before {
+        content: '•';
         position: absolute;
         left: 0;
-        color: var(--accent-primary);
+        color: var(--color-primary);
+        font-weight: bold;
       }
 
       .process-list li {
@@ -292,73 +277,54 @@ const roles = [
         display: flex;
         gap: 12px;
         font-size: 14px;
-        color: var(--text-muted);
+        color: var(--color-text-main);
+        align-items: center;
       }
       .step-num {
-        font-family: 'Pixelify Sans', sans-serif;
-        color: var(--accent-primary);
+        font-family: 'Playfair Display', serif;
+        color: var(--color-primary);
         font-weight: 700;
-        font-size: 16px;
+        font-size: 18px;
+        font-style: italic;
       }
 
       .general-apply {
-        background: rgba(141, 70, 231, 0.05);
-        border: 1px dashed rgba(141, 70, 231, 0.3);
-        border-radius: 12px;
-        padding: 20px;
+        background: #FFFFFF;
+        border: 1px dashed #D6CFC5;
+        border-radius: 4px;
+        padding: 24px;
         text-align: center;
       }
       .general-apply p {
-        font-size: 13px;
-        margin: 0 0 12px 0;
-        color: #fff;
+        font-size: 14px;
+        margin: 0 0 16px 0;
+        color: var(--color-text-muted);
       }
-      .btn-outline {
+      .btn-full {
         width: 100%;
-        border: 1px solid rgba(255,255,255,0.2);
-        color: #fff;
       }
-      .btn-outline:hover {
-        border-color: #fff;
-        background: rgba(255,255,255,0.05);
-      }
-
-      /* Animations */
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .reveal { animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
-      .delay-1 { animation-delay: 0.1s; }
-      .delay-2 { animation-delay: 0.2s; }
-      .delay-3 { animation-delay: 0.3s; }
 
     </style>
   </head>
   <body>
 
-    <!-- Background FX -->
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-
     <Header />
 
-    <main class="container">
+    <main>
       
-      <!-- HERO -->
       <section class="hero">
-        <h1 class="reveal">JOIN THE CREW</h1>
-        <p class="reveal">We build worlds, not just apps. Find your role in the mission.</p>
+        <div class="container">
+          <span class="hero-label">Careers</span>
+          <h1>Join Our Team</h1>
+          <p>We are building worlds, not just apps. If you value quality engineering and refined design, find your role below.</p>
+        </div>
       </section>
 
-      <div class="layout-grid">
+      <div class="container layout-grid">
         
-        <!-- LEFT: JOBS -->
-        <div class="job-list reveal delay-1">
-          {roles.map((r, index) => (
-            <article class="job-card" id={r.id} style={`animation-delay: ${index * 0.1}s`}>
+        <div class="job-list">
+          {roles.map((r) => (
+            <article class="job-card" id={r.id}>
               <div class="job-header">
                 <div class="job-title-group">
                   <h3>{r.title}</h3>
@@ -380,46 +346,42 @@ const roles = [
                   Apply Now
                 </a>
                 <a
-                  class="btn btn-ghost"
-                  href={`mailto:contact@ashak.co?subject=Question: ${encodeURIComponent(r.title)}`}
+                  class="btn btn-outline"
+                  href={`mailto:contact@ashak.co?subject=Inquiry: ${encodeURIComponent(r.title)}`}
                 >
-                  Ask Question
+                  Learn More
                 </a>
               </div>
             </article>
           ))}
         </div>
 
-        <!-- RIGHT: SIDEBAR -->
-        <aside class="sidebar-card reveal delay-2">
+        <aside class="sidebar-card">
           
-          <h2>Why Ashak Studios?</h2>
-          <ul class="perk-list">
-            <li>Small, senior team — high ownership.</li>
-            <li>Quality-first craft & zero bloat.</li>
-            <li>Remote-friendly async workflow.</li>
-            <li>Impactful apps used by millions.</li>
+          <h2>The Culture</h2>
+          <ul class="info-list">
+            <li>Small, senior team with high ownership.</li>
+            <li>Quality-first craft, zero bloatware.</li>
+            <li>Remote-friendly, asynchronous workflow.</li>
+            <li>Impactful products used globally.</li>
           </ul>
 
-          <h2>Hiring Protocol</h2>
-          <ul class="process-list">
+          <h2>Hiring Process</h2>
+          <ul class="info-list process-list">
             <li><span class="step-num">01</span> <span>Intro Call (15m)</span></li>
-            <li><span class="step-num">02</span> <span>Portfolio / Deep Dive</span></li>
+            <li><span class="step-num">02</span> <span>Portfolio / Technical Dive</span></li>
             <li><span class="step-num">03</span> <span>Paid Take-home Task</span></li>
             <li><span class="step-num">04</span> <span>The Offer</span></li>
           </ul>
 
           <div class="general-apply">
-            <p>Don't see your role?</p>
+            <p>Don't see your role listed?</p>
             <a 
-              class="btn btn-outline" 
+              class="btn btn-outline btn-full" 
               href="mailto:contact@ashak.co?subject=General Application — Ashak Studios"
             >
               General Application
             </a>
-            <p style="font-size:11px; color:var(--text-muted); margin:8px 0 0;">
-              Include your portfolio links.
-            </p>
           </div>
 
         </aside>

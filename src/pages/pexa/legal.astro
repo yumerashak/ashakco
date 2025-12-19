@@ -9,179 +9,171 @@ const LAST_UPDATED = "December 7, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transparency & Legal • PEXA</title>
+    <title>Transparency & Legal | PEXA</title>
     <meta name="description" content="Privacy Policy, Terms of Service, and Fair Usage Policy for PEXA AI." />
-    <meta name="theme-color" content="#8D46E7" />
+    <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- CORE VARIABLES --- */
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --bg-dark: #020205;
-        --accent: #8D46E7;
-        --accent-glow: #bd00ff;
-        --text-main: #ffffff;
-        --text-muted: #94a3b8;
-        --card-bg: rgba(20, 20, 28, 0.7);
-        --card-border: rgba(255, 255, 255, 0.08);
-        --radius: 24px;
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
       }
 
       * { box-sizing: border-box; }
-      
       html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background-color: var(--bg-dark);
-        color: var(--text-main);
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
       }
 
-      h1, h2, h3 { font-family: 'Outfit', sans-serif; }
-
-      /* --- BACKGROUND FX --- */
-      .background-fx {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 0%, #1a0b2e 0%, #020205 70%);
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
       }
-      .orb {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.3;
-        animation: floatOrb 12s infinite alternate ease-in-out;
+
+      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 100px 0 80px;
+        text-align: center;
+        border-bottom: 1px solid #E6DFD5;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
       }
-      .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -10%; right: -5%; }
-      .orb-2 { width: 400px; height: 400px; background: #5A41E3; bottom: 5%; left: -10%; animation-delay: -3s; }
-
-      @keyframes floatOrb { 0% { transform: translate(0,0); } 100% { transform: translate(30px,50px); } }
-
-      /* --- LAYOUT --- */
-      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-
-      /* Hero */
-      .hero { padding: 140px 0 60px; text-align: center; }
       
       .hero h1 {
-        font-size: clamp(40px, 6vw, 64px);
+        font-size: clamp(36px, 5vw, 56px);
         margin: 0 0 16px;
-        background: linear-gradient(180deg, #fff 0%, #d0bfff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px rgba(141, 70, 231, 0.3);
+        color: #1A1410;
       }
 
       .meta-badge {
         display: inline-block; padding: 6px 16px;
-        background: rgba(141, 70, 231, 0.1); border: 1px solid rgba(141, 70, 231, 0.3);
-        border-radius: 100px; color: #dcbfff; font-size: 13px; margin-bottom: 24px;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-bottom: 24px;
       }
 
-      /* Navigation (TOC) */
-      .toc { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+      /* TOC */
+      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
       .toc-btn {
-        padding: 12px 24px;
-        border-radius: 100px; background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
-        text-decoration: none; font-weight: 500; font-size: 14px;
-        transition: 0.3s;
+        padding: 10px 24px;
+        border-radius: 4px;
+        background: #FFFFFF;
+        border: 1px solid #D6CFC5;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
       }
-      .toc-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
+      .toc-btn:hover {
+        background: #FDFBF7;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
 
-      /* Card Style */
+      /* --- LEGAL CARD --- */
       .legal-card {
-        background: var(--card-bg); border: 1px solid var(--card-border);
-        border-radius: var(--radius); padding: 48px; margin-bottom: 40px;
-        backdrop-filter: blur(20px);
-        scroll-margin-top: 100px;
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 60px;
+        margin: 60px 0;
+        box-shadow: var(--shadow-sm);
+        scroll-margin-top: 40px;
       }
 
       .section-title {
-        font-size: 28px; color: #fff; margin: 0 0 24px 0;
-        padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 32px;
+        margin: 0 0 24px 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F0EBE3;
       }
       
-      h3 { font-size: 18px; color: #fff; margin: 32px 0 12px; font-weight: 700; }
-      p, li { font-size: 15px; line-height: 1.7; color: #cbd5e1; margin-bottom: 12px; }
+      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
+      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
       ul { margin: 0 0 24px 0; padding-left: 20px; }
       li { margin-bottom: 8px; }
-      li::marker { color: var(--accent); }
+      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
+      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
 
-      a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); transition: 0.2s; }
-      a:hover { color: #fff; border-bottom-style: solid; }
-
-      /* Info & Alert Boxes */
-      .box { padding: 24px; border-radius: 16px; margin: 24px 0; }
+      /* Info Boxes */
+      .box {
+        padding: 24px;
+        border-radius: 4px;
+        margin: 32px 0;
+        background: #F9F6F1; /* Çok açık bej */
+        border-left: 3px solid var(--color-primary);
+      }
       
-      .box-info {
-        background: rgba(141, 70, 231, 0.1);
-        border: 1px solid rgba(141, 70, 231, 0.2);
-      }
-      .box-transparent {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px dashed rgba(255, 255, 255, 0.1);
-      }
+      .box h4 { margin: 0 0 8px 0; font-family: 'Lato', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-primary); }
+      .box p { margin: 0; font-size: 15px; color: #5D5550; }
 
-      .box h4 { margin: 0 0 8px 0; color: #fff; font-size: 16px; font-weight: 600; }
-      .box p { margin: 0; font-size: 14px; color: #d1d5db; }
-
-      /* Animation */
-      .reveal {
-        opacity: 0; transform: translateY(20px);
-        animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      }
-      @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-
-      @media(max-width: 700px) {
-        .legal-card { padding: 24px; }
-        .hero h1 { font-size: 40px; }
+      @media(max-width: 768px) {
+        .legal-card { padding: 32px; margin: 40px 0; }
+        .hero h1 { font-size: 32px; }
       }
     </style>
   </head>
   <body>
 
-    <div class="background-fx">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-    </div>
-
     <Header />
 
     <main>
       
-      <section class="hero container">
-        <div class="meta-badge reveal">Last Updated: {LAST_UPDATED}</div>
-        <h1 class="reveal" style="animation-delay:0.1s">TRANSPARENCY & LEGAL</h1>
-        <p class="reveal" style="color:#9ca3af; max-width:600px; margin:0 auto;">
-          We believe in absolute transparency regarding our Hybrid Architecture and Usage Limits. No hidden clauses.
-        </p>
-        
-        <div class="toc reveal" style="animation-delay:0.2s">
-          <a class="toc-btn" href="#privacy">Privacy Policy</a>
-          <a class="toc-btn" href="#fair-use">Fair Usage & Limits</a>
-          <a class="toc-btn" href="#terms">Terms of Service</a>
+      <section class="hero">
+        <div class="container">
+          <span class="meta-badge">Last Updated: {LAST_UPDATED}</span>
+          <h1>Transparency & Legal</h1>
+          <p style="color:#6B635E; max-width:600px; margin:0 auto;">
+            We believe in absolute transparency regarding our Hybrid Architecture and Usage Limits. No hidden clauses.
+          </p>
+          
+          <div class="toc">
+            <a class="toc-btn" href="#privacy">Privacy Policy</a>
+            <a class="toc-btn" href="#fair-use">Fair Usage</a>
+            <a class="toc-btn" href="#terms">Terms of Service</a>
+          </div>
         </div>
       </section>
 
       <section class="container">
         
-        <article id="privacy" class="legal-card reveal" style="animation-delay:0.3s">
+        <article id="privacy" class="legal-card">
           <h2 class="section-title">Privacy Policy</h2>
           
-          <div class="box box-info">
-            <h4>🛡️ The Hybrid Secure Architecture</h4>
+          <div class="box">
+            <h4>The Hybrid Secure Architecture</h4>
             <p>
-              PEXA uses a split-data approach to ensure maximum privacy. Your conversations stay with Apple, while your account limits are managed by our encrypted cloud.
+              PEXA uses a split-data approach to ensure maximum privacy. Your conversations stay with Apple, while your account limits are managed by our secure cloud.
             </p>
           </div>
 
@@ -193,7 +185,7 @@ const LAST_UPDATED = "December 7, 2025";
 
           <h3>2. Account Data (Stored in Secure Cloud)</h3>
           <p>
-            To manage your credits, subscription status, and usage limits, we use an industry-standard <strong>Secure Cloud Database</strong>. 
+            To manage your credits, subscription status, and usage limits, we use an industry-standard Secure Cloud Database. 
             When you use "Sign in with Apple", <strong>we strictly do not store your email address</strong> or personal details. We only store:
           </p>
           <ul>
@@ -216,20 +208,18 @@ const LAST_UPDATED = "December 7, 2025";
           </ul>
         </article>
 
-        <article id="fair-use" class="legal-card reveal" style="animation-delay:0.4s">
+        <article id="fair-use" class="legal-card">
           <h2 class="section-title">Fair Usage & Limits Policy</h2>
           <p>
             PEXA relies on high-performance GPU computing power. To ensure the system remains fast and stable for all users, we enforce dynamic limits based on usage intensity.
           </p>
 
-          <div class="box box-transparent">
-            <h4>🪙 Free Tier</h4>
-            <p>
-              Free users operate on a <strong>Credit System</strong>. Once your initial credits are depleted, you may continue generating images by supporting the app (e.g., watching ads).
-            </p>
-          </div>
+          <h3>Free Tier</h3>
+          <p>
+            Free users operate on a <strong>Credit System</strong>. Once your initial credits are depleted, you may continue generating images by supporting the app (e.g., watching ads).
+          </p>
 
-          <h3>Premium Smart Limits & Cooling Down</h3>
+          <h3>Premium Smart Limits</h3>
           <p>
             While Premium offers "Unlimited" access to the generation engine, "Unlimited" is defined by <strong>reasonable human use</strong>. To prevent bot abuse and server overheating, the following automated cool-down logic applies to high-frequency users:
           </p>
@@ -238,27 +228,23 @@ const LAST_UPDATED = "December 7, 2025";
             <li><strong>At 40 Rapid Generations:</strong> A cool-down of <strong>20 minutes</strong> applies ("Cooling Down").</li>
             <li><strong>At 60 Daily Generations:</strong> To ensure fair resource allocation, a <strong>12-hour reset period</strong> may apply if this limit is hit within a short timeframe.</li>
           </ul>
-          <p>
-            <em>These counters are reset automatically based on the time passed since your last generation.</em>
-          </p>
         </article>
 
-        <article id="terms" class="legal-card reveal" style="animation-delay:0.5s">
+        <article id="terms" class="legal-card">
           <h2 class="section-title">Terms of Service</h2>
           
-          <h3>1. Content Safety & AI Moderation</h3>
+          <h3>1. Content Safety</h3>
           <p>
             All text prompts are analyzed by our <strong>automated AI safety system</strong> before image generation. 
-            You agree not to attempt to generate content involving Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech. 
-            Such prompts will be automatically sanitized or rejected by the safety protocol.
+            You agree not to attempt to generate content involving Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech.
           </p>
 
-          <h3>2. Authentication & Security</h3>
+          <h3>2. Authentication</h3>
           <p>
             PEXA uses <strong>Sign in with Apple</strong> for secure authentication. You are responsible for maintaining the security of your Apple ID. We are not liable for data loss resulting from a compromised Apple account.
           </p>
 
-          <h3>3. Ownership of Generations</h3>
+          <h3>3. Ownership</h3>
           <p>
             <strong>You own the images you create.</strong> Ashak Studios claims no copyright over your creations. You are free to use them for personal or commercial purposes, subject to local laws regarding AI-generated content.
           </p>
@@ -275,8 +261,7 @@ const LAST_UPDATED = "December 7, 2025";
 
           <h3>5. Contact</h3>
           <p>
-            For support, bug reports, or legal inquiries:<br/>
-            <a href="mailto:contact@ashak.co">contact@ashak.co</a>
+            For support or inquiries: <a href="mailto:contact@ashak.co">contact@ashak.co</a>
           </p>
         </article>
 
@@ -285,21 +270,5 @@ const LAST_UPDATED = "December 7, 2025";
     </main>
 
     <Footer />
-
-    <script is:inline>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.animationPlayState = 'paused';
-        observer.observe(el);
-      });
-    </script>
   </body>
 </html>
