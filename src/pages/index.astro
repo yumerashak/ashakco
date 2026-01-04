@@ -171,13 +171,15 @@ import Footer from "../components/company/CompanyFooter.astro";
         width: 100%;
       }
 
+      /* --- GÜNCELLENEN KISIM: İKON STİLİ --- */
       .app-icon {
         width: 68px; height: 68px;
         border-radius: 12px;
         object-fit: cover;
-        box-shadow: var(--shadow-sm);
-        background-color: #F5F0E6;
-        border: 1px solid #E6DFD5;
+        /* Stroke, background ve shadow kaldırıldı */
+        background: transparent;
+        border: none;
+        box-shadow: none;
       }
 
       .app-meta h3 {
@@ -432,6 +434,23 @@ import Footer from "../components/company/CompanyFooter.astro";
             </div>
           </article>
 
+          <article class="app-card">
+            <div class="card-header">
+              <img class="app-icon" src="/assets/strux-icon.png" alt="Strux" />
+              <div class="app-meta">
+                <span class="category-tag">iOS Builder</span>
+                <h3>Strux</h3>
+              </div>
+            </div>
+            <p class="app-desc">
+              Turn ideas into native iOS apps instantly. Use AI design and professional templates to build effortlessly.
+            </p>
+            <div class="card-actions">
+              <a href="/strux" class="btn btn-primary">View Details</a>
+              <a href="/strux#download" class="btn btn-outline">Download</a>
+            </div>
+          </article>
+
         </div>
 
         <div id="view-studio" class="about-wrapper">
@@ -451,7 +470,7 @@ import Footer from "../components/company/CompanyFooter.astro";
             
             <div class="stats-grid">
               <div class="stat-item">
-                <span class="stat-number">6+</span>
+                <span class="stat-number">7+</span>
                 <span class="stat-label">Published Apps</span>
               </div>
               <div class="stat-item">
@@ -500,4 +519,4 @@ import Footer from "../components/company/CompanyFooter.astro";
       });
     </script>
   </body>
-</html> 
+</html>

@@ -1,0 +1,276 @@
+---
+import Header from "../../components/company/CompanyHeader.astro";
+import Footer from "../../components/company/CompanyFooter.astro";
+
+const LAST_UPDATED = "January 5, 2026";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal & Transparency | Strux</title>
+    <meta name="description" content="Privacy Policy, Terms of Service, and Usage Limits for Strux iOS App Builder." />
+    <meta name="theme-color" content="#FDFBF7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
+      :root {
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
+      }
+
+      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 100px 0 80px;
+        text-align: center;
+        border-bottom: 1px solid #E6DFD5;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+      }
+      
+      .hero h1 {
+        font-size: clamp(36px, 5vw, 56px);
+        margin: 0 0 16px;
+        color: #1A1410;
+      }
+
+      .meta-badge {
+        display: inline-block; padding: 6px 16px;
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+
+      /* TOC */
+      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+      .toc-btn {
+        padding: 10px 24px;
+        border-radius: 4px;
+        background: #FFFFFF;
+        border: 1px solid #D6CFC5;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
+      }
+      .toc-btn:hover {
+        background: #FDFBF7;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      /* --- LEGAL CARD --- */
+      .legal-card {
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 60px;
+        margin: 60px 0;
+        box-shadow: var(--shadow-sm);
+        scroll-margin-top: 40px;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin: 0 0 24px 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F0EBE3;
+      }
+      
+      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
+      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
+      ul { margin: 0 0 24px 0; padding-left: 20px; }
+      li { margin-bottom: 8px; }
+      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
+      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
+
+      /* Info Boxes */
+      .box {
+        padding: 24px;
+        border-radius: 4px;
+        margin: 32px 0;
+        background: #F9F6F1; /* Çok açık bej */
+        border-left: 3px solid var(--color-primary);
+      }
+      
+      .box h4 { margin: 0 0 8px 0; font-family: 'Lato', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-primary); }
+      .box p { margin: 0; font-size: 15px; color: #5D5550; }
+
+      @media(max-width: 768px) {
+        .legal-card { padding: 32px; margin: 40px 0; }
+        .hero h1 { font-size: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <Header />
+
+    <main>
+      
+      <section class="hero">
+        <div class="container">
+          <span class="meta-badge">Last Updated: {LAST_UPDATED}</span>
+          <h1>Legal & Transparency</h1>
+          <p style="color:#6B635E; max-width:600px; margin:0 auto;">
+            Our commitment to secure, local-first development. <br>Understand your rights and responsibilities.
+          </p>
+          
+          <div class="toc">
+            <a class="toc-btn" href="#privacy">Data & Privacy</a>
+            <a class="toc-btn" href="#fair-use">Usage Limits</a>
+            <a class="toc-btn" href="#liability">Liability</a>
+            <a class="toc-btn" href="#terms">Subscription</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        
+        <article id="privacy" class="legal-card">
+          <h2 class="section-title">Data Privacy & Storage</h2>
+          
+          <div class="box">
+            <h4>Local-First Architecture</h4>
+            <p>
+              Strux is designed with security as a priority. The applications, code, and interfaces you create are <strong>stored locally on your device</strong>. We do not have access to your project files.
+            </p>
+          </div>
+
+          <h3>1. Project Data (On Device)</h3>
+          <p>
+            Every app you build, every line of JSON, and every UI layout remains in your device's sandbox storage. 
+            Unlike web-based builders, your intellectual property never leaves your phone unless you explicitly choose to export or share it. 
+            Currently, there are no community sharing features, ensuring your work remains 100% private.
+          </p>
+
+          <h3>2. Account Metadata (Secure Cloud)</h3>
+          <p>
+            We use a secure, encrypted cloud infrastructure solely to manage your subscription status and usage quotas. 
+            We store the required datas: your anonymous User ID, name, email and your daily credit balance.
+          </p>
+        </article>
+
+        <article id="fair-use" class="legal-card">
+          <h2 class="section-title">Fair Usage & Limits</h2>
+          <p>
+            Strux utilizes advanced AI models to help you generate apps from text. To ensure the service remains fast and sustainable for everyone, we enforce specific usage tiers.
+          </p>
+
+          <h3>Free Tier Limits</h3>
+          <p>
+            Users on the Free Tier are provided with <strong>1 (one) AI generation right</strong> to test the capabilities of the system. 
+            This allows you to experience the "Text-to-App" feature before committing to a subscription.
+          </p>
+
+          <h3>Pro Tier Limits</h3>
+          <p>
+            Subscribing to Strux Pro unlocks "Unlimited App Creation" in terms of project storage. However, for AI-assisted generation, a fair usage policy applies:
+          </p>
+          <ul>
+            <li><strong>Daily Limit:</strong> Pro users are allocated <strong>5 (five) AI generation rights per day</strong>.</li>
+            <li><strong>Reset:</strong> This quota resets automatically every 24 hours.</li>
+            <li><strong>Manual Creation:</strong> You can always create and edit unlimited apps manually without using AI credits.</li>
+          </ul>
+        </article>
+
+        <article id="liability" class="legal-card">
+          <h2 class="section-title">User Liability & Responsibility</h2>
+          
+          <div class="box">
+            <h4>Strux is a Tool, You are the Creator</h4>
+            <p>
+              Just like a hammer can build a house or break a window, Strux is a neutral development tool. You are solely responsible for what you build with it.
+            </p>
+          </div>
+
+          <h3>1. Content Responsibility</h3>
+          <p>
+            You agree that you are the sole creator of the applications built within Strux. 
+            <strong>Ashak Studios accepts no liability</strong> for the function, content, or intent of the apps you create.
+          </p>
+
+          <h3>2. Prohibited Activities</h3>
+          <p>
+            You strictly agree <strong>NOT</strong> to use Strux to create:
+          </p>
+          <ul>
+            <li>Malicious applications (malware, spyware, viruses).</li>
+            <li>Phishing tools or deceptive interfaces intended to steal user data.</li>
+            <li>Apps that violate local laws or promote illegal activities.</li>
+          </ul>
+          <p>
+            Any user found creating malicious content will have their access revoked immediately without refund.
+          </p>
+        </article>
+
+        <article id="terms" class="legal-card">
+          <h2 class="section-title">Subscription & Terms</h2>
+          
+          <h3>1. Strux Pro Subscription</h3>
+          <p>
+            Strux Pro is offered as a monthly subscription service (e.g., $19.99/month) processed securely by Apple. 
+            Upgrading removes all advertisements and unlocks the Pro features listed above.
+          </p>
+
+          <h3>2. Cancellation & Refunds</h3>
+          <ul>
+            <li><strong>Auto-Renewal:</strong> Your subscription automatically renews unless canceled at least 24 hours before the end of the current period.</li>
+            <li><strong>Cancellation:</strong> You can cancel anytime directly from your iPhone Settings (Apple ID > Subscriptions). You will retain access until the billing cycle ends.</li>
+            <li><strong>Refunds:</strong> All payments are handled by Apple. We (the developers) do not have the ability to issue refunds directly. Please contact Apple Support for billing issues.</li>
+          </ul>
+
+          <h3>3. Contact Us</h3>
+          <p>
+            For support regarding the app functionality: <a href="mailto:contact@ashak.co">contact@ashak.co</a>
+          </p>
+        </article>
+
+      </section>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>
