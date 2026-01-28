@@ -1,0 +1,259 @@
+---
+import Header from "../../components/company/CompanyHeader.astro";
+import Footer from "../../components/company/CompanyFooter.astro";
+
+const LAST_UPDATED = "January 28, 2026";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Legal & Transparency | Word Chain X</title>
+    <meta name="description" content="Privacy Policy and Terms of Service for Word Chain X. We value your privacy with a strict no-data-collection policy." />
+    <meta name="theme-color" content="#FDFBF7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
+      :root {
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
+      }
+
+      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+      /* --- HERO --- */
+      .hero {
+        padding: 100px 0 80px;
+        text-align: center;
+        border-bottom: 1px solid #E6DFD5;
+        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+      }
+      
+      .hero h1 {
+        font-size: clamp(36px, 5vw, 56px);
+        margin: 0 0 16px;
+        color: #1A1410;
+      }
+
+      .meta-badge {
+        display: inline-block; padding: 6px 16px;
+        background: #EDE6D9;
+        color: var(--color-primary-dark);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+
+      /* TOC */
+      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+      .toc-btn {
+        padding: 10px 24px;
+        border-radius: 4px;
+        background: #FFFFFF;
+        border: 1px solid #D6CFC5;
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.2s;
+      }
+      .toc-btn:hover {
+        background: #FDFBF7;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      /* --- LEGAL CARD --- */
+      .legal-card {
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 60px;
+        margin: 60px 0;
+        box-shadow: var(--shadow-sm);
+        scroll-margin-top: 40px;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin: 0 0 24px 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #F0EBE3;
+      }
+      
+      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
+      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
+      ul { margin: 0 0 24px 0; padding-left: 20px; }
+      li { margin-bottom: 8px; }
+      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
+      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
+
+      /* Info Boxes */
+      .box {
+        padding: 24px;
+        border-radius: 4px;
+        margin: 32px 0;
+        background: #F9F6F1; /* Çok açık bej */
+        border-left: 3px solid var(--color-primary);
+      }
+      
+      .box h4 { margin: 0 0 8px 0; font-family: 'Lato', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-primary); }
+      .box p { margin: 0; font-size: 15px; color: #5D5550; }
+
+      @media(max-width: 768px) {
+        .legal-card { padding: 32px; margin: 40px 0; }
+        .hero h1 { font-size: 32px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <Header />
+
+    <main>
+      
+      <section class="hero">
+        <div class="container">
+          <span class="meta-badge">Last Updated: {LAST_UPDATED}</span>
+          <h1>Legal & Transparency</h1>
+          <p style="color:#6B635E; max-width:600px; margin:0 auto;">
+            Our commitment to a private, ad-free experience. <br>Understand how Word Chain X works.
+          </p>
+          
+          <div class="toc">
+            <a class="toc-btn" href="#privacy">Zero Data Policy</a>
+            <a class="toc-btn" href="#purchases">In-App Purchases</a>
+            <a class="toc-btn" href="#ads">Ad-Free Guarantee</a>
+            <a class="toc-btn" href="#terms">Terms of Service</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        
+        <article id="privacy" class="legal-card">
+          <h2 class="section-title">Data Privacy: Zero Collection</h2>
+          
+          <div class="box">
+            <h4>We Do Not Collect Your Data</h4>
+            <p>
+              Word Chain X operates under a strict "Zero Data Collection" policy. We do not have servers, tracking scripts, or analytics tools to monitor your activity.
+            </p>
+          </div>
+
+          <h3>1. Local Storage Only</h3>
+          <p>
+            All your game progress, including your level, high score, streak, and remaining Hearts/Hints, is stored locally on your device. 
+            <strong>Ashak Studios has no access to this data.</strong> It is physically impossible for us to sell, share, or view your personal information because we simply do not possess it.
+          </p>
+
+          <h3>2. No Account Required</h3>
+          <p>
+            You do not need to create an account, sign in with email, or link social media profiles to play Word Chain X. 
+            The app functions entirely offline (except for processing Apple purchases), ensuring your digital footprint remains private.
+          </p>
+        </article>
+
+        <article id="purchases" class="legal-card">
+          <h2 class="section-title">In-App Purchases & Currency</h2>
+          <p>
+            Word Chain X offers optional digital items to enhance gameplay. These transactions are processed securely by Apple via StoreKit.
+          </p>
+
+          <h3>1. Consumables (Hints & Hearts)</h3>
+          <p>
+            You can purchase packs of <strong>Hints</strong> (to reveal letters) and <strong>Hearts</strong> (to continue playing after errors). 
+            Please note that these are "Consumable" items:
+          </p>
+          <ul>
+            <li>They are added to your local inventory immediately upon purchase.</li>
+            <li><strong>Important:</strong> Because we do not store your data on a cloud server, if you uninstall the app or clear your device data, your unused Hints and Hearts may be lost permanently.</li>
+          </ul>
+
+          <h3>2. Pro Subscription</h3>
+          <p>
+            The "Word Chain X Pro" subscription provides benefits such as infinite Hearts. 
+            This subscription is tied to your Apple ID and can be restored on other devices using the same Apple ID via the "Restore Purchases" button in the settings.
+          </p>
+        </article>
+
+        <article id="ads" class="legal-card">
+          <h2 class="section-title">Ad-Free Experience</h2>
+          
+          <div class="box">
+            <h4>No Interruption Policy</h4>
+            <p>
+              We believe in an uninterrupted gaming flow. Word Chain X contains <strong>zero advertisements</strong>.
+            </p>
+          </div>
+
+          <p>
+            You will never be forced to watch a video to continue a level, nor will you see banners cluttering your screen. 
+            Our revenue model relies entirely on optional In-App Purchases from users who wish to support the game or need extra assistance.
+          </p>
+        </article>
+
+        <article id="terms" class="legal-card">
+          <h2 class="section-title">Terms & Refunds</h2>
+          
+          <h3>1. Refund Policy</h3>
+          <p>
+            All financial transactions are handled directly by Apple. We (the developers) do not have the ability to process payments or issue refunds directly. 
+            If you purchased an item by mistake, please contact <a href="https://reportaproblem.apple.com" target="_blank">Apple Support</a> for assistance.
+          </p>
+
+          <h3>2. Liability</h3>
+          <p>
+            Word Chain X is provided "as is". While we strive for a bug-free experience, Ashak Studios is not liable for any loss of game progress resulting from device failure, app uninstallation, or operating system updates.
+          </p>
+
+          <h3>3. Contact Us</h3>
+          <p>
+            For support regarding gameplay or bug reports: <a href="mailto:contact@ashak.co">contact@ashak.co</a>
+          </p>
+        </article>
+
+      </section>
+
+    </main>
+
+    <Footer />
+  </body>
+</html>
