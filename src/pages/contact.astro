@@ -19,19 +19,16 @@ const SUPPORT_EMAIL = "contact@ashak.co";
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
+      /* --- GLOBAL VARIABLES --- */
       :root {
         --color-bg: #FDFBF7;
         --color-text-main: #2C2420;
         --color-text-muted: #6B635E;
-        
-        --color-primary: #8C6A5D; /* Bronz */
+        --color-primary: #8C6A5D;
         --color-primary-dark: #6D5248;
-        
         --color-card-bg: #FFFFFF;
         --color-input-bg: #F9F6F1;
         --color-border: #E6DFD5;
-        
         --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
         --shadow-lg: 0 10px 15px -3px rgba(44, 36, 32, 0.08);
       }
@@ -60,7 +57,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         padding: 0 24px;
       }
 
-      /* --- HERO SECTION --- */
+      /* --- HERO --- */
       .hero {
         padding: 100px 0 80px;
         text-align: center;
@@ -95,7 +92,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         margin: 0 auto;
       }
 
-      /* --- GRID LAYOUT --- */
+      /* --- LAYOUT --- */
       .contact-grid {
         display: grid;
         grid-template-columns: 1.6fr 1fr;
@@ -104,7 +101,6 @@ const SUPPORT_EMAIL = "contact@ashak.co";
       }
       @media(max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
 
-      /* --- CARDS (Formal) --- */
       .contact-card {
         background: var(--color-card-bg);
         border: 1px solid var(--color-border);
@@ -113,7 +109,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         box-shadow: var(--shadow-sm);
       }
 
-      /* --- FORM STYLING --- */
+      /* --- FORM --- */
       .form-header { margin-bottom: 32px; border-bottom: 1px solid #F0EBE3; padding-bottom: 24px; }
       .form-header h2 { font-size: 28px; margin-bottom: 8px; }
       .form-header p { margin: 0; color: var(--color-text-muted); font-size: 14px; }
@@ -142,7 +138,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         width: 100%;
         background: var(--color-input-bg);
         border: 1px solid var(--color-border);
-        border-radius: 4px; /* Keskin köşeler */
+        border-radius: 4px;
         padding: 14px 16px;
         color: var(--color-text-main);
         font-family: 'Lato', sans-serif;
@@ -159,7 +155,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
       
       textarea { min-height: 160px; resize: vertical; }
 
-      /* BUTTONS */
+      /* --- BUTTONS --- */
       .btn-container {
         display: flex;
         align-items: center;
@@ -205,7 +201,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         background: #fff;
       }
 
-      /* --- SIDEBAR INFO --- */
+      /* --- INFO BLOCKS --- */
       .info-block { margin-bottom: 40px; }
       .info-block h3 { 
         font-size: 16px; 
@@ -293,7 +289,6 @@ const SUPPORT_EMAIL = "contact@ashak.co";
         content:'';
         display:block; width:8px; height:8px; background: var(--color-primary); border-radius:50%;
       }
-
     </style>
   </head>
   <body>
@@ -319,7 +314,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
               <p>No account required. This will launch your default email client.</p>
             </div>
 
-            <form id="contact-form" onsubmit="return handleSubmit(event)">
+            <form id="contact-form">
               <div class="form-row">
                 <div class="input-group">
                   <label for="name">Full Name</label>
@@ -343,7 +338,7 @@ const SUPPORT_EMAIL = "contact@ashak.co";
 
               <div class="btn-container">
                 <button class="btn btn-primary" type="submit">Send Message</button>
-                <button class="btn btn-outline" type="button" onclick="copyEmail()">Copy Email Address</button>
+                <button class="btn btn-outline" type="button" id="btn-copy">Copy Email Address</button>
               </div>
               <p style="font-size:12px; color:var(--color-text-muted); margin-top:20px; font-style:italic;">
                 * Typical response time: 24-48 hours via email.
@@ -399,37 +394,57 @@ const SUPPORT_EMAIL = "contact@ashak.co";
 
     <Footer />
 
-    <div id="toast" class="toast" role="status" aria-live="polite">Opening email client...</div>
-    <div id="toast-copy" class="toast" role="status" aria-live="polite">Email address copied!</div>
+    <div id="toast-send" class="toast" role="status">Opening email client...</div>
+    <div id="toast-copy" class="toast" role="status">Email address copied!</div>
 
     <script is:inline define:vars={{ SUPPORT_EMAIL }}>
-      function handleSubmit(e){
+      // 1. FORM SUBMIT (MAILTO)
+      const form = document.getElementById('contact-form');
+      
+      form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const f = e.target;
-        const name = f.name.value.trim();
-        const email = f.email.value.trim();
-        const subject = f.subject.value.trim() || 'General Inquiry';
-        const message = f.message.value.trim();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim() || 'Inquiry';
+        const message = document.getElementById('message').value.trim();
 
-        const body = `Name: ${name}\nEmail: ${email}\n\n${message}\n\n--\nSent from ashak.co/contact`;
+        // Format Body
+        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n--\nSent via ashak.co contact form`;
 
-        const mailto = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('[Contact] ' + subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailto;
+        // Create Mailto Link
+        const mailtoLink = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        showToast('toast');
-        return false;
-      }
+        // Trigger
+        window.location.href = mailtoLink;
+        
+        // Show Feedback
+        showToast('toast-send');
+      });
 
-      function copyEmail(){
-        navigator.clipboard?.writeText(SUPPORT_EMAIL);
-        showToast('toast-copy');
-      }
+      // 2. COPY BUTTON
+      const copyBtn = document.getElementById('btn-copy');
+      
+      copyBtn.addEventListener('click', () => {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(SUPPORT_EMAIL).then(() => {
+            showToast('toast-copy');
+          });
+        } else {
+          // Fallback
+          showToast('toast-copy');
+        }
+      });
 
-      function showToast(id){
+      // 3. TOAST HELPER
+      function showToast(id) {
         const el = document.getElementById(id);
-        if(!el) return;
+        if (!el) return;
+        
         el.classList.add('show');
-        setTimeout(()=>el.classList.remove('show'), 2600);
+        setTimeout(() => {
+          el.classList.remove('show');
+        }, 3000);
       }
     </script>
   </body>

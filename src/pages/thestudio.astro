@@ -1,0 +1,205 @@
+---
+import Header from "../components/company/CompanyHeader.astro";
+import Footer from "../components/company/CompanyFooter.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Studio | Ashak Studios</title>
+    <meta name="description" content="About Ashak Studios - Our philosophy, our location, and our team." />
+    <meta name="theme-color" content="#FDFBF7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        --color-border: #E6DFD5;
+      }
+
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+      }
+
+      h1, h2 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Hero specialized for Studio Page */
+      .studio-hero {
+        padding: 100px 0 60px;
+        text-align: center;
+        border-bottom: 1px solid var(--color-border);
+        background: radial-gradient(circle at center, #F5F0E6 0%, #FDFBF7 60%);
+      }
+
+      .studio-hero h1 {
+        font-size: 56px;
+        margin-bottom: 20px;
+      }
+
+      .studio-hero p {
+        font-size: 20px;
+        color: var(--color-text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Content Section */
+      .content-wrapper {
+        padding: 80px 0 100px;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      }
+
+      .about-text h2 {
+        font-size: 32px;
+        margin-bottom: 24px;
+        margin-top: 0;
+      }
+
+      .about-text p {
+        color: var(--color-text-muted);
+        margin-bottom: 24px;
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      /* Stats / Info Cards */
+      .info-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .info-card {
+        background: #F9F6F1;
+        border: 1px solid #EDE6D9;
+        padding: 32px;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .info-number { 
+        display: block; 
+        font-family: 'Playfair Display', serif;
+        font-size: 42px; 
+        font-weight: 700; 
+        color: var(--color-primary); 
+      }
+
+      .info-label { 
+        font-size: 12px; 
+        font-weight: 700; 
+        color: #7D7065; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+        margin-top: 8px;
+        display: block;
+      }
+
+      .btn-primary {
+        display: inline-block;
+        background: var(--color-primary);
+        color: #fff;
+        padding: 14px 40px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        transition: background 0.2s;
+      }
+      .btn-primary:hover {
+        background: var(--color-primary-dark);
+      }
+    </style>
+  </head>
+  <body>
+    
+    <Header />
+
+    <main>
+      <section class="studio-hero">
+        <div class="container">
+          <h1>The Studio.</h1>
+          <p>Behind the pixels, code, and interfaces.</p>
+        </div>
+      </section>
+
+      <section class="content-wrapper">
+        <div class="container">
+          <div class="about-grid">
+            
+            <div class="about-text">
+              <h2>Refined Simplicity.</h2>
+              <p>
+                Founded in 2024, Ashak Studios is an independent technology company driven by a single principle: software should be quiet, capable, and respectful of the user.
+              </p>
+              <p>
+                We moved away from the chaotic noise of modern app development to focus on clear, functional, and user-respecting software. Whether it's a utility tool like Pexa or an interactive experience like the Max series, our code is clean and our design is intentional.
+              </p>
+              <p>
+                Based in Istanbul, we operate at the intersection of mobile innovation and creative design, delivering products that millions of users rely on daily.
+              </p>
+              <p style="margin-top: 32px;">
+                <a href="/contact" class="btn-primary">Contact Us</a>
+              </p>
+            </div>
+
+            <div class="info-cards">
+              <div class="info-card">
+                <span class="info-number">2024</span>
+                <span class="info-label">Established</span>
+              </div>
+              <div class="info-card">
+                <span class="info-number">9+</span>
+                <span class="info-label">Published Apps</span>
+              </div>
+              <div class="info-card" style="grid-column: span 2;">
+                <span class="info-number">Istanbul</span>
+                <span class="info-label">Headquarters & Development Center</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

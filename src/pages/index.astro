@@ -7,7 +7,7 @@ import Footer from "../components/company/CompanyFooter.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashak Studios | Mobile Innovation</title>
+    <title>Ashak Studios | Mobile & Web Innovation</title>
     <meta name="description" content="Ashak Studios — Premium mobile applications and digital solutions." />
     <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
@@ -19,19 +19,14 @@ import Footer from "../components/company/CompanyFooter.astro";
     <style>
       /* --- GLOBAL RESET & VARIABLES --- */
       :root {
-        /* KREM TEMA DEĞİŞKENLERİ */
-        --color-bg: #FDFBF7; /* Çok açık krem */
-        --color-text-main: #2C2420; /* Siyah yerine koyu kahve-gri */
-        --color-text-muted: #6B635E; /* Yumuşak kahve tonlu gri */
-        
-        --color-primary: #8C6A5D; /* Bronz / Toprak */
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        --color-primary: #8C6A5D;
         --color-primary-dark: #6D5248;
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
         
-        --color-card-bg: #FFFFFF; /* Kartlar beyaz kalabilir ya da çok açık bej */
-        --color-border: #E6DFD5; /* Bej kenarlık */
-        
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(44, 36, 32, 0.08), 0 2px 4px -1px rgba(44, 36, 32, 0.04);
         --shadow-lg: 0 10px 15px -3px rgba(44, 36, 32, 0.08), 0 4px 6px -2px rgba(44, 36, 32, 0.04);
       }
 
@@ -41,18 +36,16 @@ import Footer from "../components/company/CompanyFooter.astro";
         margin: 0;
         background-color: var(--color-bg);
         color: var(--color-text-main);
-        font-family: 'Lato', sans-serif; /* Gövde fontu resmi ve temiz */
+        font-family: 'Lato', sans-serif;
         -webkit-font-smoothing: antialiased;
         line-height: 1.6;
       }
 
-      /* Başlıklar için Serif Font kullanımı - Resmiyet katar */
       h1, h2, h3, h4 {
         margin: 0;
         font-family: 'Playfair Display', serif;
         font-weight: 700;
         color: var(--color-text-main);
-        letter-spacing: -0.01em;
       }
 
       .container {
@@ -65,16 +58,15 @@ import Footer from "../components/company/CompanyFooter.astro";
       .hero {
         padding: 120px 0 90px;
         text-align: center;
-        /* Krem rengi gradient geçişi */
         background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
       }
 
       .hero-label {
         display: inline-block;
-        background: #EDE6D9; /* Koyu bej */
+        background: #EDE6D9;
         color: var(--color-primary-dark);
         padding: 6px 16px;
-        border-radius: 4px; /* Yuvarlak değil, hafif köşeli (formal) */
+        border-radius: 4px;
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -98,10 +90,9 @@ import Footer from "../components/company/CompanyFooter.astro";
         max-width: 620px;
         margin: 0 auto 40px;
         font-weight: 400;
-        font-family: 'Lato', sans-serif;
       }
 
-      /* --- TABS (Corporate Toggle) --- */
+      /* --- TABS --- */
       .tabs-wrapper {
         display: flex;
         justify-content: center;
@@ -110,14 +101,15 @@ import Footer from "../components/company/CompanyFooter.astro";
 
       .tab-group {
         display: inline-flex;
-        background: #F0EBE3; /* Bej */
+        background: #F0EBE3;
         padding: 4px;
         border-radius: 6px;
         border: 1px solid #E6DFD5;
+        gap: 2px;
       }
 
       .tab-btn {
-        padding: 12px 32px;
+        padding: 12px 24px;
         border-radius: 4px;
         border: none;
         background: transparent;
@@ -131,13 +123,15 @@ import Footer from "../components/company/CompanyFooter.astro";
         transition: all 0.2s ease;
       }
 
+      .tab-btn:hover { color: var(--color-primary-dark); }
+
       .tab-btn.active {
         background: #fff;
         color: var(--color-primary-dark);
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       }
 
-      /* --- GRID LAYOUT --- */
+      /* --- GRID & CARDS --- */
       .grid-layout {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -145,11 +139,10 @@ import Footer from "../components/company/CompanyFooter.astro";
         padding-bottom: 80px;
       }
 
-      /* --- APP CARD (Formal & Elegant) --- */
       .app-card {
         background: var(--color-card-bg);
         border: 1px solid var(--color-border);
-        border-radius: 8px; /* Köşeler daha az yuvarlak */
+        border-radius: 8px;
         padding: 36px;
         transition: all 0.3s ease;
         display: flex;
@@ -171,15 +164,10 @@ import Footer from "../components/company/CompanyFooter.astro";
         width: 100%;
       }
 
-      /* --- GÜNCELLENEN KISIM: İKON STİLİ --- */
       .app-icon {
         width: 68px; height: 68px;
         border-radius: 12px;
         object-fit: cover;
-        /* Stroke, background ve shadow kaldırıldı */
-        background: transparent;
-        border: none;
-        box-shadow: none;
       }
 
       .app-meta h3 {
@@ -219,7 +207,7 @@ import Footer from "../components/company/CompanyFooter.astro";
         align-items: center;
         justify-content: center;
         height: 46px;
-        border-radius: 4px; /* Keskin */
+        border-radius: 4px;
         font-size: 13px;
         font-family: 'Lato', sans-serif;
         font-weight: 700;
@@ -234,9 +222,7 @@ import Footer from "../components/company/CompanyFooter.astro";
         background: var(--color-primary);
         color: #fff;
       }
-      .btn-primary:hover {
-        background: var(--color-primary-dark);
-      }
+      .btn-primary:hover { background: var(--color-primary-dark); }
 
       .btn-outline {
         background: transparent;
@@ -249,57 +235,6 @@ import Footer from "../components/company/CompanyFooter.astro";
         background: #FDFBF7;
       }
 
-      /* --- ABOUT SECTION --- */
-      .about-wrapper {
-        display: none; /* JS Toggles this */
-        background: #FFFFFF;
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .about-inner {
-        padding: 70px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 70px;
-      }
-
-      @media (max-width: 900px) {
-        .about-inner { grid-template-columns: 1fr; padding: 40px; }
-      }
-
-      .about-content h2 { font-size: 36px; margin-bottom: 24px; color: #2C2420; }
-      .about-content p { color: var(--color-text-muted); margin-bottom: 24px; font-size: 16px; }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-      }
-      .stat-item {
-        background: #F9F6F1; /* Çok açık bej */
-        padding: 32px;
-        border-radius: 6px;
-        text-align: center;
-        border: 1px solid #EDE6D9;
-      }
-      .stat-number { 
-        display: block; 
-        font-family: 'Playfair Display', serif;
-        font-size: 42px; 
-        font-weight: 700; 
-        color: var(--color-primary); 
-      }
-      .stat-label { 
-        font-size: 12px; 
-        font-weight: 700; 
-        color: #7D7065; 
-        text-transform: uppercase; 
-        letter-spacing: 1px;
-        margin-top: 8px;
-      }
-
       .hidden { display: none !important; }
     </style>
   </head>
@@ -308,20 +243,19 @@ import Footer from "../components/company/CompanyFooter.astro";
     <Header />
 
     <main>
-      
       <section class="hero">
         <div class="container">
-          <span class="hero-label">Mobile Technology Solutions</span>
+          <span class="hero-label">Mobile & Web Technology</span>
           <h1>Building Digital Products<br>That Matter.</h1>
           <p>
             We combine robust engineering with elegant design to create 
-            mobile applications that stand the test of time.
+            software that stands the test of time.
           </p>
 
           <div class="tabs-wrapper">
             <div class="tab-group">
-              <button id="btn-projects" class="tab-btn active" onclick="switchTab('projects')">Our Projects</button>
-              <button id="btn-studio" class="tab-btn" onclick="switchTab('studio')">The Studio</button>
+              <button id="btn-mobile" class="tab-btn active" onclick="switchTab('mobile')">Mobile Projects</button>
+              <button id="btn-web" class="tab-btn" onclick="switchTab('web')">Web Projects</button>
             </div>
           </div>
         </div>
@@ -329,7 +263,7 @@ import Footer from "../components/company/CompanyFooter.astro";
 
       <div class="container">
         
-        <div id="view-projects" class="grid-layout">
+        <div id="view-mobile" class="grid-layout">
           
           <article class="app-card" style="border-color: #D6CFC5;">
             <div class="card-header">
@@ -487,36 +421,76 @@ import Footer from "../components/company/CompanyFooter.astro";
 
         </div>
 
-        <div id="view-studio" class="about-wrapper">
-          <div class="about-inner">
-            <div class="about-content">
-              <h2>Engineering Quality.</h2>
-              <p>
-                Founded in 2024, Ashak Studios focuses on a single principle: <strong>Refined Simplicity.</strong>
-              </p>
-              <p>
-                We moved away from the chaotic noise of modern app development to focus on clear, functional, and user-respecting software. Whether it's a utility tool like Pexa or an interactive experience, our code is clean and our design is intentional.
-              </p>
-            <p style="margin-top:30px;">
-              <a href="/contact" class="btn btn-primary" style="padding: 0 60px;">Contact Us</a>
+        <div id="view-web" class="grid-layout hidden">
+          
+          <article class="app-card">
+            <div class="card-header">
+              <img class="app-icon" src="/assets/purewhite-icon.png" alt="PureWhite Dental" />
+              <div class="app-meta">
+                <span class="category-tag">Dental Clinic</span>
+                <h3>PureWhite Istanbul</h3>
+              </div>
+            </div>
+            <p class="app-desc">
+              A premium dental health portal featuring online consultation booking, 3D smile previews, and patient history management.
             </p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">Visit Site</a>
+              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
             </div>
-            
-            <div class="stats-grid">
-              <div class="stat-item">
-                <span class="stat-number">9+</span>
-                <span class="stat-label">Published Apps</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">24/7</span>
-                <span class="stat-label">Support</span>
-              </div>
-              <div class="stat-item" style="grid-column: span 2;">
-                <span class="stat-number">Global</span>
-                <span class="stat-label">User Base Available on App Store & Play Store</span>
+          </article>
+
+          <article class="app-card">
+            <div class="card-header">
+              <img class="app-icon" src="/assets/physiomotion-icon.png" alt="PhysioMotion" />
+              <div class="app-meta">
+                <span class="category-tag">Physiotherapy</span>
+                <h3>PhysioMotion</h3>
               </div>
             </div>
-          </div>
+            <p class="app-desc">
+              Rehabilitation center website with interactive exercise libraries and therapist scheduling systems for sports recovery.
+            </p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">Visit Site</a>
+              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
+            </div>
+          </article>
+
+          <article class="app-card">
+            <div class="card-header">
+              <img class="app-icon" src="/assets/dr-aydin-icon.png" alt="Dr. Aydin" />
+              <div class="app-meta">
+                <span class="category-tag">Specialist Doctor</span>
+                <h3>Dr. Aydin Clinic</h3>
+              </div>
+            </div>
+            <p class="app-desc">
+              Personal branding and appointment platform for a leading cardiologist, featuring blog integration and health tools.
+            </p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">Visit Site</a>
+              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
+            </div>
+          </article>
+
+          <article class="app-card">
+            <div class="card-header">
+              <img class="app-icon" src="/assets/orthocare-icon.png" alt="OrthoCare" />
+              <div class="app-meta">
+                <span class="category-tag">Orthopedics</span>
+                <h3>OrthoCare Systems</h3>
+              </div>
+            </div>
+            <p class="app-desc">
+              Comprehensive hospital management dashboard for orthopedic surgeons, streamlining patient tracking and imagery.
+            </p>
+            <div class="card-actions">
+              <a href="#" class="btn btn-primary">View Details</a>
+              <span class="btn btn-outline" style="cursor: default;">Web App</span>
+            </div>
+          </article>
+
         </div>
 
       </div>
@@ -525,30 +499,32 @@ import Footer from "../components/company/CompanyFooter.astro";
     <Footer />
 
     <script is:inline>
-      const btnProjects = document.getElementById('btn-projects');
-      const btnStudio = document.getElementById('btn-studio');
-      const viewProjects = document.getElementById('view-projects');
-      const viewStudio = document.getElementById('view-studio');
+      const btnMobile = document.getElementById('btn-mobile');
+      const btnWeb = document.getElementById('btn-web');
+      
+      const viewMobile = document.getElementById('view-mobile');
+      const viewWeb = document.getElementById('view-web');
 
       function switchTab(tabName) {
-        if (tabName === 'projects') {
-          btnProjects.classList.add('active');
-          btnStudio.classList.remove('active');
-          viewProjects.classList.remove('hidden');
-          viewStudio.style.display = 'none';
-          viewProjects.style.display = 'grid';
-        } else {
-          btnStudio.classList.add('active');
-          btnProjects.classList.remove('active');
-          viewProjects.classList.add('hidden');
-          viewProjects.style.display = 'none';
-          viewStudio.style.display = 'block';
+        // Reset
+        btnMobile.classList.remove('active');
+        btnWeb.classList.remove('active');
+        viewMobile.classList.add('hidden');
+        viewWeb.classList.add('hidden');
+
+        // Activate
+        if (tabName === 'mobile') {
+          btnMobile.classList.add('active');
+          viewMobile.classList.remove('hidden');
+        } else if (tabName === 'web') {
+          btnWeb.classList.add('active');
+          viewWeb.classList.remove('hidden');
         }
       }
 
       window.addEventListener('load', () => {
-        if(window.location.hash === '#about') {
-          switchTab('studio');
+        if (window.location.hash === '#web') {
+          switchTab('web');
         }
       });
     </script>
