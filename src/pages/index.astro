@@ -1,14 +1,20 @@
 ---
 import Header from "../components/company/CompanyHeader.astro";
 import Footer from "../components/company/CompanyFooter.astro";
+
+// WhatsApp numaranız
+const WHATSAPP_NUMBER = "90555000000000";
+
+// Hazır Mesajlar
+const MSG_GENERAL = encodeURIComponent("Merhaba, Ashak Studios ile iletişime geçmek istiyorum.");
 ---
 
-<html lang="en">
+<html lang="tr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashak Studios | Mobile & Web Innovation</title>
-    <meta name="description" content="Ashak Studios — Premium mobile applications and digital solutions." />
+    <title>Ashak Studios | Mobil & Web İnovasyon</title>
+    <meta name="description" content="Ashak Studios — Premium mobil uygulamalar ve dijital çözümler üreten teknoloji şirketi." />
     <meta name="theme-color" content="#FDFBF7" />
     <link rel="icon" href="/favicon.svg" />
 
@@ -26,6 +32,8 @@ import Footer from "../components/company/CompanyFooter.astro";
         --color-primary-dark: #6D5248;
         --color-card-bg: #FFFFFF;
         --color-border: #E6DFD5;
+        --color-whatsapp: #25D366;
+        --color-whatsapp-dark: #128C7E;
         
         --shadow-lg: 0 10px 15px -3px rgba(44, 36, 32, 0.08), 0 4px 6px -2px rgba(44, 36, 32, 0.04);
       }
@@ -96,7 +104,7 @@ import Footer from "../components/company/CompanyFooter.astro";
       .tabs-wrapper {
         display: flex;
         justify-content: center;
-        margin-bottom: 70px;
+        margin-bottom: 40px;
       }
 
       .tab-group {
@@ -129,6 +137,33 @@ import Footer from "../components/company/CompanyFooter.astro";
         background: #fff;
         color: var(--color-primary-dark);
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+
+      /* --- CTA BANNER --- */
+      .cta-banner {
+        background: #fff;
+        border: 1px solid var(--color-primary); /* Primary renk çerçeve */
+        border-radius: 8px;
+        padding: 24px;
+        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 4px 12px rgba(140, 106, 93, 0.08);
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .cta-content h3 {
+        font-size: 20px;
+        margin-bottom: 4px;
+        color: var(--color-text-main);
+      }
+      
+      .cta-content p {
+        font-size: 15px;
+        color: var(--color-text-muted);
+        margin: 0;
       }
 
       /* --- GRID & CARDS --- */
@@ -235,7 +270,51 @@ import Footer from "../components/company/CompanyFooter.astro";
         background: #FDFBF7;
       }
 
+      /* --- FLOATING WHATSAPP BUTTON --- */
+      .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: var(--color-whatsapp);
+        color: #FFF;
+        border-radius: 50%;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        overflow: hidden; 
+        padding: 0;
+      }
+
+      .whatsapp-float:hover {
+        transform: scale(1.1);
+      }
+
+      .whatsapp-float-img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        display: block;
+      }
+
       .hidden { display: none !important; }
+
+      @media (max-width: 600px) {
+        .cta-banner {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
     </style>
   </head>
   <body>
@@ -245,17 +324,17 @@ import Footer from "../components/company/CompanyFooter.astro";
     <main>
       <section class="hero">
         <div class="container">
-          <span class="hero-label">Mobile & Web Technology</span>
-          <h1>Building Digital Products<br>That Matter.</h1>
+          <span class="hero-label">Mobil & Web Teknolojileri</span>
+          <h1>Değer Yaratan<br>Dijital Ürünler.</h1>
           <p>
-            We combine robust engineering with elegant design to create 
-            software that stands the test of time.
+            Güçlü mühendisliği zarif tasarımla birleştirerek 
+            zamana meydan okuyan yazılımlar üretiyoruz.
           </p>
 
           <div class="tabs-wrapper">
             <div class="tab-group">
-              <button id="btn-mobile" class="tab-btn active" onclick="switchTab('mobile')">Mobile Projects</button>
-              <button id="btn-web" class="tab-btn" onclick="switchTab('web')">Web Projects</button>
+              <button id="btn-web" class="tab-btn active" onclick="switchTab('web')">Web Projeler</button>
+              <button id="btn-mobile" class="tab-btn" onclick="switchTab('mobile')">Mobil Projeler</button>
             </div>
           </div>
         </div>
@@ -263,238 +342,264 @@ import Footer from "../components/company/CompanyFooter.astro";
 
       <div class="container">
         
-        <div id="view-mobile" class="grid-layout">
+        <div id="view-web">
           
-          <article class="app-card" style="border-color: #D6CFC5;">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/pexa-icon.png" alt="PEXA" />
-              <div class="app-meta">
-                <span class="category-tag">AI Utility</span>
-                <h3>PEXA AI</h3>
-              </div>
+          <div class="cta-banner">
+            <div class="cta-content">
+              <h3>Web Geliştirme Sürecimiz</h3>
+              <p>Projelerinizi nasıl hayata geçiriyoruz? Adım adım çalışma sistemimizi ve teknolojilerimizi inceleyin.</p>
             </div>
-            <p class="app-desc">
-              Advanced generative AI for professional image creation. 
-              Designed for creators who need high-fidelity visuals instantly.
-            </p>
-            <div class="card-actions">
-              <a href="/pexa" class="btn btn-primary">View Details</a>
-              <a href="/pexa#download" class="btn btn-outline">Download</a>
-            </div>
-          </article>
+            <a href="/web" class="btn btn-primary" style="padding-left: 30px; padding-right: 30px;">
+              Detayları Gör
+            </a>
+          </div>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/maxontheislandlogo.png" alt="Max" />
-              <div class="app-meta">
-                <span class="category-tag">Puzzle Adventure</span>
-                <h3>Max On The Island</h3>
+          <div class="grid-layout">
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/purewhite-icon.png" alt="PureWhite Dental" />
+                <div class="app-meta">
+                  <span class="category-tag">Diş Kliniği</span>
+                  <h3>PureWhite Istanbul</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              A logic-driven puzzle experience focusing on environmental mechanics and narrative exploration.
-            </p>
-            <div class="card-actions">
-              <a href="/maxontheisland" class="btn btn-primary">View Details</a>
-              <a href="/maxontheisland#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
-
-           <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/max-on-the-space-icon.png" alt="Max Space" />
-              <div class="app-meta">
-                <span class="category-tag">Sci-Fi Logic</span>
-                <h3>Max On The Space</h3>
+              <p class="app-desc">
+                Online randevu, 3D gülüş önizleme ve hasta geçmişi yönetimi sunan premium diş sağlığı portalı.
+              </p>
+              <div class="card-actions">
+                <a href="#" class="btn btn-primary">Siteyi Ziyaret Et</a>
+                <span class="btn btn-outline" style="cursor: default;">Web Tasarım</span>
               </div>
-            </div>
-            <p class="app-desc">
-              Gravity-defying puzzles set in a zero-G environment. Solving complex spatial problems in the cosmos.
-            </p>
-            <div class="card-actions">
-              <a href="/maxonthespace" class="btn btn-primary">View Details</a>
-              <a href="/maxonthespace#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
+            </article>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/imposterx-icon.jpg" alt="ImposterX" />
-              <div class="app-meta">
-                <span class="category-tag">Social Strategy</span>
-                <h3>ImposterX</h3>
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/physiomotion-icon.png" alt="PhysioMotion" />
+                <div class="app-meta">
+                  <span class="category-tag">Fizyoterapi</span>
+                  <h3>PhysioMotion</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              A multiplayer social deduction platform focusing on real-time player interaction and strategy.
-            </p>
-            <div class="card-actions">
-              <a href="/imposterx" class="btn btn-primary">View Details</a>
-              <a href="/imposterx#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
-
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/cityguessr-icon.png" alt="CityGuessr" />
-              <div class="app-meta">
-                <span class="category-tag">Geo-Data</span>
-                <h3>CityGuessr</h3>
+              <p class="app-desc">
+                Sporcu iyileşmesi için interaktif egzersiz kütüphaneleri ve terapist planlama sistemine sahip rehabilitasyon merkezi web sitesi.
+              </p>
+              <div class="card-actions">
+                <a href="#" class="btn btn-primary">Siteyi Ziyaret Et</a>
+                <span class="btn btn-outline" style="cursor: default;">Web Tasarım</span>
               </div>
-            </div>
-            <p class="app-desc">
-              Utilizing global map data to create an engaging geographical discovery tool.
-            </p>
-            <div class="card-actions">
-              <a href="/cityguessr" class="btn btn-primary">View Details</a>
-              <a href="/cityguessr#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
+            </article>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/countryguessr-icon.png" alt="CountryGuessr" />
-              <div class="app-meta">
-                <span class="category-tag">Global Trivia</span>
-                <h3>CountryGuessr</h3>
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/dr-aydin-icon.png" alt="Dr. Aydin" />
+                <div class="app-meta">
+                  <span class="category-tag">Uzman Doktor</span>
+                  <h3>Dr. Aydin Clinic</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              Test your global knowledge with interactive challenges based on flags, capitals, and country outlines.
-            </p>
-            <div class="card-actions">
-              <a href="/countryguessr" class="btn btn-primary">View Details</a>
-              <a href="/countryguessr#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
-
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/flagguessr-icon.png" alt="FlagGuessr" />
-              <div class="app-meta">
-                <span class="category-tag">Flag Puzzle</span>
-                <h3>FlagGuessr</h3>
+              <p class="app-desc">
+                Blog entegrasyonu ve sağlık araçları içeren, önde gelen bir kardiyolog için kişisel marka ve randevu platformu.
+              </p>
+              <div class="card-actions">
+                <a href="#" class="btn btn-primary">Siteyi Ziyaret Et</a>
+                <span class="btn btn-outline" style="cursor: default;">Web Tasarım</span>
               </div>
-            </div>
-            <p class="app-desc">
-              A dual-visual challenge combining flag identification with map outlines. Test your knowledge of global symbols.
-            </p>
-            <div class="card-actions">
-              <a href="/flagguessr" class="btn btn-primary">View Details</a>
-              <a href="/flagguessr#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
+            </article>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/wordchainx-icon.jpg" alt="Word Chain X" />
-              <div class="app-meta">
-                <span class="category-tag">Word Puzzle</span>
-                <h3>Word Chain X</h3>
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/orthocare-icon.png" alt="OrthoCare" />
+                <div class="app-meta">
+                  <span class="category-tag">Ortopedi</span>
+                  <h3>OrthoCare Systems</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              A stimulating word association experience designed to test vocabulary and cognitive flexibility.
-            </p>
-            <div class="card-actions">
-              <a href="/wordchainx" class="btn btn-primary">View Details</a>
-              <a href="/wordchainx#stores" class="btn btn-outline">Download</a>
-            </div>
-          </article>
-
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/strux-icon.png" alt="Strux" />
-              <div class="app-meta">
-                <span class="category-tag">iOS Builder</span>
-                <h3>Strux</h3>
+              <p class="app-desc">
+                Ortopedi cerrahları için hasta takibini ve görüntülemeyi kolaylaştıran kapsamlı hastane yönetim paneli.
+              </p>
+              <div class="card-actions">
+                <a href="#" class="btn btn-primary">Detayları Gör</a>
+                <span class="btn btn-outline" style="cursor: default;">Web Uygulaması</span>
               </div>
-            </div>
-            <p class="app-desc">
-              Turn ideas into native iOS apps instantly. Use AI design and professional templates to build effortlessly.
-            </p>
-            <div class="card-actions">
-              <a href="/strux" class="btn btn-primary">View Details</a>
-              <a href="/strux#download" class="btn btn-outline">Download</a>
-            </div>
-          </article>
-
+            </article>
+          </div>
         </div>
 
-        <div id="view-web" class="grid-layout hidden">
+        <div id="view-mobile" class="hidden">
           
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/purewhite-icon.png" alt="PureWhite Dental" />
-              <div class="app-meta">
-                <span class="category-tag">Dental Clinic</span>
-                <h3>PureWhite Istanbul</h3>
-              </div>
+          <div class="cta-banner">
+            <div class="cta-content">
+              <h3>Mobil Uygulama Çözümleri</h3>
+              <p>Fikirlerinizi App Store ve Play Store'a taşıyoruz. Native geliştirme süreçlerimizi inceleyin.</p>
             </div>
-            <p class="app-desc">
-              A premium dental health portal featuring online consultation booking, 3D smile previews, and patient history management.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn btn-primary">Visit Site</a>
-              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
-            </div>
-          </article>
+            <a href="/mobile" class="btn btn-primary" style="padding-left: 30px; padding-right: 30px;">
+              Detayları Gör
+            </a>
+          </div>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/physiomotion-icon.png" alt="PhysioMotion" />
-              <div class="app-meta">
-                <span class="category-tag">Physiotherapy</span>
-                <h3>PhysioMotion</h3>
+          <div class="grid-layout">
+            <article class="app-card" style="border-color: #D6CFC5;">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/pexa-icon.png" alt="PEXA" />
+                <div class="app-meta">
+                  <span class="category-tag">Yapay Zeka Aracı</span>
+                  <h3>PEXA AI</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              Rehabilitation center website with interactive exercise libraries and therapist scheduling systems for sports recovery.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn btn-primary">Visit Site</a>
-              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
-            </div>
-          </article>
-
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/dr-aydin-icon.png" alt="Dr. Aydin" />
-              <div class="app-meta">
-                <span class="category-tag">Specialist Doctor</span>
-                <h3>Dr. Aydin Clinic</h3>
+              <p class="app-desc">
+                Profesyonel görsel oluşturma için gelişmiş üretken yapay zeka. 
+                Anında yüksek kalitede görsellere ihtiyaç duyan yaratıcılar için tasarlandı.
+              </p>
+              <div class="card-actions">
+                <a href="/pexa" class="btn btn-primary">Detayları Gör</a>
+                <a href="/pexa#download" class="btn btn-outline">İndir</a>
               </div>
-            </div>
-            <p class="app-desc">
-              Personal branding and appointment platform for a leading cardiologist, featuring blog integration and health tools.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn btn-primary">Visit Site</a>
-              <span class="btn btn-outline" style="cursor: default;">Web Design</span>
-            </div>
-          </article>
+            </article>
 
-          <article class="app-card">
-            <div class="card-header">
-              <img class="app-icon" src="/assets/orthocare-icon.png" alt="OrthoCare" />
-              <div class="app-meta">
-                <span class="category-tag">Orthopedics</span>
-                <h3>OrthoCare Systems</h3>
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/maxontheislandlogo.png" alt="Max" />
+                <div class="app-meta">
+                  <span class="category-tag">Bulmaca Macera</span>
+                  <h3>Max On The Island</h3>
+                </div>
               </div>
-            </div>
-            <p class="app-desc">
-              Comprehensive hospital management dashboard for orthopedic surgeons, streamlining patient tracking and imagery.
-            </p>
-            <div class="card-actions">
-              <a href="#" class="btn btn-primary">View Details</a>
-              <span class="btn btn-outline" style="cursor: default;">Web App</span>
-            </div>
-          </article>
+              <p class="app-desc">
+                Çevresel mekanikler ve hikaye anlatımına odaklanan, mantık tabanlı bir bulmaca deneyimi.
+              </p>
+              <div class="card-actions">
+                <a href="/maxontheisland" class="btn btn-primary">Detayları Gör</a>
+                <a href="/maxontheisland#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
 
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/max-on-the-space-icon.png" alt="Max Space" />
+                <div class="app-meta">
+                  <span class="category-tag">Bilim Kurgu Mantık</span>
+                  <h3>Max On The Space</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Yerçekimsiz ortamda geçen fizik tabanlı bulmacalar. Kozmostaki karmaşık uzaysal problemleri çözün.
+              </p>
+              <div class="card-actions">
+                <a href="/maxonthespace" class="btn btn-primary">Detayları Gör</a>
+                <a href="/maxonthespace#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/imposterx-icon.jpg" alt="ImposterX" />
+                <div class="app-meta">
+                  <span class="category-tag">Sosyal Strateji</span>
+                  <h3>ImposterX</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Gerçek zamanlı oyuncu etkileşimi ve stratejiye odaklanan çok oyunculu bir sosyal çıkarım platformu.
+              </p>
+              <div class="card-actions">
+                <a href="/imposterx" class="btn btn-primary">Detayları Gör</a>
+                <a href="/imposterx#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/cityguessr-icon.png" alt="CityGuessr" />
+                <div class="app-meta">
+                  <span class="category-tag">Coğrafi Veri</span>
+                  <h3>CityGuessr</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Küresel harita verilerini kullanarak oluşturulmuş, etkileşimli bir coğrafi keşif aracı.
+              </p>
+              <div class="card-actions">
+                <a href="/cityguessr" class="btn btn-primary">Detayları Gör</a>
+                <a href="/cityguessr#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/countryguessr-icon.png" alt="CountryGuessr" />
+                <div class="app-meta">
+                  <span class="category-tag">Global Trivia</span>
+                  <h3>CountryGuessr</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Bayraklar, başkentler ve ülke sınırlarına dayalı interaktif testlerle küresel bilginizi sınayın.
+              </p>
+              <div class="card-actions">
+                <a href="/countryguessr" class="btn btn-primary">Detayları Gör</a>
+                <a href="/countryguessr#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/flagguessr-icon.png" alt="FlagGuessr" />
+                <div class="app-meta">
+                  <span class="category-tag">Bayrak Bulmaca</span>
+                  <h3>FlagGuessr</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Bayrak tanımlamayı harita hatlarıyla birleştiren görsel bir meydan okuma. Dünya sembollerine ne kadar hakimsiniz?
+              </p>
+              <div class="card-actions">
+                <a href="/flagguessr" class="btn btn-primary">Detayları Gör</a>
+                <a href="/flagguessr#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/wordchainx-icon.jpg" alt="Word Chain X" />
+                <div class="app-meta">
+                  <span class="category-tag">Kelime Bulmaca</span>
+                  <h3>Word Chain X</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Kelime dağarcığını ve bilişsel esnekliği test etmek için tasarlanmış zihin açıcı bir kelime zinciri deneyimi.
+              </p>
+              <div class="card-actions">
+                <a href="/wordchainx" class="btn btn-primary">Detayları Gör</a>
+                <a href="/wordchainx#stores" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+
+            <article class="app-card">
+              <div class="card-header">
+                <img class="app-icon" src="/assets/strux-icon.png" alt="Strux" />
+                <div class="app-meta">
+                  <span class="category-tag">iOS Oluşturucu</span>
+                  <h3>Strux</h3>
+                </div>
+              </div>
+              <p class="app-desc">
+                Fikirlerinizi anında yerel (native) iOS uygulamalarına dönüştürün. Yapay zeka tasarımı ve profesyonel şablonlar kullanın.
+              </p>
+              <div class="card-actions">
+                <a href="/strux" class="btn btn-primary">Detayları Gör</a>
+                <a href="/strux#download" class="btn btn-outline">İndir</a>
+              </div>
+            </article>
+          </div>
         </div>
 
       </div>
     </main>
+
+    <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${MSG_GENERAL}`} class="whatsapp-float" target="_blank">
+      <img src="/assets/whatsapp-icon.png" alt="WhatsApp İle İletişime Geç" class="whatsapp-float-img" />
+    </a>
 
     <Footer />
 
@@ -506,13 +611,11 @@ import Footer from "../components/company/CompanyFooter.astro";
       const viewWeb = document.getElementById('view-web');
 
       function switchTab(tabName) {
-        // Reset
         btnMobile.classList.remove('active');
         btnWeb.classList.remove('active');
         viewMobile.classList.add('hidden');
         viewWeb.classList.add('hidden');
 
-        // Activate
         if (tabName === 'mobile') {
           btnMobile.classList.add('active');
           viewMobile.classList.remove('hidden');
@@ -523,8 +626,8 @@ import Footer from "../components/company/CompanyFooter.astro";
       }
 
       window.addEventListener('load', () => {
-        if (window.location.hash === '#web') {
-          switchTab('web');
+        if (window.location.hash === '#mobile') {
+          switchTab('mobile');
         }
       });
     </script>

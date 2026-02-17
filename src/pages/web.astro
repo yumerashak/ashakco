@@ -1,0 +1,245 @@
+---
+import Header from "../components/company/CompanyHeader.astro";
+import Footer from "../components/company/CompanyFooter.astro";
+
+// WhatsApp numaranız
+const WHATSAPP_NUMBER = "905550000000";
+const MSG_WEB = encodeURIComponent("Merhaba, web sitesi süreçlerinizi inceledim ve fiyat teklifi almak istiyorum.");
+---
+
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Çözümleri & Süreçler | Ashak Studios</title>
+    <meta name="description" content="Ashak Studios web geliştirme süreçleri, teknolojileri ve çalışma prensipleri." />
+    <meta name="theme-color" content="#FDFBF7" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      /* --- AYNI DEĞİŞKENLERİ KULLANIYORUZ --- */
+      :root {
+        --color-bg: #FDFBF7;
+        --color-text-main: #2C2420;
+        --color-text-muted: #6B635E;
+        --color-primary: #8C6A5D;
+        --color-primary-dark: #6D5248;
+        --color-card-bg: #FFFFFF;
+        --color-border: #E6DFD5;
+      }
+
+      * { box-sizing: border-box; }
+      
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        font-family: 'Lato', sans-serif;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4 {
+        margin: 0;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--color-text-main);
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* HERO */
+      .page-hero {
+        padding: 100px 0 60px;
+        text-align: center;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(36px, 4vw, 56px);
+        margin-bottom: 24px;
+      }
+
+      .page-hero p {
+        font-size: 18px;
+        color: var(--color-text-muted);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* PROCESS STEPS */
+      .process-section {
+        padding: 60px 0 100px;
+      }
+
+      .step-card {
+        background: var(--color-card-bg);
+        border: 1px solid var(--color-border);
+        padding: 40px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(44, 36, 32, 0.05);
+      }
+
+      .step-number {
+        position: absolute;
+        top: -15px;
+        left: 30px;
+        background: var(--color-primary);
+        color: #fff;
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(140, 106, 93, 0.3);
+      }
+
+      .step-content h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+        margin-top: 10px;
+      }
+
+      .step-content p {
+        color: var(--color-text-muted);
+        font-size: 16px;
+      }
+
+      /* FINAL CTA */
+      .final-cta {
+        text-align: center;
+        padding: 80px 0;
+        background: #F5F0E6;
+        margin-top: 60px;
+      }
+
+      .btn-whatsapp-big {
+        background-color: #25D366;
+        color: white;
+        padding: 16px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-whatsapp-big:hover {
+        transform: translateY(-3px);
+        background-color: #128C7E;
+      }
+    </style>
+  </head>
+  <body>
+
+    <Header />
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Web Geliştirme Sürecimiz</h1>
+          <p>
+            Her proje benzersizdir. Ashak Studios olarak, fikirlerinizi dijital gerçekliğe 
+            dönüştürürken şeffaf, planlı ve kalite odaklı bir yol izliyoruz.
+          </p>
+        </div>
+      </section>
+
+      <section class="process-section">
+        <div class="container">
+          
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Analiz ve Planlama</h3>
+              <p>
+                İlk adımda sizi dinliyoruz. Hedef kitlenizi, marka kimliğinizi ve beklentilerinizi analiz ediyoruz. 
+                Sitenizin haritasını ve teknolojik altyapısını bu aşamada planlıyoruz.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>UI/UX Tasarım</h3>
+              <p>
+                Kullanıcı deneyimini merkeze alan, markanızı yansıtan modern arayüzler tasarlıyoruz. 
+                Renk paletleri, tipografi ve görsel hiyerarşi ile ziyaretçilerinizi etkileyecek tasarımlar oluşturuyoruz.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Geliştirme ve Kodlama</h3>
+              <p>
+                Tasarımı en güncel teknolojilerle (Astro, React, Next.js vb.) koda döküyoruz. 
+                Temiz kod yapısı, SEO uyumluluğu ve yüksek performans odaklı çalışıyoruz.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Test ve Optimizasyon</h3>
+              <p>
+                Sitenizi tüm cihazlarda (mobil, tablet, masaüstü) test ediyoruz. 
+                Hız optimizasyonlarını yapıyor, hataları gideriyor ve mükemmel çalıştığından emin oluyoruz.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>Yayın ve Destek</h3>
+              <p>
+                Sitenizi canlıya alıyoruz. Yayın sonrasında da teknik destek ve bakım hizmetlerimizle 
+                yanınızda olmaya devam ediyoruz.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="final-cta">
+        <div class="container">
+          <h2>Projenizi Başlatmaya Hazır Mısınız?</h2>
+          <p style="margin-bottom: 30px; color: var(--color-text-muted);">
+            Süreçlerimiz hakkında daha fazla bilgi almak veya fiyat teklifi istemek için bize ulaşın.
+          </p>
+          <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${MSG_WEB}`} target="_blank" class="btn-whatsapp-big">
+            <img src="/assets/whatsapp-icon.png" alt="WhatsApp" width="24" height="24" style="object-fit: contain;" />
+            Hemen Fiyat Teklifi Alın
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
