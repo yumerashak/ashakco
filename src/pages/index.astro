@@ -51,7 +51,6 @@ const apps = [
         line-height: 0.9;
         letter-spacing: -4px;
         margin-bottom: 20px;
-        /* text-transform: uppercase; gereksiz hale geldi ama güvenlik için kalabilir */
       }
 
       .section-label {
@@ -74,10 +73,23 @@ const apps = [
         text-decoration: none;
         color: white;
         transition: border-color 0.3s;
+        display: flex;
+        flex-direction: column;
       }
 
       .app-item:hover {
         border-top-color: #FFF;
+      }
+
+      /* İKON STİLLERİ */
+      .app-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        margin-bottom: 24px;
+        object-fit: cover;
+        background-color: #111; 
+        border: 1px solid #222; 
       }
 
       .app-tag {
@@ -101,6 +113,7 @@ const apps = [
         color: var(--color-muted);
         line-height: 1.5;
         max-width: 340px;
+        margin: 0;
       }
 
       @media (max-width: 768px) {
@@ -121,6 +134,16 @@ const apps = [
       <div class="apps-grid">
         {apps.map(app => (
           <a href={app.link} class="app-item">
+            {/* Buradaki onerror kodu hayat kurtarır: 
+              Önce .png dener, bulamazsa anında .jpg olarak değiştirir. 
+              Sonsuz döngüye girmemesi için de this.onerror=null yapar. 
+            */}
+            <img 
+              src={`/assets${app.link}-icon.png`} 
+              alt={`${app.name} icon`} 
+              class="app-icon"
+              onerror={`this.onerror=null; this.src='/assets${app.link}-icon.jpg';`}
+            />
             <span class="app-tag">{app.tag}</span>
             <div class="app-name">{app.name}</div>
             <p class="app-description">{app.desc}</p>

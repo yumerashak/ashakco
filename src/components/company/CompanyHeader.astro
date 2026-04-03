@@ -17,9 +17,28 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Sol - Orta - Sağ dengesi */
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
+  }
+
+  .nav-right {
+    display: flex;
+    gap: 32px; 
+    align-items: center;
+  }
+
+  .logo-img {
+    height: 36px; 
+    width: auto;
+    display: block;
+    /* Opacity geçişini kaldırdık, sadece büyüme yumuşak olacak */
+    transition: transform 0.3s ease;
+  }
+
+  .logo-img:hover { 
+    /* Fare üzerine gelince logoyu %10 oranında büyütür, solma yapmaz */
+    transform: scale(1.1); 
   }
 
   .nav-link {
@@ -35,23 +54,25 @@
 
   .nav-link:hover { opacity: 0.5; }
 
-  /* Hizalamalar */
-  .text-left { text-align: left; }
-  .text-center { text-align: center; }
-  .text-right { text-align: right; }
-
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
     .nav-link { font-size: 10px; letter-spacing: 1px; }
+    .nav-right { gap: 16px; } 
+    .logo-img { height: 20px; } 
   }
 </style>
 
 <header class="header-wrapper">
   <div class="container">
-    <a href="/" class="nav-link text-left">HOME</a>
     
-    <a href="/thestudio" class="nav-link text-center">ABOUT US</a>
+    <a href="/" class="logo-link">
+      <img src="/favicon.png" alt="Home" class="logo-img" />
+    </a>
     
-    <a href="/contact" class="nav-link text-right">CONTACT</a>
+    <div class="nav-right">
+      <a href="/thestudio" class="nav-link">ABOUT US</a>
+      <a href="/contact" class="nav-link">CONTACT</a>
+    </div>
+
   </div>
 </header>
