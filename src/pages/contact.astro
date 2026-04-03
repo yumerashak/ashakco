@@ -88,20 +88,6 @@ const SUPPORT_EMAIL = "contact@ashak.co";
       }
       .info-link:hover { opacity: 0.6; }
 
-      .social-links {
-        display: flex;
-        gap: 24px;
-      }
-      .social-item {
-        color: #FFF;
-        text-decoration: underline;
-        font-size: 14px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-      }
-      .social-item:hover { opacity: 0.6; }
-
       /* --- FORM SIDE --- */
       .form-side {
         display: flex;
@@ -217,26 +203,18 @@ const SUPPORT_EMAIL = "contact@ashak.co";
             <h3>Headquarters</h3>
             <p class="info-link" style="cursor: default;">Istanbul, TR / Remote</p>
           </div>
-
-          <div class="info-block">
-            <h3>Social</h3>
-            <div class="social-links">
-              <a href="https://instagram.com/ashak.co" class="social-item" target="_blank">Instagram</a>
-              <a href="https://youtube.com/@ashakstudios" class="social-item" target="_blank">YouTube</a>
-            </div>
-          </div>
         </aside>
 
         <div class="form-side">
           <form id="contact-form">
             <div class="input-group">
               <label for="name">Your Name</label>
-              <input id="name" type="text" required placeholder="John Doe" />
+              <input id="name" type="text" required placeholder="Your Name" />
             </div>
 
             <div class="input-group">
               <label for="email">Email Address</label>
-              <input id="email" type="email" required placeholder="john@example.com" />
+              <input id="email" type="email" required placeholder="yourname@example.com" />
             </div>
 
             <div class="input-group">
