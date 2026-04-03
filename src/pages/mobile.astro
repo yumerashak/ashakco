@@ -2,151 +2,164 @@
 import Header from "../components/company/CompanyHeader.astro";
 import Footer from "../components/company/CompanyFooter.astro";
 
-// WhatsApp numaranız
-const WHATSAPP_NUMBER = "905550000000";
-const MSG_MOBILE = encodeURIComponent("Merhaba, mobil uygulama süreçlerinizi inceledim ve fiyat teklifi almak istiyorum.");
+const steps = [
+  {
+    num: "01",
+    title: "STRATEGY & DISCOVERY",
+    desc: "Projenizi analiz ediyor, pazar araştırması ve hedef kitle belirleme süreçlerini yönetiyoruz. Uygulamanızın temel özelliklerini ve gelir modelini bu aşamada kurguluyoruz."
+  },
+  {
+    num: "02",
+    title: "UI/UX ARCHITECTURE",
+    desc: "Apple HIG ve Google Material Design standartlarında, minimalist ve kullanıcı dostu arayüzler tasarlıyoruz. Akıcı bir kullanıcı deneyimi için her pikseli titizlikle işliyoruz."
+  },
+  {
+    num: "03",
+    title: "NATIVE ENGINEERING",
+    desc: "En yüksek performans için Swift (iOS) ve Kotlin (Android) kullanarak native geliştirme yapıyoruz. Cihaz donanımlarını maksimum verimlilikle optimize ediyoruz."
+  },
+  {
+    num: "04",
+    title: "QUALITY ASSURANCE",
+    desc: "Farklı cihaz segmentlerinde kapsamlı stres testleri uyguluyoruz. Sıfır hata politikasıyla uygulamanın her koşulda stabil çalışmasını garanti altına alıyoruz."
+  },
+  {
+    num: "05",
+    title: "DEPLOYMENT & ASO",
+    desc: "Uygulamanızı App Store ve Play Store'a yayına alıyoruz. App Store Optimization (ASO) teknikleriyle market görünürlüğünüzü ve indirme oranlarınızı artırıyoruz."
+  }
+];
 ---
 
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobil Uygulama Çözümleri | Ashak Studios</title>
-    <meta name="description" content="Ashak Studios iOS ve Android uygulama geliştirme süreçleri, native teknolojiler ve market stratejileri." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
+    <title>MOBILE SOLUTIONS | ASHAK STUDIOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- AYNI DEĞİŞKENLERİ KULLANIYORUZ --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        --color-primary: #8C6A5D;
-        --color-primary-dark: #6D5248;
-        --color-card-bg: #FFFFFF;
-        --color-border: #E6DFD5;
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #333333;
       }
 
-      * { box-sizing: border-box; }
-      
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
-        line-height: 1.6;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
+        -webkit-font-smoothing: antialiased;
       }
 
-      h1, h2, h3, h4 {
-        margin: 0;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      /* HERO */
-      .page-hero {
-        padding: 100px 0 60px;
-        text-align: center;
-      }
-
-      .page-hero h1 {
-        font-size: clamp(36px, 4vw, 56px);
-        margin-bottom: 24px;
-      }
-
-      .page-hero p {
-        font-size: 18px;
-        color: var(--color-text-muted);
-        max-width: 700px;
+      .main-content {
+        padding: 160px 40px 100px;
+        max-width: 1400px;
         margin: 0 auto;
       }
 
-      /* PROCESS STEPS */
-      .process-section {
-        padding: 60px 0 100px;
+      .hero-title {
+        font-size: clamp(60px, 10vw, 120px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
       }
 
-      .step-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        padding: 40px;
-        border-radius: 12px;
-        margin-bottom: 30px;
-        position: relative;
-        transition: transform 0.3s ease;
-      }
-
-      .step-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(44, 36, 32, 0.05);
-      }
-
-      .step-number {
-        position: absolute;
-        top: -15px;
-        left: 30px;
-        background: var(--color-primary);
-        color: #fff;
-        font-family: 'Playfair Display', serif;
-        font-size: 20px;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(140, 106, 93, 0.3);
-      }
-
-      .step-content h3 {
+      .section-label {
         font-size: 24px;
-        margin-bottom: 12px;
-        margin-top: 10px;
+        font-weight: 300;
+        color: var(--color-muted);
+        margin-bottom: 80px;
+        display: block;
       }
 
-      .step-content p {
-        color: var(--color-text-muted);
-        font-size: 16px;
+      .workflow-list {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .step-item {
+        border-top: 1px solid var(--color-border);
+        padding: 80px 0;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 60px;
+        transition: border-color 0.3s;
+      }
+
+      .step-item:hover {
+        border-top-color: #FFFFFF;
+      }
+
+      .step-num {
+        font-size: 80px;
+        font-weight: 800;
+        color: #111; /* Çok koyu gri, sadece hover'da parlayabilir */
+        line-height: 0.8;
+        transition: color 0.3s;
+      }
+
+      .step-item:hover .step-num {
+        color: #222;
+      }
+
+      .step-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+      }
+
+      .step-desc {
+        font-size: 18px;
+        color: var(--color-muted);
+        line-height: 1.6;
+        max-width: 600px;
       }
 
       /* FINAL CTA */
       .final-cta {
-        text-align: center;
-        padding: 80px 0;
-        background: #F5F0E6;
-        margin-top: 60px;
+        margin-top: 100px;
+        padding: 100px 0;
+        border-top: 1px solid var(--color-border);
       }
 
-      .btn-whatsapp-big {
-        background-color: #25D366;
-        color: white;
-        padding: 16px 40px;
-        border-radius: 50px;
-        text-decoration: none;
+      .cta-text {
+        font-size: 42px;
         font-weight: 700;
-        font-size: 16px;
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        margin-bottom: 40px;
+        letter-spacing: -1px;
       }
 
-      .btn-whatsapp-big:hover {
-        transform: translateY(-3px);
-        background-color: #128C7E;
+      .btn-email {
+        font-size: 16px;
+        font-weight: 700;
+        color: #FFFFFF;
+        text-decoration: none;
+        border-bottom: 2px solid #FFFFFF;
+        padding-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: opacity 0.3s;
+      }
+
+      .btn-email:hover {
+        opacity: 0.5;
+      }
+
+      @media (max-width: 900px) {
+        .step-item { grid-template-columns: 1fr; gap: 20px; padding: 60px 0; }
+        .hero-title { letter-spacing: -2px; }
+        .main-content { padding: 120px 20px 60px; }
+        .step-num { font-size: 40px; }
+        .cta-text { font-size: 32px; }
       }
     </style>
   </head>
@@ -154,92 +167,31 @@ const MSG_MOBILE = encodeURIComponent("Merhaba, mobil uygulama süreçlerinizi i
 
     <Header />
 
-    <main>
-      <section class="page-hero">
-        <div class="container">
-          <h1>Mobil Uygulama Çözümleri</h1>
-          <p>
-            Fikirlerinizi milyonların cebine taşıyoruz. Ashak Studios olarak, yüksek performanslı ve 
-            kullanıcı dostu Native (iOS & Android) uygulamalar geliştiriyoruz.
-          </p>
-        </div>
-      </section>
+    <main class="main-content">
+      <h1 class="hero-title">MOBILE<br/>SOLUTIONS.</h1>
+      <span class="section-label">Our Workflow</span>
 
-      <section class="process-section">
-        <div class="container">
-          
-          <div class="step-card">
-            <div class="step-number">1</div>
+      <div class="workflow-list">
+        {steps.map(step => (
+          <div class="step-item">
+            <div class="step-num">{step.num}</div>
             <div class="step-content">
-              <h3>Keşif ve Strateji</h3>
-              <p>
-                Projenizi dinliyor, pazar araştırması yapıyor ve hedef kitlenizi belirliyoruz. 
-                Uygulamanızın hangi özelliklere sahip olması gerektiğini ve gelir modelini birlikte kurguluyoruz.
-              </p>
+              <h2 class="step-title">{step.title}</h2>
+              <p class="step-desc">{step.desc}</p>
             </div>
           </div>
-
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Mobil Odaklı Tasarım (UI/UX)</h3>
-              <p>
-                Mobil kullanım alışkanlıklarına uygun, parmak dostu ve şık arayüzler tasarlıyoruz. 
-                Kullanıcıların uygulamanızda kaybolmadan, keyifle vakit geçirmesini sağlıyoruz.
-              </p>
-            </div>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Native Geliştirme</h3>
-              <p>
-                En yüksek performans için Swift (iOS) ve Kotlin (Android) gibi native dilleri kullanıyoruz. 
-                Telefonun kamerasından GPS'ine kadar tüm donanım özelliklerini maksimum verimle kullanıyoruz.
-              </p>
-            </div>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>Test ve Kalite Kontrol</h3>
-              <p>
-                Farklı ekran boyutlarında ve cihazlarda kapsamlı testler yapıyoruz. 
-                Hataları sıfıra indiriyor, uygulamanızın her koşulda stabil çalışmasını garanti ediyoruz.
-              </p>
-            </div>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">5</div>
-            <div class="step-content">
-              <h3>App Store & Play Store Yayını</h3>
-              <p>
-                Uygulamanızı marketlere (Apple App Store ve Google Play Store) biz yüklüyoruz. 
-                ASO (App Store Optimization) çalışmalarıyla uygulamanızın daha kolay bulunmasını sağlıyoruz.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <div class="final-cta">
-        <div class="container">
-          <h2>Uygulamanızı Hayata Geçirelim</h2>
-          <p style="margin-bottom: 30px; color: var(--color-text-muted);">
-            Mobil dünyada yerinizi almak ve projeniz için özel fiyat teklifi almak için bize ulaşın.
-          </p>
-          <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${MSG_MOBILE}`} target="_blank" class="btn-whatsapp-big">
-            <img src="/assets/whatsapp-icon.png" alt="WhatsApp" width="24" height="24" style="object-fit: contain;" />
-            Hemen Fiyat Teklifi Alın
-          </a>
-        </div>
+        ))}
       </div>
+
+      <section class="final-cta">
+        <h2 class="cta-text">READY TO BUILD THE FUTURE?</h2>
+        <a href="mailto:contact@ashak.co?subject=Mobile Project Inquiry" class="btn-email">
+          Get a Custom Quote
+        </a>
+      </section>
     </main>
 
     <Footer />
+
   </body>
 </html>

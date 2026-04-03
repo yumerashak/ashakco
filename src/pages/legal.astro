@@ -9,207 +9,156 @@ const EFFECTIVE_DATE = "September 21, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legal Center | Ashak Studios</title>
-    <meta name="description" content="Privacy Policy and Terms of Use for Ashak Studios." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
+    <title>LEGAL CENTER | ASHAK STUDIOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        
-        --color-primary: #8C6A5D; /* Bronz */
-        --color-primary-dark: #6D5248;
-        
-        --color-card-bg: #FFFFFF;
-        --color-border: #E6DFD5;
-        
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(44, 36, 32, 0.08);
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #333333;
       }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
         -webkit-font-smoothing: antialiased;
         line-height: 1.6;
       }
 
-      h1, h2, h3, h4 {
-        margin: 0;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container {
-        max-width: 900px; /* Okuma kolaylığı için biraz daraltıldı */
+      .main-content {
+        padding: 160px 40px 100px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 24px;
       }
 
-      /* --- HERO SECTION --- */
-      .hero {
-        padding: 100px 0 60px;
-        text-align: center;
-        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
-        border-bottom: 1px solid #E6DFD5;
-      }
-
-      .hero-label {
-        display: inline-block;
-        background: #EDE6D9;
-        color: var(--color-primary-dark);
-        padding: 6px 16px;
-        border-radius: 4px;
-        font-size: 12px;
+      .hero-title {
+        font-size: clamp(60px, 10vw, 120px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        margin-bottom: 24px;
       }
 
-      .hero h1 {
-        font-size: clamp(36px, 5vw, 56px);
-        margin-bottom: 32px;
-        color: #1A1410;
+      .section-label {
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--color-muted);
+        margin-bottom: 80px;
+        display: block;
       }
 
-      /* --- TOC NAVIGATION --- */
-      .toc-wrapper {
+      /* --- TOC --- */
+      .toc {
         display: flex;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
+        gap: 32px;
+        margin-bottom: 80px;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 24px;
       }
 
-      .toc-btn {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 24px;
-        background: #FFFFFF;
-        border: 1px solid #D6CFC5;
-        border-radius: 4px;
-        color: var(--color-text-muted);
+      .toc-link {
+        color: var(--color-text);
         text-decoration: none;
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
         font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: all 0.2s ease;
+        transition: opacity 0.3s;
       }
 
-      .toc-btn:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-        background: #FDFBF7;
-        transform: translateY(-2px);
+      .toc-link:hover { opacity: 0.5; }
+
+      /* --- LEGAL ITEMS --- */
+      .legal-section {
+        display: grid;
+        grid-template-columns: 1fr;
       }
 
-      /* --- CONTENT SECTION --- */
-      .content-section {
-        padding: 80px 0;
-      }
-
-      /* --- LEGAL CARD --- */
       .legal-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 60px;
-        margin-bottom: 60px;
-        box-shadow: var(--shadow-sm);
+        border-top: 1px solid var(--color-border);
+        padding: 100px 0;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 60px;
         scroll-margin-top: 100px;
       }
 
-      .legal-card:last-child {
-        margin-bottom: 0;
+      .legal-card:hover {
+        border-top-color: #FFF;
       }
 
       .doc-title {
-        font-size: 32px;
-        margin-bottom: 8px;
-        color: var(--color-text-main);
-        padding-bottom: 24px;
-        border-bottom: 1px solid #F0EBE3;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        text-transform: uppercase;
+        margin: 0;
       }
 
       .meta-scope {
+        font-size: 12px;
+        color: var(--color-muted);
+        margin-top: 20px;
         display: block;
-        font-family: 'Lato', sans-serif;
-        font-size: 13px;
-        color: #8C6A5D; /* Bronz aksan */
-        margin-top: -12px;
-        margin-bottom: 40px;
-        font-style: italic;
-        background: #F9F6F1;
-        padding: 10px 16px;
-        border-radius: 4px;
-        border-left: 3px solid #8C6A5D;
-      }
-
-      .legal-card h3 {
-        font-size: 20px;
-        margin: 40px 0 16px;
-        color: #4A3F39;
-      }
-
-      .legal-card p, .legal-card li {
-        font-size: 16px;
-        color: var(--color-text-muted);
-        margin-bottom: 16px;
-        line-height: 1.8;
-      }
-
-      .legal-card ul {
-        margin: 0 0 24px 0;
-        padding-left: 20px;
-      }
-      
-      .legal-card li {
-        margin-bottom: 8px;
-      }
-
-      .legal-card a {
-        color: var(--color-primary);
-        text-decoration: none;
-        border-bottom: 1px dotted var(--color-border);
-        transition: all 0.2s;
-        font-weight: 700;
-      }
-
-      .legal-card a:hover {
-        color: var(--color-primary-dark);
-        border-bottom-style: solid;
+        letter-spacing: 0.5px;
+        line-height: 1.6;
       }
 
       code {
-        background: #F5F0E6; /* Latte rengi */
-        color: #5D4B42;
+        background: #111;
+        color: #FFF;
         padding: 2px 6px;
         border-radius: 4px;
-        font-size: 0.9em;
-        font-family: 'Menlo', 'Monaco', monospace;
+        font-family: monospace;
       }
 
-      @media (max-width: 768px) {
-        .legal-card { padding: 32px; }
-        .hero h1 { font-size: 32px; }
-        .toc-wrapper { flex-direction: column; align-items: stretch; padding: 0 40px; }
-        .toc-btn { justify-content: center; }
+      /* --- TEXT CONTENT --- */
+      .legal-body h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #FFF;
+        margin: 0 0 20px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .legal-body h3:not(:first-child) {
+        margin-top: 40px;
+      }
+
+      .legal-body p, .legal-body li {
+        font-size: 16px;
+        color: var(--color-muted);
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+
+      .legal-body ul {
+        padding-left: 20px;
+        margin-bottom: 30px;
+      }
+
+      .legal-body a {
+        color: #FFF;
+        text-decoration: underline;
+        transition: opacity 0.3s;
+      }
+
+      .legal-body a:hover { opacity: 0.6; }
+
+      @media (max-width: 1024px) {
+        .legal-card { grid-template-columns: 1fr; gap: 40px; padding: 60px 0; }
+        .hero-title { letter-spacing: -2px; }
+        .main-content { padding: 120px 20px 60px; }
+        .toc { gap: 20px; overflow-x: auto; padding-bottom: 15px; }
+        .toc-link { white-space: nowrap; }
       }
     </style>
   </head>
@@ -217,109 +166,112 @@ const EFFECTIVE_DATE = "September 21, 2025";
 
     <Header />
 
-    <main>
-      
-      <section class="hero">
-        <div class="container">
-          <span class="hero-label">Effective: {EFFECTIVE_DATE}</span>
-          <h1>Legal Center</h1>
-          
-          <div class="toc-wrapper">
-            <a href="#privacy" class="toc-btn">Privacy Policy</a>
-            <a href="#terms" class="toc-btn">Terms of Use</a>
-          </div>
-        </div>
-      </section>
+    <main class="main-content">
+      <h1 class="hero-title">LEGAL<br/>CENTER.</h1>
+      <span class="section-label">Effective: {EFFECTIVE_DATE}</span>
 
-      <div class="container content-section">
+      <nav class="toc">
+        <a href="#privacy" class="toc-link">Privacy Policy</a>
+        <a href="#terms" class="toc-link">Terms of Use</a>
+      </nav>
+
+      <div class="legal-section">
         
         <article id="privacy" class="legal-card">
-          <h2 class="doc-title">Privacy Policy</h2>
-          <div class="meta-scope">
-            <strong>Scope:</strong> This policy applies to the promotional website located at <code>ashak.co</code>. It does not cover our apps or app stores.
+          <div class="legal-meta">
+            <h2 class="doc-title">Privacy Policy</h2>
+            <div class="meta-scope">
+              <strong>Scope:</strong> This policy applies to the promotional website located at <code>ashak.co</code>. It does not cover our apps or app stores.
+            </div>
           </div>
 
-          <h3>1) Summary</h3>
-          <p>
-            This Site is a simple, read‑only company presentation. We do not run sign‑ups, comments, contact forms, or user accounts. We do not ask you for your name, email address, phone number, payment details, or any similar personal information on this Site.
-          </p>
+          <div class="legal-body">
+            <h3>1) Summary</h3>
+            <p>
+              This Site is a simple, read‑only company presentation. We do not run sign‑ups, comments, contact forms, or user accounts. We do not ask you for your name, email address, phone number, payment details, or any similar personal information on this Site.
+            </p>
 
-          <h3>2) What We Collect</h3>
-          <p>
-            <strong>Nothing that identifies you personally.</strong> We do not use first‑party cookies, analytics beacons, fingerprinting, or tracking pixels on this Site. We do not combine, sell, or share any personal data.
-          </p>
+            <h3>2) What We Collect</h3>
+            <p>
+              <strong>Nothing that identifies you personally.</strong> We do not use first‑party cookies, analytics beacons, fingerprinting, or tracking pixels on this Site. We do not combine, sell, or share any personal data.
+            </p>
 
-          <h3>3) Hosting & Basic Technical Logs</h3>
-          <p>
-            Our hosting provider may process minimal, short‑lived technical logs (e.g., IP address and user‑agent) solely to deliver the Site securely and for anti‑abuse and reliability purposes. We do not use these logs to identify you, and we do not merge them with any other data.
-          </p>
+            <h3>3) Hosting & Basic Technical Logs</h3>
+            <p>
+              Our hosting provider may process minimal, short‑lived technical logs (e.g., IP address and user‑agent) solely to deliver the Site securely and for anti‑abuse and reliability purposes. We do not use these logs to identify you, and we do not merge them with any other data.
+            </p>
 
-          <h3>4) Third‑Party Links</h3>
-          <p>
-            The Site may link to third‑party pages (e.g., App Store / Google Play, social profiles). When you follow those links, their privacy policies apply.
-          </p>
+            <h3>4) Third‑Party Links</h3>
+            <p>
+              The Site may link to third‑party pages (e.g., App Store / Google Play, social profiles). When you follow those links, their privacy policies apply.
+            </p>
 
-          <h3>5) Children</h3>
-          <p>
-            The Site is a general‑audience informational page. It does not collect personal information from anyone, including children.
-          </p>
+            <h3>5) Children</h3>
+            <p>
+              The Site is a general‑audience informational page. It does not collect personal information from anyone, including children.
+            </p>
 
-          <h3>6) Changes</h3>
-          <p>
-            If we materially change this policy, we will update the Effective Date above. Your continued use of the Site after changes means you accept the updated policy.
-          </p>
+            <h3>6) Changes</h3>
+            <p>
+              If we materially change this policy, we will update the Effective Date above. Your continued use of the Site after changes means you accept the updated policy.
+            </p>
 
-          <h3>7) Contact</h3>
-          <p>
-            Questions? Email <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
-          </p>
+            <h3>7) Contact</h3>
+            <p>
+              Questions? Email <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
+            </p>
+          </div>
         </article>
 
         <article id="terms" class="legal-card">
-          <h2 class="doc-title">Terms of Use</h2>
-          
-          <h3>1) About These Terms</h3>
-          <p>
-            These Terms govern your access to and use of this Site. By visiting or using the Site, you agree to these Terms.
-          </p>
+          <div class="legal-meta">
+            <h2 class="doc-title">Terms of Use</h2>
+          </div>
 
-          <h3>2) Informational Website Only</h3>
-          <ul>
-            <li>No account creation, sign‑in, or user‑generated content features exist on this Site.</li>
-            <li>We provide company and product information and outbound links only.</li>
-          </ul>
+          <div class="legal-body">
+            <h3>1) About These Terms</h3>
+            <p>
+              These Terms govern your access to and use of this Site. By visiting or using the Site, you agree to these Terms.
+            </p>
 
-          <h3>3) Acceptable Use</h3>
-          <ul>
-            <li>Do not interfere with the Site’s operation or security.</li>
-            <li>Do not attempt to scrape at a rate that degrades service or violates applicable laws.</li>
-            <li>Do not use the Site in a way that infringes intellectual property or privacy rights.</li>
-          </ul>
+            <h3>2) Informational Website Only</h3>
+            <ul>
+              <li>No account creation, sign‑in, or user‑generated content features exist on this Site.</li>
+              <li>We provide company and product information and outbound links only.</li>
+            </ul>
 
-          <h3>4) Intellectual Property</h3>
-          <p>
-            Unless otherwise noted, the Site’s text, graphics, logos, and other materials are owned by Ashak Studios or licensed to us and are protected by applicable laws. You may view the Site for personal, non‑commercial use. Any other use requires prior written permission.
-          </p>
+            <h3>3) Acceptable Use</h3>
+            <ul>
+              <li>Do not interfere with the Site’s operation or security.</li>
+              <li>Do not attempt to scrape at a rate that degrades service or violates applicable laws.</li>
+              <li>Do not use the Site in a way that infringes intellectual property or privacy rights.</li>
+            </ul>
 
-          <h3>5) Links to Third Parties</h3>
-          <p>
-            Outbound links (e.g., app stores, social media) are provided for convenience. We are not responsible for their content, availability, or policies.
-          </p>
+            <h3>4) Intellectual Property</h3>
+            <p>
+              Unless otherwise noted, the Site’s text, graphics, logos, and other materials are owned by Ashak Studios or licensed to us and are protected by applicable laws. You may view the Site for personal, non‑commercial use. Any other use requires prior written permission.
+            </p>
 
-          <h3>6) Disclaimer & Limitation of Liability</h3>
-          <p>
-            The Site is provided “as is” and “as available” without warranties of any kind. To the maximum extent permitted by law, we disclaim all warranties and will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or relating to your use of the Site.
-          </p>
+            <h3>5) Links to Third Parties</h3>
+            <p>
+              Outbound links (e.g., app stores, social media) are provided for convenience. We are not responsible for their content, availability, or policies.
+            </p>
 
-          <h3>7) Changes</h3>
-          <p>
-            We may update or discontinue the Site or these Terms at any time. If we update these Terms, the Effective Date above will change.
-          </p>
+            <h3>6) Disclaimer & Limitation of Liability</h3>
+            <p>
+              The Site is provided “as is” and “as available” without warranties of any kind. To the maximum extent permitted by law, we disclaim all warranties and will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or relating to your use of the Site.
+            </p>
 
-          <h3>8) Contact</h3>
-          <p>
-            For any questions about these Terms, contact <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
-          </p>
+            <h3>7) Changes</h3>
+            <p>
+              We may update or discontinue the Site or these Terms at any time. If we update these Terms, the Effective Date above will change.
+            </p>
+
+            <h3>8) Contact</h3>
+            <p>
+              For any questions about these Terms, contact <a href="mailto:contact@ashak.co">contact@ashak.co</a>.
+            </p>
+          </div>
         </article>
 
       </div>

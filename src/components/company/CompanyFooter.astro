@@ -1,141 +1,108 @@
 ---
-/* CompanyFooter.astro */
 const year = new Date().getFullYear();
 ---
-
 <style>
   .footer-section {
-    background-color: #F5F0E6; /* Koyu Krem/Latte */
-    border-top: 1px solid #E6DFD5;
-    padding: 80px 0 30px;
-    font-family: 'Lato', sans-serif;
-    color: #5D5550;
+    background-color: #000;
+    border-top: 1px solid #222;
+    padding: 80px 40px 40px;
+    font-family: 'Raleway', sans-serif;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;
     display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 40px;
-    grid-template-columns: repeat(1, 1fr);
   }
 
-  @media (min-width: 768px) {
-    .container {
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-    }
-  }
-
-  /* Brand Column */
-  .brand-col p {
-    font-size: 14px;
-    line-height: 1.7;
-    margin-top: 16px;
-    max-width: 300px;
-    color: #8B7E74;
-  }
-  
   .brand-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 24px;
-    color: #2C2420;
-    letter-spacing: -0.5px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    margin-bottom: 16px;
   }
 
-  /* Links Columns */
+  .footer-desc {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 300px;
+  }
+
   h4 {
-    color: #2C2420;
-    font-family: 'Playfair Display', serif; /* Başlıklar Serif */
-    font-weight: 600;
-    font-size: 16px;
+    color: #FFF;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 24px;
-    margin-top: 0;
   }
 
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
   }
+
+  li { margin-bottom: 12px; }
 
   a {
-    color: #6B635E;
+    color: #888;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
+    font-size: 13px;
+    transition: color 0.3s;
   }
 
-  a:hover {
-    color: #8C6A5D; /* Bronze Accent */
-  }
+  a:hover { color: #FFF; }
 
-  /* Bottom Bar */
   .bottom-bar {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    padding: 24px 24px 0;
-    border-top: 1px solid #E6DFD5;
+    margin-top: 80px;
+    padding-top: 24px;
+    border-top: 1px solid #111;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 13px;
-    color: #9C9288;
+    font-size: 11px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 768px) {
+    .container { grid-template-columns: 1fr; }
+    .bottom-bar { flex-direction: column; gap: 10px; }
   }
 </style>
 
 <footer class="footer-section">
   <div class="container">
-    
-    <div class="brand-col">
-      <div class="brand-title">Ashak Studios.</div>
-      <p>
-        Building the next generation of mobile experiences with precision, creativity, and cutting-edge technology.
+    <div>
+      <div class="brand-title">ASHAK STUDIOS.</div>
+      <p class="footer-desc">
+        Next generation mobile experiences designed with surgical precision and aesthetic excellence.
       </p>
     </div>
 
     <div>
-      <h4>Company</h4>
+      <h4>Explore</h4>
       <ul>
         <li><a href="/thestudio">The Studio</a></li>
         <li><a href="/careers">Careers</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/press">Press Kit</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h4>Products</h4>
-      <ul>
-        <li><a href="/pexa">Pexa AI</a></li>
-        <li><a href="/strux">Strux</a></li>
-        <li><a href="/maxontheisland">Max Series</a></li>
-        <li><a href="/cityguessr">CityGuessr</a></li>
-        <li><a href="/countryguessr">CountryGuessr</a></li>
-        <li><a href="/flagguessr">FlagGuessr</a></li>
-        <li><a href="/wordchainx">Word Chain X</a></li>
-        <li><a href="/imposterx">ImposterX</a></li>
+        <li><a href="/blog">News</a></li>
       </ul>
     </div>
 
     <div>
       <h4>Legal</h4>
       <ul>
-        <li><a href="/legal#privacy">Privacy Policy</a></li>
-        <li><a href="/legal#terms">Terms of Service</a></li>
-        <li><a href="/legal#cookies">Cookie Settings</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
       </ul>
     </div>
-
   </div>
 
   <div class="bottom-bar">
-    <span>&copy; {year} Ashak Studios Inc. All rights reserved.</span>
-    <span>Designed in Istanbul.</span>
+    <span>&copy; {year} Ashak Studios Inc.</span>
+    <span>Istanbul / Remote</span>
   </div>
 </footer>

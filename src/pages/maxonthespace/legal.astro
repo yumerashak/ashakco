@@ -9,28 +9,15 @@ const EFFECTIVE_DATE = "October 31, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Legal Protocols | Max On The Space</title>
-    <meta name="description" content="Privacy Policy and Terms of Service for Max On The Space." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>LEGAL PROTOCOLS | MAX ON THE SPACE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        
-        --color-primary: #8C6A5D;
-        --color-primary-dark: #6D5248;
-        
-        --color-card-bg: #FFFFFF;
-        --color-border: #E6DFD5;
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #222222;
       }
 
       * { box-sizing: border-box; }
@@ -39,117 +26,118 @@ const EFFECTIVE_DATE = "October 31, 2025";
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
+        -webkit-font-smoothing: antialiased;
         line-height: 1.6;
       }
 
-      h1, h2, h3, h4 {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+      .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
 
       /* --- HERO --- */
       .hero {
-        padding: 100px 0 80px;
-        text-align: center;
-        border-bottom: 1px solid #E6DFD5;
-        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        padding: 160px 0 60px;
+        border-bottom: 1px solid var(--color-border);
       }
       
-      .hero h1 {
-        font-size: clamp(36px, 5vw, 56px);
-        margin: 0 0 16px;
-        color: #1A1410;
-      }
-
       .date-badge {
-        display: inline-block; padding: 6px 16px;
-        background: #EDE6D9;
-        color: var(--color-primary-dark);
         font-size: 12px;
+        letter-spacing: 2px;
+        color: var(--color-muted);
         text-transform: uppercase;
-        letter-spacing: 1px;
         font-weight: 700;
-        border-radius: 4px;
-        margin-bottom: 24px;
+        display: block;
+        margin-bottom: 20px;
       }
 
-      /* TOC */
-      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-      .toc-btn {
-        padding: 10px 24px;
-        border-radius: 4px;
-        background: #FFFFFF;
-        border: 1px solid #D6CFC5;
-        color: var(--color-text-muted);
+      .hero h1 {
+        font-size: clamp(50px, 8vw, 90px);
+        font-weight: 800;
+        letter-spacing: -4px;
+        line-height: 0.9;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .toc { display: flex; gap: 30px; margin-top: 40px; }
+      .toc-link {
+        color: var(--color-text);
         text-decoration: none;
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
         font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: all 0.2s;
+        transition: opacity 0.3s;
       }
-      .toc-btn:hover {
-        background: #FDFBF7;
-        color: var(--color-primary);
-        border-color: var(--color-primary);
-      }
+      .toc-link:hover { opacity: 0.5; }
 
-      /* --- LEGAL CARD --- */
+      /* --- CONTENT --- */
+      .legal-content { padding: 40px 0 100px; }
+
       .legal-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 60px;
-        margin: 60px 0;
-        box-shadow: var(--shadow-sm);
-        scroll-margin-top: 40px;
+        padding: 80px 0;
+        border-bottom: 1px solid var(--color-border);
+        scroll-margin-top: 100px;
       }
 
       .section-title {
-        font-size: 32px;
-        margin: 0 0 8px 0;
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin: 0 0 10px;
+        text-transform: uppercase;
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
       }
-      .section-num { color: #E6DFD5; font-size: 48px; font-family: 'Playfair Display', serif; }
-
-      .meta-info {
-        font-size: 14px; color: var(--color-text-muted);
-        font-style: italic; display: block; margin-bottom: 40px;
-        padding-bottom: 24px; border-bottom: 1px solid #F0EBE3;
-      }
-
-      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
-      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
-      ul { margin: 0 0 24px 0; padding-left: 20px; }
-      li { margin-bottom: 8px; }
+      .section-num { color: #222; font-size: 60px; }
       
-      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
-      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
-
-      /* Highlight Box (Game Economy) */
-      .highlight-box {
-        background: #F9F6F1;
-        border: 1px solid #E6DFD5;
-        border-radius: 6px;
-        padding: 32px;
-        margin-top: 40px;
+      .meta-info {
+        font-size: 14px; 
+        color: var(--color-muted);
+        display: block; 
+        margin-bottom: 40px;
+        font-style: italic;
       }
-      .highlight-box h3 { margin-top: 0; color: var(--color-primary); font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
-      .highlight-box li { color: #5D5550; font-size: 15px; border-bottom: 1px dashed #E6DFD5; padding-bottom: 8px; }
+
+      h3 { 
+        font-size: 18px; 
+        font-weight: 700;
+        color: #FFF; 
+        margin: 40px 0 20px; 
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      p, li { 
+        font-size: 17px; 
+        color: var(--color-muted); 
+        margin-bottom: 20px;
+      }
+
+      ul { margin: 0 0 30px; padding-left: 20px; }
+      li { margin-bottom: 12px; }
+      
+      a { color: #FFF; text-decoration: underline; transition: opacity 0.3s; }
+      a:hover { opacity: 0.7; }
+
+      /* Economy Box */
+      .highlight-box {
+        background: #0A0A0A;
+        border: 1px solid var(--color-border);
+        padding: 40px;
+        margin-top: 60px;
+        border-left: 4px solid #FFF;
+      }
+      .highlight-box h3 { margin-top: 0; font-size: 16px; margin-bottom: 24px; }
+      .highlight-box ul { list-style: none; padding: 0; }
+      .highlight-box li { border-bottom: 1px solid #111; padding-bottom: 12px; font-size: 15px; color: #EEE; }
       .highlight-box li:last-child { border: none; }
-      .highlight-box strong { color: #2C2420; }
 
       @media(max-width: 768px) {
-        .legal-card { padding: 32px; margin: 40px 0; }
-        .hero h1 { font-size: 32px; }
+        .container { padding: 0 20px; }
+        .hero { padding: 120px 0 40px; }
+        .section-title { font-size: 32px; }
         .section-num { display: none; }
       }
     </style>
@@ -158,22 +146,19 @@ const EFFECTIVE_DATE = "October 31, 2025";
 
     <Header />
 
-    <main>
+    <main class="container">
       
       <section class="hero">
-        <div class="container">
-          <span class="date-badge">Effective: {EFFECTIVE_DATE}</span>
-          <h1>Legal Protocols</h1>
-          
-          <div class="toc">
-            <a class="toc-btn" href="#privacy">Privacy Policy</a>
-            <a class="toc-btn" href="#terms">Terms of Service</a>
-          </div>
-        </div>
+        <span class="date-badge">EFFECTIVE: {EFFECTIVE_DATE}</span>
+        <h1>LEGAL<br/>PROTOCOLS</h1>
+        
+        <nav class="toc">
+          <a class="toc-link" href="#privacy">Privacy Policy</a>
+          <a class="toc-link" href="#terms">Terms of Service</a>
+        </nav>
       </section>
 
-      <section class="container">
-        
+      <div class="legal-content">
         <article id="privacy" class="legal-card">
           <h2 class="section-title">Privacy Policy <span class="section-num">01</span></h2>
           <span class="meta-info">Applies to: “Max On The Space” and other games published by Ashak Studios.</span>
@@ -214,15 +199,14 @@ const EFFECTIVE_DATE = "October 31, 2025";
           <p>We may update this Privacy Policy to reflect product or legal changes. If you have questions about privacy, contact us at <a href="mailto:contact@ashak.co">contact@ashak.co</a>.</p>
 
           <div class="highlight-box">
-            <h3>Quick Reference: In-Game Economy</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
+            <h3>QUICK REFERENCE: IN-GAME ECONOMY</h3>
+            <ul>
               <li>Starting balance: <strong>120 Coins</strong></li>
               <li>Skip a level: <strong>60 Coins</strong></li>
               <li>Use a hint: <strong>30 Coins</strong></li>
               <li>Rewarded ad grant: <strong>+20 Coins</strong> (optional)</li>
             </ul>
           </div>
-
         </article>
 
         <article id="terms" class="legal-card">
@@ -263,8 +247,7 @@ const EFFECTIVE_DATE = "October 31, 2025";
           <h3>8) Changes & Contact</h3>
           <p>We may revise these Terms when we add features or as laws change. For support or legal questions, contact: <a href="mailto:contact@ashak.co">contact@ashak.co</a></p>
         </article>
-
-      </section>
+      </div>
 
     </main>
 

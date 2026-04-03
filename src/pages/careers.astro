@@ -5,30 +5,30 @@ import Footer from "../components/company/CompanyFooter.astro";
 const roles = [
   {
     id: "swift-developer",
-    title: "SwiftUI Developer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
+    title: "SWIFTUI ENGINEER",
+    department: "ENGINEERING",
+    location: "REMOTE",
+    type: "FULL-TIME",
     summary:
-      "We are looking for a performance-focused engineer to optimize our core engines and ensure stability across our iOS portfolio.",
+      "SwiftUI, Swift Concurrency, MVVM, SwiftData, Localization, Observation Framework, StoreKit 2, Performance Profiling.",
   },
   {
-    id: "app-designer",
-    title: "App Designer",
-    department: "Design",
-    location: "Remote",
-    type: "Full-time",
+    id: "product-designer",
+    title: "PRODUCT DESIGNER",
+    department: "DESIGN",
+    location: "REMOTE",
+    type: "FULL-TIME",
     summary:
-      "Design engaging, sustainable user loops and balance economies. You will bridge the gap between pure creativity and user retention metrics.",
+      "Figma, Apple HIG, Design Systems, Minimalist UI/UX, Motion Design, Prototyping, Asset Optimization, Accessibility Standards.",
   },
   {
-    id: "ui-ux-designer",
-    title: "UI/UX Designer",
-    department: "Creative",
-    location: "Remote",
-    type: "Full-time",
+    id: "systems-architect",
+    title: "SYSTEMS ARCHITECT",
+    department: "INFRASTRUCTURE",
+    location: "REMOTE",
+    type: "FULL-TIME",
     summary:
-      "Build the visual language of our products. We need consistent UI systems, intuitive user flows, and high-fidelity mockups.",
+      "Local-first Architecture, E2E Encryption, Database Optimization, AI Model Integration, Cloud Sync Protocols, DevOps, Infrastructure as Code.",
   },
 ];
 ---
@@ -37,358 +37,222 @@ const roles = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Careers | Ashak Studios</title>
-    <meta name="description" content="Join the Ashak Studios team — open roles and how to apply." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
+    <title>CAREERS | ASHAK STUDIOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        
-        --color-primary: #8C6A5D; /* Bronz */
-        --color-primary-dark: #6D5248;
-        
-        --color-card-bg: #FFFFFF;
-        --color-border: #E6DFD5;
-        
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(44, 36, 32, 0.08);
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #333333;
       }
 
-      * { box-sizing: border-box; }
-      
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
         -webkit-font-smoothing: antialiased;
-        line-height: 1.6;
       }
 
-      h1, h2, h3 {
-        margin: 0;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container {
-        max-width: 1100px;
+      .main-content {
+        padding: 160px 40px 100px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 24px;
       }
 
-      /* --- HERO SECTION --- */
-      .hero {
-        padding: 100px 0 80px;
-        text-align: center;
-        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
-        border-bottom: 1px solid #E6DFD5;
-        margin-bottom: 80px;
-      }
-
-      .hero-label {
-        display: inline-block;
-        background: #EDE6D9;
-        color: var(--color-primary-dark);
-        padding: 6px 16px;
-        border-radius: 4px;
-        font-size: 12px;
+      .hero-title {
+        font-size: clamp(60px, 10vw, 120px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        margin-bottom: 24px;
       }
 
-      .hero h1 {
-        font-size: clamp(42px, 5vw, 64px);
-        margin-bottom: 16px;
-        color: #1A1410;
-      }
-      
-      .hero p {
-        color: var(--color-text-muted);
-        font-size: 18px;
-        max-width: 600px;
-        margin: 0 auto;
+      .section-label {
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--color-muted);
+        margin-bottom: 80px;
+        display: block;
       }
 
-      /* --- LAYOUT GRID --- */
-      .layout-grid {
+      .roles-list {
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 40px;
-        margin-bottom: 100px;
+        grid-template-columns: 1fr;
       }
-      @media(max-width: 900px) { .layout-grid { grid-template-columns: 1fr; } }
 
-      /* --- JOB LIST --- */
-      .job-list {
+      .role-item {
+        border-top: 1px solid var(--color-border);
+        padding: 60px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.3s;
+      }
+
+      .role-item:hover {
+        border-top-color: #FFF;
+      }
+
+      .role-meta {
         display: flex;
         flex-direction: column;
+        gap: 8px;
+      }
+
+      .role-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--color-muted);
+        text-transform: uppercase;
+      }
+
+      .role-name {
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      .role-info {
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: var(--color-muted);
+        text-transform: uppercase;
+      }
+
+      .role-description {
+        font-size: 15px;
+        color: var(--color-muted);
+        line-height: 1.8;
+        max-width: 500px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+      }
+
+      .role-actions {
+        margin-top: 30px;
+        display: flex;
         gap: 24px;
       }
 
-      .job-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 36px;
-        transition: all 0.3s ease;
-      }
-      
-      .job-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: #D6CFC5;
-      }
-
-      .job-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .job-title-group h3 {
-        font-size: 24px;
-        margin-bottom: 4px;
-      }
-      .department {
+      .btn-text {
         font-size: 13px;
-        text-transform: uppercase;
-        color: var(--color-primary);
-        letter-spacing: 0.5px;
         font-weight: 700;
-      }
-
-      .badges { display: flex; gap: 8px; }
-      .badge {
-        font-size: 11px;
-        padding: 4px 12px;
-        border-radius: 4px;
-        background: #F5F0E6;
-        color: #6B635E;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
-
-      .job-summary {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--color-text-muted);
-        margin-bottom: 32px;
-      }
-
-      .job-actions {
-        display: flex;
-        gap: 16px;
-      }
-
-      /* --- BUTTONS --- */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 44px;
-        padding: 0 24px;
-        border-radius: 4px;
-        font-weight: 700;
-        font-size: 13px;
+        letter-spacing: 1px;
+        color: #FFF;
         text-decoration: none;
-        transition: all 0.2s;
-        cursor: pointer;
+        border-bottom: 1px solid #FFF;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        cursor: pointer;
+        padding-bottom: 2px;
+        transition: opacity 0.3s;
       }
 
-      .btn-primary {
-        background: var(--color-primary);
-        color: #fff;
-      }
-      .btn-primary:hover {
-        background: var(--color-primary-dark);
+      .btn-text:hover {
+        opacity: 0.5;
       }
 
-      .btn-outline {
-        background: transparent;
-        border: 1px solid #D6CFC5;
-        color: var(--color-text-main);
-      }
-      .btn-outline:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-        background: #FDFBF7;
+      .culture-section {
+        margin-top: 120px;
+        padding: 80px 0;
+        border-top: 1px solid var(--color-border);
       }
 
-      /* --- SIDEBAR --- */
-      .sidebar-card {
-        background: #F9F6F1; /* Çok açık bej/gri */
-        border: 1px solid #E6DFD5;
-        border-radius: 8px;
-        padding: 40px;
-        height: fit-content;
-        position: sticky;
-        top: 100px; /* Header payı */
+      .culture-title {
+        font-size: 24px;
+        font-weight: 300;
+        margin-bottom: 40px;
+        color: var(--color-muted);
       }
 
-      .sidebar-card h2 {
-        font-size: 18px;
-        margin: 0 0 24px 0;
-        color: var(--color-text-main);
-        border-bottom: 1px solid #E6DFD5;
-        padding-bottom: 16px;
+      .culture-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 40px;
       }
 
-      .info-list {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 40px 0;
-      }
-      .info-list li {
-        margin-bottom: 16px;
-        font-size: 15px;
-        color: var(--color-text-muted);
-        padding-left: 20px;
-        position: relative;
-      }
-      .info-list li::before {
-        content: '•';
-        position: absolute;
-        left: 0;
-        color: var(--color-primary);
-        font-weight: bold;
-      }
-
-      .process-list li {
-        margin-bottom: 16px;
-        display: flex;
-        gap: 12px;
+      .culture-box h4 {
         font-size: 14px;
-        color: var(--color-text-main);
-        align-items: center;
-      }
-      .step-num {
-        font-family: 'Playfair Display', serif;
-        color: var(--color-primary);
         font-weight: 700;
-        font-size: 18px;
-        font-style: italic;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+        text-transform: uppercase;
       }
 
-      .general-apply {
-        background: #FFFFFF;
-        border: 1px dashed #D6CFC5;
-        border-radius: 4px;
-        padding: 24px;
-        text-align: center;
-      }
-      .general-apply p {
+      .culture-box p {
         font-size: 14px;
-        margin: 0 0 16px 0;
-        color: var(--color-text-muted);
-      }
-      .btn-full {
-        width: 100%;
+        color: var(--color-muted);
+        line-height: 1.5;
       }
 
+      @media (max-width: 900px) {
+        .role-item { grid-template-columns: 1fr; padding: 40px 0; }
+        .hero-title { letter-spacing: -2px; }
+        .main-content { padding: 120px 20px 60px; }
+      }
     </style>
   </head>
   <body>
 
     <Header />
 
-    <main>
-      
-      <section class="hero">
-        <div class="container">
-          <span class="hero-label">Careers</span>
-          <h1>Join Our Team</h1>
-          <p>We are building worlds, not just apps. If you value quality engineering and refined design, find your role below.</p>
-        </div>
-      </section>
+    <main class="main-content">
+      <h1 class="hero-title">BUILDING THE<br/>NEXT FRONTIER.</h1>
+      <span class="section-label">Open Roles</span>
 
-      <div class="container layout-grid">
-        
-        <div class="job-list">
-          {roles.map((r) => (
-            <article class="job-card" id={r.id}>
-              <div class="job-header">
-                <div class="job-title-group">
-                  <h3>{r.title}</h3>
-                  <span class="department">{r.department}</span>
-                </div>
-                <div class="badges">
-                  <span class="badge">{r.location}</span>
-                  <span class="badge">{r.type}</span>
-                </div>
+      <div class="roles-list">
+        {roles.map(role => (
+          <div class="role-item">
+            <div class="role-meta">
+              <span class="role-tag">{role.department}</span>
+              <div class="role-name">{role.title}</div>
+              <div class="role-info">{role.location} / {role.type}</div>
+            </div>
+            <div>
+              <p class="role-description">{role.summary}</p>
+              <div class="role-actions">
+                <a href={`mailto:contact@ashak.co?subject=APPLICATION: ${role.title}`} class="btn-text">Apply Now</a>
+                <a href={`mailto:contact@ashak.co?subject=INQUIRY: ${role.title}`} class="btn-text">Inquiry</a>
               </div>
-              
-              <p class="job-summary">{r.summary}</p>
-              
-              <div class="job-actions">
-                <a
-                  class="btn btn-primary"
-                  href={`mailto:contact@ashak.co?subject=Application: ${encodeURIComponent(r.title)}&body=Hi Team,%0D%0A%0D%0AI am applying for the ${encodeURIComponent(r.title)} position.%0D%0A%0D%0A[Link to Portfolio/CV]%0D%0A%0D%0ABriefly about me:%0D%0A...`}
-                >
-                  Apply Now
-                </a>
-                <a
-                  class="btn btn-outline"
-                  href={`mailto:contact@ashak.co?subject=Inquiry: ${encodeURIComponent(r.title)}`}
-                >
-                  Learn More
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <aside class="sidebar-card">
-          
-          <h2>The Culture</h2>
-          <ul class="info-list">
-            <li>Small, senior team with high ownership.</li>
-            <li>Quality-first craft, zero bloatware.</li>
-            <li>Remote-friendly, asynchronous workflow.</li>
-            <li>Impactful products used globally.</li>
-          </ul>
-
-          <h2>Hiring Process</h2>
-          <ul class="info-list process-list">
-            <li><span class="step-num">01</span> <span>Intro Call (15m)</span></li>
-            <li><span class="step-num">02</span> <span>Portfolio / Technical Dive</span></li>
-            <li><span class="step-num">03</span> <span>Paid Take-home Task</span></li>
-            <li><span class="step-num">04</span> <span>The Offer</span></li>
-          </ul>
-
-          <div class="general-apply">
-            <p>Don't see your role listed?</p>
-            <a 
-              class="btn btn-outline btn-full" 
-              href="mailto:contact@ashak.co?subject=General Application — Ashak Studios"
-            >
-              General Application
-            </a>
+            </div>
           </div>
-
-        </aside>
+        ))}
       </div>
 
+      <section class="culture-section">
+        <h2 class="culture-title">Studio Culture</h2>
+        <div class="culture-grid">
+          <div class="culture-box">
+            <h4>Precision</h4>
+            <p>Surgical attention to detail in both code and aesthetics.</p>
+          </div>
+          <div class="culture-box">
+            <h4>Ownership</h4>
+            <p>Senior-led autonomous workflow with high responsibility.</p>
+          </div>
+          <div class="culture-box">
+            <h4>Autonomy</h4>
+            <p>Remote-first, asynchronous ecosystem for deep work.</p>
+          </div>
+          <div class="culture-box">
+            <h4>Transparency</h4>
+            <p>Radical honesty and architectural integrity.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <Footer />
+
   </body>
 </html>

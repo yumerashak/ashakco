@@ -9,28 +9,15 @@ const LAST_UPDATED = "December 7, 2025";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transparency & Legal | PEXA</title>
-    <meta name="description" content="Privacy Policy, Terms of Service, and Fair Usage Policy for PEXA AI." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>TRANSPARENCY & LEGAL | PEXA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES (Ashak Studios Theme) --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        
-        --color-primary: #8C6A5D;
-        --color-primary-dark: #6D5248;
-        
-        --color-card-bg: #FFFFFF;
-        --color-border: #E6DFD5;
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #222222;
       }
 
       * { box-sizing: border-box; }
@@ -39,107 +26,103 @@ const LAST_UPDATED = "December 7, 2025";
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
+        -webkit-font-smoothing: antialiased;
         line-height: 1.6;
       }
 
-      h1, h2, h3, h4 {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+      .container { max-width: 1000px; margin: 0 auto; padding: 0 40px; }
 
       /* --- HERO --- */
       .hero {
-        padding: 100px 0 80px;
-        text-align: center;
-        border-bottom: 1px solid #E6DFD5;
-        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
+        padding: 160px 0 60px;
+        border-bottom: 1px solid var(--color-border);
       }
       
-      .hero h1 {
-        font-size: clamp(36px, 5vw, 56px);
-        margin: 0 0 16px;
-        color: #1A1410;
-      }
-
       .meta-badge {
-        display: inline-block; padding: 6px 16px;
-        background: #EDE6D9;
-        color: var(--color-primary-dark);
         font-size: 12px;
+        letter-spacing: 2px;
+        color: var(--color-muted);
         text-transform: uppercase;
-        letter-spacing: 1px;
         font-weight: 700;
-        border-radius: 4px;
-        margin-bottom: 24px;
+        display: block;
+        margin-bottom: 20px;
       }
 
-      /* TOC */
-      .toc { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-      .toc-btn {
-        padding: 10px 24px;
-        border-radius: 4px;
-        background: #FFFFFF;
-        border: 1px solid #D6CFC5;
-        color: var(--color-text-muted);
+      .hero h1 {
+        font-size: clamp(50px, 8vw, 90px);
+        font-weight: 800;
+        letter-spacing: -4px;
+        line-height: 0.9;
+        margin: 0 0 20px;
+        text-transform: uppercase;
+      }
+
+      .hero p { color: var(--color-muted); font-size: 18px; max-width: 600px; }
+
+      .toc { display: flex; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+      .toc-link {
+        color: var(--color-text);
         text-decoration: none;
-        font-family: 'Lato', sans-serif;
-        font-weight: 700;
         font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: all 0.2s;
+        transition: opacity 0.3s;
       }
-      .toc-btn:hover {
-        background: #FDFBF7;
-        color: var(--color-primary);
-        border-color: var(--color-primary);
-      }
+      .toc-link:hover { opacity: 0.5; }
 
-      /* --- LEGAL CARD --- */
+      /* --- CONTENT --- */
       .legal-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 60px;
-        margin: 60px 0;
-        box-shadow: var(--shadow-sm);
-        scroll-margin-top: 40px;
+        padding: 80px 0;
+        border-bottom: 1px solid var(--color-border);
+        scroll-margin-top: 100px;
       }
 
       .section-title {
-        font-size: 32px;
-        margin: 0 0 24px 0;
-        padding-bottom: 24px;
-        border-bottom: 1px solid #F0EBE3;
+        font-size: 42px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin: 0 0 40px;
+        text-transform: uppercase;
       }
-      
-      h3 { font-size: 20px; color: #4A3F39; margin: 32px 0 12px; }
-      p, li { font-size: 16px; color: var(--color-text-muted); margin-bottom: 16px; }
-      ul { margin: 0 0 24px 0; padding-left: 20px; }
-      li { margin-bottom: 8px; }
-      a { color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-border); font-weight: 700; }
-      a:hover { color: var(--color-primary-dark); border-bottom-style: solid; }
 
-      /* Info Boxes */
-      .box {
-        padding: 24px;
-        border-radius: 4px;
-        margin: 32px 0;
-        background: #F9F6F1; /* Çok açık bej */
-        border-left: 3px solid var(--color-primary);
+      h3 { 
+        font-size: 18px; 
+        font-weight: 700;
+        color: #FFF; 
+        margin: 40px 0 20px; 
+        letter-spacing: 1px;
+        text-transform: uppercase;
       }
+
+      p, li { 
+        font-size: 17px; 
+        color: var(--color-muted); 
+        margin-bottom: 20px;
+      }
+
+      ul { margin: 0 0 30px; padding-left: 20px; }
+      li { margin-bottom: 12px; }
       
-      .box h4 { margin: 0 0 8px 0; font-family: 'Lato', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-primary); }
-      .box p { margin: 0; font-size: 15px; color: #5D5550; }
+      a { color: #FFF; text-decoration: underline; }
+
+      /* Accent Box */
+      .box {
+        padding: 40px;
+        background: #0A0A0A;
+        border: 1px solid var(--color-border);
+        margin: 40px 0;
+        border-left: 4px solid #FFF;
+      }
+      .box h4 { margin: 0 0 16px 0; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: #FFF; }
+      .box p { margin: 0; font-size: 16px; color: #EEE; }
 
       @media(max-width: 768px) {
-        .legal-card { padding: 32px; margin: 40px 0; }
-        .hero h1 { font-size: 32px; }
+        .container { padding: 0 20px; }
+        .hero { padding: 120px 0 40px; }
+        .section-title { font-size: 32px; }
       }
     </style>
   </head>
@@ -147,61 +130,43 @@ const LAST_UPDATED = "December 7, 2025";
 
     <Header />
 
-    <main>
-      
+    <main class="container">
       <section class="hero">
-        <div class="container">
-          <span class="meta-badge">Last Updated: {LAST_UPDATED}</span>
-          <h1>Transparency & Legal</h1>
-          <p style="color:#6B635E; max-width:600px; margin:0 auto;">
-            We believe in absolute transparency regarding our Hybrid Architecture and Usage Limits. No hidden clauses.
-          </p>
-          
-          <div class="toc">
-            <a class="toc-btn" href="#privacy">Privacy Policy</a>
-            <a class="toc-btn" href="#fair-use">Fair Usage</a>
-            <a class="toc-btn" href="#terms">Terms of Service</a>
-          </div>
-        </div>
+        <span class="meta-badge">LAST UPDATED: {LAST_UPDATED}</span>
+        <h1>TRANSPARENCY<br/>& LEGAL</h1>
+        <p>We believe in absolute transparency regarding our Hybrid Architecture and Usage Limits. No hidden clauses.</p>
+        
+        <nav class="toc">
+          <a class="toc-link" href="#privacy">Privacy Policy</a>
+          <a class="toc-link" href="#fair-use">Fair Usage</a>
+          <a class="toc-link" href="#terms">Terms of Service</a>
+        </nav>
       </section>
 
-      <section class="container">
-        
+      <div class="legal-content">
         <article id="privacy" class="legal-card">
           <h2 class="section-title">Privacy Policy</h2>
           
           <div class="box">
-            <h4>The Hybrid Secure Architecture</h4>
-            <p>
-              PEXA uses a split-data approach to ensure maximum privacy. Your conversations stay with Apple, while your account limits are managed by our secure cloud.
-            </p>
+            <h4>THE HYBRID SECURE ARCHITECTURE</h4>
+            <p>PEXA uses a split-data approach to ensure maximum privacy. Your conversations stay with Apple, while your account limits are managed by our secure cloud.</p>
           </div>
 
           <h3>1. Chat History (Stored in iCloud)</h3>
-          <p>
-            Your text prompts, chat history, and generated image references are stored in your personal <strong>iCloud Private Storage</strong>. 
-            This data is encrypted by Apple. We (Ashak Studios) strictly do not have access to read your conversations or see your generated images.
-          </p>
+          <p>Your text prompts, chat history, and generated image references are stored in your personal <strong>iCloud Private Storage</strong>. This data is encrypted by Apple. We (Ashak Studios) strictly do not have access to read your conversations or see your generated images.</p>
 
           <h3>2. Account Data (Stored in Secure Cloud)</h3>
-          <p>
-            To manage your credits, subscription status, and usage limits, we use an industry-standard Secure Cloud Database. 
-            When you use "Sign in with Apple", <strong>we strictly do not store your email address</strong> or personal details. We only store:
-          </p>
+          <p>To manage your credits, subscription status, and usage limits, we use an industry-standard Secure Cloud Database. When you use "Sign in with Apple", <strong>we strictly do not store your email address</strong> or personal details. We only store:</p>
           <ul>
             <li>Your unique User ID provided by Apple (to identify your account).</li>
             <li>Your Pexa credit balance and daily usage counters.</li>
           </ul>
 
           <h3>3. Device Identification</h3>
-          <p>
-             To prevent abuse of our free tier and protect the service integrity, we may store a securely <strong>hashed device identifier</strong>. This identifier is anonymized, not linked to your personal chat content, and is used solely to enforce usage policies.
-          </p>
+          <p>To prevent abuse of our free tier and protect the service integrity, we may store a securely <strong>hashed device identifier</strong>. This identifier is anonymized, not linked to your personal chat content, and is used solely to enforce usage policies.</p>
 
           <h3>4. Right to Erasure (Delete Account)</h3>
-          <p>
-            You have full control. If you choose <strong>"Delete Account"</strong> within the app:
-          </p>
+          <p>You have full control. If you choose <strong>"Delete Account"</strong> within the app:</p>
           <ul>
             <li><strong>Cloud Account:</strong> Your user record and credit data are permanently wiped from our secure servers.</li>
             <li><strong>iCloud:</strong> The app automatically instructs iCloud to wipe your chat history container associated with PEXA.</li>
@@ -210,19 +175,13 @@ const LAST_UPDATED = "December 7, 2025";
 
         <article id="fair-use" class="legal-card">
           <h2 class="section-title">Fair Usage & Limits Policy</h2>
-          <p>
-            PEXA relies on high-performance GPU computing power. To ensure the system remains fast and stable for all users, we enforce dynamic limits based on usage intensity.
-          </p>
+          <p>PEXA relies on high-performance GPU computing power. To ensure the system remains fast and stable for all users, we enforce dynamic limits based on usage intensity.</p>
 
           <h3>Free Tier</h3>
-          <p>
-            Free users operate on a <strong>Credit System</strong>. Once your initial credits are depleted, you may continue generating images by supporting the app (e.g., watching ads).
-          </p>
+          <p>Free users operate on a <strong>Credit System</strong>. Once your initial credits are depleted, you may continue generating images by supporting the app (e.g., watching ads).</p>
 
           <h3>Premium Smart Limits</h3>
-          <p>
-            While Premium offers "Unlimited" access to the generation engine, "Unlimited" is defined by <strong>reasonable human use</strong>. To prevent bot abuse and server overheating, the following automated cool-down logic applies to high-frequency users:
-          </p>
+          <p>While Premium offers "Unlimited" access to the generation engine, "Unlimited" is defined by <strong>reasonable human use</strong>. To prevent bot abuse and server overheating, the following automated cool-down logic applies to high-frequency users:</p>
           <ul>
             <li><strong>At 20 Rapid Generations:</strong> A short cool-down of <strong>10 minutes</strong> applies ("System Hot").</li>
             <li><strong>At 40 Rapid Generations:</strong> A cool-down of <strong>20 minutes</strong> applies ("Cooling Down").</li>
@@ -234,25 +193,16 @@ const LAST_UPDATED = "December 7, 2025";
           <h2 class="section-title">Terms of Service</h2>
           
           <h3>1. Content Safety</h3>
-          <p>
-            All text prompts are analyzed by our <strong>automated AI safety system</strong> before image generation. 
-            You agree not to attempt to generate content involving Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech.
-          </p>
+          <p>All text prompts are analyzed by our <strong>automated AI safety system</strong> before image generation. You agree not to attempt to generate content involving Child Sexual Abuse Material (CSAM), gore, extreme violence, or hate speech.</p>
 
           <h3>2. Authentication</h3>
-          <p>
-            PEXA uses <strong>Sign in with Apple</strong> for secure authentication. You are responsible for maintaining the security of your Apple ID. We are not liable for data loss resulting from a compromised Apple account.
-          </p>
+          <p>PEXA uses <strong>Sign in with Apple</strong> for secure authentication. You are responsible for maintaining the security of your Apple ID. We are not liable for data loss resulting from a compromised Apple account.</p>
 
           <h3>3. Ownership</h3>
-          <p>
-            <strong>You own the images you create.</strong> Ashak Studios claims no copyright over your creations. You are free to use them for personal or commercial purposes, subject to local laws regarding AI-generated content.
-          </p>
+          <p><strong>You own the images you create.</strong> Ashak Studios claims no copyright over your creations. You are free to use them for personal or commercial purposes, subject to local laws regarding AI-generated content.</p>
 
           <h3>4. Subscriptions & Refunds</h3>
-          <p>
-            PEXA offers renewable subscriptions processed entirely by Apple (StoreKit 2).
-          </p>
+          <p>PEXA offers renewable subscriptions processed entirely by Apple (StoreKit 2).</p>
           <ul>
             <li>Payment is charged to your Apple ID.</li>
             <li>Subscriptions auto-renew unless canceled at least 24 hours before the end of the period in your iPhone Settings.</li>
@@ -260,13 +210,9 @@ const LAST_UPDATED = "December 7, 2025";
           </ul>
 
           <h3>5. Contact</h3>
-          <p>
-            For support or inquiries: <a href="mailto:contact@ashak.co">contact@ashak.co</a>
-          </p>
+          <p>For support or inquiries: <a href="mailto:contact@ashak.co">contact@ashak.co</a></p>
         </article>
-
-      </section>
-
+      </div>
     </main>
 
     <Footer />

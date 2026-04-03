@@ -9,285 +9,190 @@ const SUPPORT_EMAIL = "contact@ashak.co";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Ashak Studios</title>
-    <meta name="description" content="Get in touch with the Ashak Studios team." />
-    <meta name="theme-color" content="#FDFBF7" />
-    <link rel="icon" href="/favicon.svg" />
-
+    <title>CONTACT | ASHAK STUDIOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* --- GLOBAL VARIABLES --- */
       :root {
-        --color-bg: #FDFBF7;
-        --color-text-main: #2C2420;
-        --color-text-muted: #6B635E;
-        --color-primary: #8C6A5D;
-        --color-primary-dark: #6D5248;
-        --color-card-bg: #FFFFFF;
-        --color-input-bg: #F9F6F1;
-        --color-border: #E6DFD5;
-        --shadow-sm: 0 1px 2px 0 rgba(44, 36, 32, 0.05);
-        --shadow-lg: 0 10px 15px -3px rgba(44, 36, 32, 0.08);
+        --color-bg: #000000;
+        --color-text: #FFFFFF;
+        --color-muted: #888888;
+        --color-border: #333333;
       }
 
-      * { box-sizing: border-box; }
-      
       body {
         margin: 0;
         background-color: var(--color-bg);
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
+        color: var(--color-text);
+        font-family: 'Raleway', sans-serif;
         -webkit-font-smoothing: antialiased;
-        line-height: 1.6;
       }
 
-      h1, h2, h3 {
-        margin: 0;
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: var(--color-text-main);
-      }
-
-      .container {
-        max-width: 1100px;
+      .main-content {
+        padding: 160px 40px 100px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 24px;
       }
 
-      /* --- HERO --- */
-      .hero {
-        padding: 100px 0 80px;
-        text-align: center;
-        background: radial-gradient(circle at top, #F5F0E6 0%, #FDFBF7 70%);
-        border-bottom: 1px solid #E6DFD5;
+      .hero-title {
+        font-size: clamp(60px, 10vw, 120px);
+        font-weight: 800;
+        line-height: 0.9;
+        letter-spacing: -4px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+      }
+
+      .section-label {
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--color-muted);
         margin-bottom: 80px;
+        display: block;
       }
 
-      .hero-label {
-        display: inline-block;
-        background: #EDE6D9;
-        color: var(--color-primary-dark);
-        padding: 6px 16px;
-        border-radius: 4px;
-        font-size: 12px;
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 80px;
+        border-top: 1px solid var(--color-border);
+        padding-top: 60px;
+      }
+
+      /* --- INFO SIDE --- */
+      .info-side {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .info-block h3 {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--color-muted);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .info-link {
+        font-size: 24px;
+        font-weight: 400;
+        color: #FFF;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+        transition: opacity 0.3s;
+      }
+      .info-link:hover { opacity: 0.6; }
+
+      .social-links {
+        display: flex;
+        gap: 24px;
+      }
+      .social-item {
+        color: #FFF;
+        text-decoration: underline;
+        font-size: 14px;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 700;
-        margin-bottom: 24px;
+      }
+      .social-item:hover { opacity: 0.6; }
+
+      /* --- FORM SIDE --- */
+      .form-side {
+        display: flex;
+        flex-direction: column;
       }
 
-      .hero h1 {
-        font-size: clamp(42px, 5vw, 64px);
-        margin-bottom: 16px;
-        color: #1A1410;
-      }
-      
-      .hero p {
-        color: var(--color-text-muted);
-        font-size: 18px;
-        max-width: 600px;
-        margin: 0 auto;
+      .input-group {
+        margin-bottom: 40px;
       }
 
-      /* --- LAYOUT --- */
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 1.6fr 1fr;
-        gap: 40px;
-        margin-bottom: 100px;
-      }
-      @media(max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
-
-      .contact-card {
-        background: var(--color-card-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        padding: 48px;
-        box-shadow: var(--shadow-sm);
-      }
-
-      /* --- FORM --- */
-      .form-header { margin-bottom: 32px; border-bottom: 1px solid #F0EBE3; padding-bottom: 24px; }
-      .form-header h2 { font-size: 28px; margin-bottom: 8px; }
-      .form-header p { margin: 0; color: var(--color-text-muted); font-size: 14px; }
-
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-bottom: 24px;
-      }
-      @media(max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
-
-      .input-group { margin-bottom: 24px; }
-      
       label {
         display: block;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        color: #7D7065;
-        margin-bottom: 8px;
+        letter-spacing: 1px;
+        color: var(--color-muted);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        margin-bottom: 12px;
       }
 
       input, textarea {
         width: 100%;
-        background: var(--color-input-bg);
-        border: 1px solid var(--color-border);
-        border-radius: 4px;
-        padding: 14px 16px;
-        color: var(--color-text-main);
-        font-family: 'Lato', sans-serif;
-        font-size: 15px;
-        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--color-border);
+        padding: 12px 0;
+        color: #FFF;
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;
+        transition: border-color 0.3s;
+        border-radius: 0;
       }
-      
+
       input:focus, textarea:focus {
         outline: none;
-        border-color: var(--color-primary);
-        background: #FFFFFF;
-        box-shadow: 0 0 0 3px rgba(140, 106, 93, 0.1);
+        border-bottom-color: #FFF;
       }
-      
-      textarea { min-height: 160px; resize: vertical; }
 
-      /* --- BUTTONS --- */
-      .btn-container {
+      textarea {
+        min-height: 120px;
+        resize: none;
+      }
+
+      .actions {
+        margin-top: 20px;
         display: flex;
+        gap: 32px;
         align-items: center;
-        gap: 16px;
-        margin-top: 16px;
-        flex-wrap: wrap;
       }
 
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 48px;
-        padding: 0 32px;
-        border-radius: 4px;
-        font-weight: 700;
+      .btn-text {
         font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        cursor: pointer;
-        transition: all 0.2s;
-        border: none;
-        text-decoration: none;
-      }
-
-      .btn-primary {
-        background: var(--color-primary);
-        color: #fff;
-      }
-      .btn-primary:hover {
-        background: var(--color-primary-dark);
-        transform: translateY(-1px);
-      }
-
-      .btn-outline {
-        background: transparent;
-        border: 1px solid #D6CFC5;
-        color: var(--color-text-muted);
-      }
-      .btn-outline:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-        background: #fff;
-      }
-
-      /* --- INFO BLOCKS --- */
-      .info-block { margin-bottom: 40px; }
-      .info-block h3 { 
-        font-size: 16px; 
-        margin: 0 0 16px 0; 
-        color: var(--color-primary); 
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: 'Lato', sans-serif;
         font-weight: 700;
-      }
-      
-      .info-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .info-list li {
-        margin-bottom: 16px;
-        color: var(--color-text-main);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 15px;
-      }
-      .info-list a {
-        color: var(--color-text-main);
+        letter-spacing: 1px;
+        color: #FFF;
         text-decoration: none;
-        border-bottom: 1px dotted #D6CFC5;
-        transition: .2s;
-      }
-      .info-list a:hover { color: var(--color-primary); border-color: var(--color-primary); }
-
-      .icon-box {
-        color: var(--color-primary);
-        display: flex;
-        align-items: center;
+        border-bottom: 1px solid #FFF;
+        text-transform: uppercase;
+        cursor: pointer;
+        padding-bottom: 2px;
+        transition: opacity 0.3s;
+        background: transparent;
+        border-top: none; border-left: none; border-right: none;
       }
 
-      .social-icons {
-        display: flex;
-        gap: 12px;
-      }
-      .social-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px; height: 42px;
-        border-radius: 4px;
-        background: #F9F6F1;
-        border: 1px solid #E6DFD5;
-        color: #6B635E;
-        transition: .2s;
-      }
-      .social-btn:hover {
-        background: var(--color-primary);
-        border-color: var(--color-primary);
-        color: #fff;
-        transform: translateY(-2px);
-      }
+      .btn-text:hover { opacity: 0.5; }
 
       /* --- TOAST --- */
       .toast {
         position: fixed;
-        bottom: 30px; left: 50%;
-        transform: translateX(-50%) translateY(50px);
-        background: #FFFFFF;
-        border: 1px solid var(--color-border);
-        color: var(--color-text-main);
+        bottom: 40px;
+        left: 40px;
+        background: #FFF;
+        color: #000;
         padding: 12px 24px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: 600;
-        box-shadow: var(--shadow-lg);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transform: translateY(100px);
         opacity: 0;
-        pointer-events: none;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-family: 'Lato', sans-serif;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: 2000;
       }
-      .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-      .toast::before {
-        content:'';
-        display:block; width:8px; height:8px; background: var(--color-primary); border-radius:50%;
+      .toast.show { transform: translateY(0); opacity: 1; }
+
+      @media (max-width: 900px) {
+        .contact-layout { grid-template-columns: 1fr; gap: 60px; }
+        .main-content { padding: 120px 20px 60px; }
+        .hero-title { letter-spacing: -2px; }
+        .info-link { font-size: 20px; }
       }
     </style>
   </head>
@@ -295,157 +200,97 @@ const SUPPORT_EMAIL = "contact@ashak.co";
 
     <Header />
 
-    <main>
-      
-      <section class="hero">
-        <div class="container">
-          <span class="hero-label">Support & Inquiries</span>
-          <h1>Get in Touch</h1>
-          <p>Whether you have a question about our products, pricing, or need technical support, our team is ready to answer all your questions.</p>
-        </div>
-      </section>
+    <main class="main-content">
+      <h1 class="hero-title">GET IN<br/>TOUCH.</h1>
+      <span class="section-label">Contact</span>
 
-      <div class="container">
-        <div class="contact-grid">
-          
-          <div class="contact-card">
-            <div class="form-header">
-              <h2>Send Message</h2>
-              <p>No account required. This will launch your default email client.</p>
-            </div>
-
-            <form id="contact-form">
-              <div class="form-row">
-                <div class="input-group">
-                  <label for="name">Full Name</label>
-                  <input id="name" name="name" type="text" autocomplete="name" placeholder="John Doe" required />
-                </div>
-                <div class="input-group">
-                  <label for="email">Email Address</label>
-                  <input id="email" name="email" type="email" autocomplete="email" placeholder="john@example.com" required />
-                </div>
-              </div>
-
-              <div class="input-group">
-                <label for="subject">Subject</label>
-                <input id="subject" name="subject" type="text" placeholder="General Inquiry, Bug Report, etc." />
-              </div>
-
-              <div class="input-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="How can we help you?" required></textarea>
-              </div>
-
-              <div class="btn-container">
-                <button class="btn btn-primary" type="submit">Send Message</button>
-                <button class="btn btn-outline" type="button" id="btn-copy">Copy Email Address</button>
-              </div>
-              <p style="font-size:12px; color:var(--color-text-muted); margin-top:20px; font-style:italic;">
-                * Typical response time: 24-48 hours via email.
-              </p>
-            </form>
+      <div class="contact-layout">
+        
+        <aside class="info-side">
+          <div class="info-block">
+            <h3>Direct Contact</h3>
+            <a href={`mailto:${SUPPORT_EMAIL}`} class="info-link">{SUPPORT_EMAIL}</a>
+            <button id="btn-copy" class="btn-text" style="font-size: 11px;">Copy Email Address</button>
           </div>
 
-          <aside>
-            <div class="contact-card" style="padding: 40px;">
-              <div class="info-block">
-                <h3>Contact Information</h3>
-                <ul class="info-list">
-                  <li>
-                    <span class="icon-box">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </span>
-                    <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
-                  </li>
-                  <li>
-                    <span class="icon-box">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                    </span>
-                    <span>Istanbul, Turkey (HQ)</span>
-                  </li>
-                </ul>
-              </div>
+          <div class="info-block">
+            <h3>Headquarters</h3>
+            <p class="info-link" style="cursor: default;">Istanbul, TR / Remote</p>
+          </div>
 
-              <div class="info-block">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                  <a href="https://www.instagram.com/ashak.co/" class="social-btn" aria-label="Instagram" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><circle cx="17.5" cy="6.5" r="1.25"></circle></svg>
-                  </a>
-                  <a href="https://www.youtube.com/@ashakstudios" class="social-btn" aria-label="YouTube" target="_blank">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.3 3.5 12 3.5 12 3.5s-7.3 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .6 5.8 3 3 0 0 0 2.1 2.1c2.2.6 9.3.6 9.3.6s7.3 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.6-5.8ZM9.8 15.3V8.7L15.7 12z"/></svg>
-                  </a>
-                </div>
-              </div>
-
-              <div class="info-block" style="margin-bottom:0; border-top:1px solid #E6DFD5; padding-top:24px;">
-                <h3>Before you ask</h3>
-                <ul class="info-list" style="font-size:14px; line-height:1.6; color:#6B635E; display:block;">
-                  <li style="margin-bottom:8px;">• Check your spam folder for replies.</li>
-                  <li style="margin-bottom:8px;">• Include device model for bug reports.</li>
-                  <li style="margin-bottom:0;">• Purchases can be restored in Settings.</li>
-                </ul>
-              </div>
+          <div class="info-block">
+            <h3>Social</h3>
+            <div class="social-links">
+              <a href="https://instagram.com/ashak.co" class="social-item" target="_blank">Instagram</a>
+              <a href="https://youtube.com/@ashakstudios" class="social-item" target="_blank">YouTube</a>
             </div>
-          </aside>
+          </div>
+        </aside>
+
+        <div class="form-side">
+          <form id="contact-form">
+            <div class="input-group">
+              <label for="name">Your Name</label>
+              <input id="name" type="text" required placeholder="John Doe" />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email Address</label>
+              <input id="email" type="email" required placeholder="john@example.com" />
+            </div>
+
+            <div class="input-group">
+              <label for="subject">Subject</label>
+              <input id="subject" type="text" placeholder="Inquiry" />
+            </div>
+
+            <div class="input-group">
+              <label for="message">Message</label>
+              <textarea id="message" required placeholder="How can we help you?"></textarea>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn-text">Send Message</button>
+            </div>
+          </form>
         </div>
+
       </div>
     </main>
 
     <Footer />
 
-    <div id="toast-send" class="toast" role="status">Opening email client...</div>
-    <div id="toast-copy" class="toast" role="status">Email address copied!</div>
+    <div id="toast" class="toast">Action completed</div>
 
     <script is:inline define:vars={{ SUPPORT_EMAIL }}>
-      // 1. FORM SUBMIT (MAILTO)
       const form = document.getElementById('contact-form');
-      
+      const copyBtn = document.getElementById('btn-copy');
+      const toast = document.getElementById('toast');
+
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+
       form.addEventListener('submit', (e) => {
         e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value || 'Inquiry';
+        const message = document.getElementById('message').value;
+
+        const body = `NAME: ${name}\nEMAIL: ${email}\n\nMESSAGE:\n${message}`;
+        window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const subject = document.getElementById('subject').value.trim() || 'Inquiry';
-        const message = document.getElementById('message').value.trim();
-
-        // Format Body
-        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n--\nSent via ashak.co contact form`;
-
-        // Create Mailto Link
-        const mailtoLink = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        // Trigger
-        window.location.href = mailtoLink;
-        
-        // Show Feedback
-        showToast('toast-send');
+        showToast('OPENING EMAIL CLIENT');
       });
 
-      // 2. COPY BUTTON
-      const copyBtn = document.getElementById('btn-copy');
-      
       copyBtn.addEventListener('click', () => {
-        if (navigator.clipboard) {
-          navigator.clipboard.writeText(SUPPORT_EMAIL).then(() => {
-            showToast('toast-copy');
-          });
-        } else {
-          // Fallback
-          showToast('toast-copy');
-        }
+        navigator.clipboard.writeText(SUPPORT_EMAIL).then(() => {
+          showToast('EMAIL COPIED TO CLIPBOARD');
+        });
       });
-
-      // 3. TOAST HELPER
-      function showToast(id) {
-        const el = document.getElementById(id);
-        if (!el) return;
-        
-        el.classList.add('show');
-        setTimeout(() => {
-          el.classList.remove('show');
-        }, 3000);
-      }
     </script>
   </body>
 </html>
