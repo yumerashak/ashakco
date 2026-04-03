@@ -32,12 +32,10 @@
     height: 36px; 
     width: auto;
     display: block;
-    /* Opacity geçişini kaldırdık, sadece büyüme yumuşak olacak */
     transition: transform 0.3s ease;
   }
 
   .logo-img:hover { 
-    /* Fare üzerine gelince logoyu %10 oranında büyütür, solma yapmaz */
     transform: scale(1.1); 
   }
 
@@ -54,11 +52,70 @@
 
   .nav-link:hover { opacity: 0.5; }
 
+  /* HAMBURGER BUTONU (Masaüstünde Gizli) */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 1001; /* Açılan menünün üstünde kalması için */
+  }
+
+  .hamburger .bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 5px auto;
+    background-color: #FFF;
+    transition: all 0.3s ease;
+  }
+
+  /* MOBİL GÖRÜNÜM */
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
-    .nav-link { font-size: 10px; letter-spacing: 1px; }
-    .nav-right { gap: 16px; } 
-    .logo-img { height: 20px; } 
+    
+    /* İŞTE BURASI: Mobilde logonun boyutunu 24px'ten 30px'e çıkardık */
+    .logo-img { height: 30px; z-index: 1001; position: relative; } 
+    
+    /* Hamburgeri mobilde göster */
+    .hamburger { display: block; }
+
+    /* Menüyü tam ekran açılan bir pencereye çevir */
+    .nav-right {
+      position: fixed;
+      top: 0;
+      right: -100%; /* Başlangıçta ekranın sağında gizli durur */
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.98);
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px; /* Linklerin arasını açtık */
+      transition: right 0.4s ease; /* Yana doğru kayarak gelme efekti */
+    }
+
+    /* JavaScript ile eklenecek 'active' sınıfı menüyü ekrana sokar */
+    .nav-right.active {
+      right: 0;
+    }
+
+    /* Mobilde linkler biraz daha büyük ve ortada olsun */
+    .nav-right .nav-link { 
+      font-size: 18px; 
+      letter-spacing: 4px; 
+    }
+
+    /* Çarpı işareti animasyonu */
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
   }
 </style>
 
@@ -69,10 +126,32 @@
       <img src="/favicon.png" alt="Home" class="logo-img" />
     </a>
     
-    <div class="nav-right">
+    <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    
+    <div class="nav-right" id="mobile-menu">
       <a href="/thestudio" class="nav-link">ABOUT US</a>
       <a href="/contact" class="nav-link">CONTACT</a>
     </div>
 
   </div>
 </header>
+
+<script>
+  // Sayfa yüklendiğinde çalışması için
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (hamburgerBtn && mobileMenu) {
+      hamburgerBtn.addEventListener('click', () => {
+        // Tıklandığında 'active' sınıfını ekle/çıkar
+        hamburgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  });
+</script>

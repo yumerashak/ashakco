@@ -59,7 +59,7 @@ const EFFECTIVE_DATE = "September 21, 2025";
         display: flex;
         gap: 32px;
         margin-bottom: 80px;
-        border-bottom: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border); /* BU KALDI: Öbür divider */
         padding-bottom: 24px;
       }
 
@@ -82,16 +82,12 @@ const EFFECTIVE_DATE = "September 21, 2025";
       }
 
       .legal-card {
-        border-top: 1px solid var(--color-border);
+        /* Buralardaki border-top'u komple sildik! Artık aralarda çizgi yok */
         padding: 100px 0;
         display: grid;
         grid-template-columns: 1fr 1.5fr;
         gap: 60px;
         scroll-margin-top: 100px;
-      }
-
-      .legal-card:hover {
-        border-top-color: #FFF;
       }
 
       .doc-title {
